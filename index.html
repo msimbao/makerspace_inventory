@@ -61,6 +61,8 @@
         colour = colour.replace(/\s/gi,'');
         $('.section').css('background',colour);
         $('h4').text(colour);
+        if (colour === "pencils") {
+         $('.section').css('background','white');
       }
 
       recognition.start();
