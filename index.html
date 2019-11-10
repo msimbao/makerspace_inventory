@@ -59,10 +59,12 @@
         colour = colour.toLowerCase();
         // strip the spaces out of it
         colour = colour.replace(/\s/gi,'');
-        $('.section').css('background',colour);
         $('h4').text(colour);
+        
         if (colour === "pencils") {
          $('.section').css('background','white');
+         $('.section').css('background',colour);
+
       }
 
       recognition.start();
