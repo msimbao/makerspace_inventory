@@ -7,7 +7,7 @@ $(document).ready(function() {
 	    menu: null,
         direction: 'vertical',
         verticalCentered: true,
-        sectionsColor: ['#000000', '#000000', '#000000', '#000000', '#000'],
+        sectionsColor: ['#002C53', '#FE3808', '#002C53', '#FE3808', '#333333'],
         anchors: [],
         scrollingSpeed: 700,
         easing: 'swing',
