@@ -42,7 +42,7 @@ text{
 --------------------------------------------------------------*/
 
 #load {
-background:#000000;
+background:#FF3501;
 position:absolute;
 bottom:0;
 z-index:500;
@@ -50,8 +50,8 @@ width:100%;
 height:100%;
 text-align:center;
 margin:auto;
--webkit-animation: disappear 0s forwards ;
-animation: disappear 0s forwards ;
+-webkit-animation: disappear 13s forwards ;
+animation: disappear 13s forwards ;
 vertical-align: middle;
 text-align: center;
 padding:10%;
@@ -80,20 +80,36 @@ padding:10%;
   padding:5%;
 }
 
-.row{
-  position:relative;
-  margin:auto;
+.colorTheme{
+  color:#00AEE0;
+  color:#FF3501;
+  color:#00333F;
+  color:#FCB900;
+  color:#F7FCFF;
+  color:#FE3808;
+  color:#002C53;
 }
 
+
+.modals{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  padding:5%;
+  background:black;
+}
 
 .items{
   position:absolute;
   background-color:black;
+  top:0%;
   width:100%;
   height:100%;
   transition: 5s;
   z-index:100;
-  opacity:0;
+  margin-top:5%;
+  display:none;
 }
 
 .itemImage{
