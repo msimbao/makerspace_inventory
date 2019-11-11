@@ -33,7 +33,9 @@ p{
   width:100%;
 }
 
-
+text{
+  font-family: 'Lilita One', cursive;
+}
 
 /*--------------------------------------------------------------
 # Splash Screen
@@ -48,8 +50,8 @@ width:100%;
 height:100%;
 text-align:center;
 margin:auto;
--webkit-animation: disappear 1s forwards ;
-animation: disappear 1s forwards ;
+-webkit-animation: disappear 0s forwards ;
+animation: disappear 0s forwards ;
 vertical-align: middle;
 text-align: center;
 padding:10%;
@@ -66,8 +68,8 @@ padding:10%;
 @keyframes disappear {
 0% { opacity: 1; height:100%; bottom:0; z-index:500;}
  90% {opacity:1; height:100%; bottom:0; z-index:500;}
-99.999% {opacity: 1;  height:100%%; bottom:-100%; z-index:500}
-100% {opacity: 1;  height:100%%; bottom:-100%; z-index:-10}
+99.999% {opacity: 1;  height:100%; bottom:-100%; z-index:500}
+100% {opacity: 1;  height:100%; bottom:-100%; z-index:-10}
 }
 
 /*--------------------------------------------------------------
@@ -75,18 +77,14 @@ padding:10%;
 --------------------------------------------------------------*/
 
 .section{
-  text-align:left;
   padding:5%;
 }
 
 .row{
-  position:absolute;
+  position:relative;
   margin:auto;
 }
 
-.round{
-  border-radius:50px;
-}
 
 .items{
   position:absolute;
@@ -95,6 +93,7 @@ padding:10%;
   height:100%;
   transition: 5s;
   z-index:100;
+  opacity:0;
 }
 
 .itemImage{
@@ -113,11 +112,6 @@ padding:10%;
 # Intro Section
 --------------------------------------------------------------*/
 
-#intro{
-  position:absolute;
-  bottom:20%;
-
-}
 
 /*--------------------------------------------------------------
 # Blob Control
