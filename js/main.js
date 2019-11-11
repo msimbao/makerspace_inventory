@@ -75,3 +75,44 @@ function nextIteration() {
 blobs[0].addEventListener("animationiteration", nextIteration);
 
 colorBlobs();
+
+
+
+// Speech Controls
+var speech  = function(){
+var x = "lol";
+
+var recognition = new webkitSpeechRecognition();
+ recognition.continuous = true;
+ recognition.interimResults = true;
+
+recognition.onresult = function(event) {
+ var colour = event.results[event.results.length - 1][0].transcript;
+ // make it lowercase
+ colour = colour.toLowerCase();
+ // strip the spaces out of it
+ colour = colour.replace(/\s/gi,'');
+ $('.section').css('background',colour);
+ $('h4').text(colour);
+ if (colour == 'pencils') {
+	 $('#intro').animate({opacity:0},1000, function() {
+		  $('#pencils').animate({opacity:1},1000, function() {
+				$('#pencils').delay(4000).animate({opacity:0},1000, function() {
+					$('#intro').animate({opacity:1},1000)
+				})
+			})
+	 })
+
+ }
+}
+
+recognition.start();
+
+}
+
+if (!('webkitSpeechRecognition' in window)) {
+alert("Sorry you require a browser that supports speech recognition");
+}
+else {
+speech();
+}
