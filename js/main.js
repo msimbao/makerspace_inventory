@@ -7,7 +7,7 @@ $(document).ready(function() {
 	    menu: null,
         direction: 'vertical',
         verticalCentered: true,
-        sectionsColor: ['#000000', '#000000', '#7BAABE', 'whitesmoke', '#000'],
+        sectionsColor: ['#000000', '#000000', '#000000', '#000000', '#000'],
         anchors: [],
         scrollingSpeed: 700,
         easing: 'swing',
