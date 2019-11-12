@@ -45,38 +45,15 @@
 
   <body>
 
-     <script>
-    var speech  = function(){
-      var x = "lol";
+    <!--==========================
+    Header
+    ============================-->
+  
 
-      var recognition = new webkitSpeechRecognition();
-        recognition.continuous = true;
-        recognition.interimResults = true;
+<div class="navbar">
+  <a href="#home"><h4>IdeaLab</h4></a>
+</div>
 
-      recognition.onresult = function(event) {
-        var colour = event.results[event.results.length - 1][0].transcript;
-        // make it lowercase
-        colour = colour.toLowerCase();
-        // strip the spaces out of it
-        colour = colour.replace(/\s/gi,'');
-        $('h4').text(colour);
-
-        if (colour === "pencils") {
-         $('.section').css('background','white');
-         $('.section').css('background',colour);
-
-      }
-
-      recognition.start();
-
-    }
-
-    if (!('webkitSpeechRecognition' in window)) {
-      alert("Sorry you require a browser that supports speech recognition");
-    }
-    else {
-      speech();
-    }
   </script>
 
     <div id="load">
@@ -461,7 +438,35 @@
 </div>
 </div>
 
-<div class="section pp-scrollable">
+<div class="section pp-scrollable" id="inventory">
+
+      <h1>
+        We also have a manual search feature.
+      </h1>
+
+      <input
+        type="text"
+        id="myInput"
+        onkeyup="myFunction()"
+        placeholder="Search for names.."
+      />
+      <!--       
+      <div style="text-align:center;">
+      <button type="button" class="btn btn-primary" >All</button>
+      <button type="button" class="btn btn-primary" >On Request</button>
+      <button type="button" class="btn btn-primary" >Tech</button>
+      <button type="button" class="btn btn-primary" >Software</button>
+      </div> -->
+
+      <div class="album py-5">
+        <div class="container-fluid">
+          <div class="row">
+            <ul id="myUL">
+              <div id="array"></div>
+            </ul>
+          </div>
+        </div>
+      </div>
 
   </div>
 
@@ -494,6 +499,8 @@
 
 </div>
 
+
+
     <!-- JavaScript Libraries -->
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/jquery/jquery-migrate.min.js"></script>
@@ -508,10 +515,10 @@
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     <script src="js/piling.js"></script>
     <!-- Contact Form JavaScript File -->
-
     <script src="js/main.js"></script>
 
-    <script>
+
+ <script>
       // Your web app's Firebase configuration
       var firebaseConfig = {
         apiKey: "AIzaSyCfwUVwmMb1IcwkWwHuaFZdsFe7_0uxoAA",
@@ -526,5 +533,46 @@
       firebase.initializeApp(firebaseConfig);
       const database = firebase.database();
     </script>
+
+    <script>
+      // Inventory Reading
+
+  $(document).ready(function() {
+    var ref = firebase.app().database().ref();
+    var itemsRef = ref.child('Items');
+  
+    itemsRef.on("child_added", snap => {
+      var item = snap.child("item_text").val();
+      var group = snap.child("group").val();
+      var short = snap.child("short_text").val();
+      var image = snap.child("image_text").val();
+      var location = snap.child("located_text").val();
+      var location_short = snap.child("located_short_text").val();
+
+     $("#array").append(
+      "<li>" +
+        '<div class="col-md-4">' +
+        '<a href="#">' +
+        item +
+        '</a><div class="dbitem mb-4 box-shadow"  data-toggle="modal" data-target="#' +
+        short +
+        '"  >' +
+       '<div class="card-img-top" style="width:970px;">'+
+        '</div><div class="card-body '+ group +'">' +
+        ' <p class="card-text"><h6>' +
+        item +
+        "</h6></p>" +
+        ' <div class="d-flex justify-content-between align-items-center">' +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        "</li>" 
+      
+    );
+  });
+});
+    </script>
+
+
   </body>
 </html>
