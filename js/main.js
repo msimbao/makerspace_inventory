@@ -1,4 +1,28 @@
 
+// Live Search
+
+function myFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName("li");
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+
+
 
 // pagepiling
 
@@ -7,7 +31,7 @@ $(document).ready(function() {
 	    menu: null,
         direction: 'vertical',
         verticalCentered: true,
-        sectionsColor: ['#002C53', '#FE3808', '#002C53', '#FE3808', '#333333'],
+        sectionsColor: ['#002C53', '#FE3808', '#002C53', '#FE3808', '#002C53'],
         anchors: [],
         scrollingSpeed: 700,
         easing: 'swing',
@@ -93,12 +117,13 @@ recognition.onresult = function(event) {
  // strip the spaces out of it
  colour = colour.replace(/\s/gi,'');
  $('.section').css('background',colour);
- $('h4').text(colour);
+ $('h3').text(colour);
  if (colour == 'pencils') {
-	 $('#intro').animate({opacity:0},1000, function() {
-		  $('#pencils').animate({opacity:1},1000, function() {
-				$('#pencils').delay(4000).animate({opacity:0},1000, function() {
-					$('#intro').animate({opacity:1},1000)
+	 $('#intro').animate({opacity:0},500, function() {
+		  $('#pencils').animate({opacity:1},300, function() {
+				$('#pencils').delay(3000).animate({opacity:0},1000, function() {
+					$('#intro').animate({opacity:1},500)
+					 $('h3').text("I am listening");
 				})
 			})
 	 })
