@@ -6,7 +6,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lilita+One|Poppins&display=swap');
 
 body {
-  font-family: 'Poppins', sans-serif;
+
+  padding:15%;
+  padding-top:-20%;
+  color:white;
+  background:#FF3501;
+  font-family: 'Lilita One', cursive;
 }
 
 h4, p, h3 {
@@ -31,6 +36,8 @@ h5 {
 p{
   font-size:20px;
   width:100%;
+  font-family: 'Poppins', sans-serif;
+   
 }
 
 text{
@@ -50,8 +57,8 @@ width:100%;
 height:100%;
 text-align:center;
 margin:auto;
--webkit-animation: disappear 13s forwards ;
-animation: disappear 13s forwards ;
+-webkit-animation: disappear 0s forwards ;
+animation: disappear 0s forwards ;
 vertical-align: middle;
 text-align: center;
 padding:10%;
@@ -78,6 +85,7 @@ padding:10%;
 
 .section{
   padding:5%;
+  overflow:hidden;
 }
 
 .colorTheme{
@@ -101,7 +109,7 @@ padding:10%;
 }
 
 .card{
-background:#00333F;
+background:#002C53;
 width:80%;
 height:60%;
 top:10%;
@@ -110,14 +118,20 @@ padding:5%;
 position:absolute;
 margin:auto;
 opacity:0;
+border:10px dashed #F7FCFF;
+box-shadow: 15px 20px 4px rgba(0, 0, 0, .5);
+
 }
 
 .card div{
-  margin-top:5%;
+  margin-top:3%;
 }
 
 .texts{
   padding:10%;
+}
+
+.texts a{
 }
 
 
@@ -257,12 +271,126 @@ svg {
 }
 
 
+
 /*--------------------------------------------------------------
-# Intro Section
+# Header
 --------------------------------------------------------------*/
 
 
+  .navbar {
+    z-index:10;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition:2s;
+}
+
+.navbar a h4{
+  color:#002C53;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #002C53;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  color: black;
+}
 
 /*--------------------------------------------------------------
-# Card
+# Inventory
 --------------------------------------------------------------*/
+
+h1{
+  margin-top:200px;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 70%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-top: 12px; /* Add some space below the input */
+  border-radius:50px;
+}
+
+#myUL {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position:relative;
+}
+
+
+li a {
+    color:transparent;
+    font-size:0;
+}
+
+
+.dbitem{
+  background:none;
+  border:none;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
+  transition: 0.3s;
+  border-radius: 20px;
+  border:5px dashed white;
+
+}
+
+.dbitem:hover {
+  box-shadow: 0 22px 46px 0 rgba(0,0,0,0.5);
+}
+
+
+.col-md-4{
+  float:left;
+  width:vheight;
+  height:150px;
+  
+/*   border:none; */
+}
+
+
+
+
+.card-body{
+  background:#FCB900;
+  border:none;
+  color:#00333F;
+  border-radius:20px;
+  padding:10%;
+  vertical-align:center;
+  text-align:center;
+    
+}
+
+.crafts{
+  background:#FCB900;
+}
+
+.tech{
+  background:#002C53;
+  color:white;
+}
+
+.software{
+  background:#00AEE0;
+}
+
+.card-text{
+  font-size:70px;
+  vertical-align:center;
+}
