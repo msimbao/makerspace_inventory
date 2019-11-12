@@ -9,12 +9,12 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-h4, p {
+h4, p, h3 {
   /* mix-blend-mode: difference; */
   color:#EDF5e1
 }
 
-h4 {
+h4, h3 {
   font-size:60px;
   text-decoration:bold;
   font-family: 'Lilita One', cursive;
@@ -97,36 +97,28 @@ padding:10%;
   position:absolute;
   top:0;
   padding:5%;
-  background:black;
+  z-index:20;
 }
 
-.items{
-  position:absolute;
-  background-color:black;
-  top:0%;
-  width:100%;
-  height:100%;
-  transition: 5s;
-  z-index:100;
+.card{
+background:#00333F;
+width:80%;
+height:60%;
+top:10%;
+vertical-align:middle;
+padding:5%;
+position:absolute;
+margin:auto;
+opacity:0;
+}
+
+.card div{
   margin-top:5%;
-  display:none;
 }
 
-.itemImage{
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
-  border-radius:50px;
-  transition:2s;
+.texts{
+  padding:10%;
 }
-
-.itemImage:hover{
-  -webkit-filter: none;
-  filter: none;
-}
-
-/*--------------------------------------------------------------
-# Intro Section
---------------------------------------------------------------*/
 
 
 /*--------------------------------------------------------------
@@ -176,9 +168,7 @@ svg {
 
 }
 
-.wow{
-vertical-align:bottom;
-}
+
 
 
 /*--------------------------------------------------------------
@@ -265,3 +255,14 @@ vertical-align:bottom;
 	position: absolute;
 	margin-top: 20px;
 }
+
+
+/*--------------------------------------------------------------
+# Intro Section
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+# Card
+--------------------------------------------------------------*/
