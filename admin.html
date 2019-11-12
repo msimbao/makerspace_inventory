@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- =======================================================
+    Name: Audio Inventory
+    Author: Tulsi Patel, Thien An Pham, Mphatso Simbao
+ ======================================================= -->
+
+    <meta charset="utf-8" />
+    <title>Idea Lab</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicons -->
+    <link href="img/logo.png" rel="icon" />
+    <link href="img/logo.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    <link href="lib/fullpage/fullpage.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/piling.css" rel="stylesheet" />
+
+    <!---Firebase Script Has to be placed in Head-->
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-database.js"></script>
+  </head>
+
+  <body>
+
+    <!--==========================
+    Header
+    ============================-->
+  
+
+<div class="navbar" onclick="openNav()">
+  <a onclick="openNav()"><h4 onclick="openNav()">IdeaLab</h4></a>
+</div>
+
+
+<div id="myNav" class="overlay" onclick="closeNav()">
+        <div class="overlay-content">
+          <a href="index.html#inventory">Inventory</a>
+          <a href="admin.html">Login</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact Us</a>   
+        </div>
+      </div>
+
+    <!--==========================
+    Intro Section
+  ============================-->
+
+ 
+
+       <div id="login_div">
+
+        <div class="row about-extra" >
+                <div class="col-lg-6 texts">
+                  <h4>
+                    Admin Account Login
+                  </h4>
+                  <p>
+                        <input type="email" placeholder="Email..." id="email_field" />
+                        <input type="password" placeholder="Password..." id="password_field" />
+                    
+                        <button onclick="login()">Login to Account</button>
+                  </p>
+                  </div>
+        
+                <div class="col-lg-6 wow fadeInUp">
+                  <img
+                    src="img/flame-sign-in.png"
+                    class="img-fluid"
+                    alt=""
+                  />
+                </div>
+              </div>
+
+            </div>
+
+  
+  <div id="user_div">
+
+        <div id="pagepiling">
+                <div class="section">
+
+                        <div class="row about-extra" >
+                                <div class="col-lg-6 texts">
+                                  <h4>
+                                        Welcome!
+                                  </h4>
+                                  <p>This is the admin page for the website's content. Feel free to edit the different parts of the website that are currently open to change</p>
+                                  <p>To change content, you can fill in the form and click submit to enter a new item</p>
+                                  <p>You can also remove items in a section by clicking the 'X' next to the item</p>
+                                  <br>
+                                  <button onclick="logout()">Logout</button>
+                                  </div>
+                        
+                                  <div class="col-lg-6 wow fadeInUp">
+                                        <img src="img/flame-payment-processed.png" class="img-fluid" alt="">
+                                      </div>
+                              </div>
+                    
+                <!-- <div class="row about-extra">
+                    <div class="col-lg-6 wow fadeInUp">
+                      <img src="img/flame-payment-processed.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+                     
+                        <div  class="loggedin-div">
+                            <h3>Welcome!</h3>
+                            <p>This is the admin page for the website's content. Feel free to edit the different parts of the website that are currently open to change</p>
+                            <p>To change content, you can fill in the form and click submit to enter a new item</p>
+                            <p>You can also remove items in a section by clicking the 'X' next to the item</p>
+
+                            <br>
+                            <button onclick="logout()">Logout</button>
+                          </div>
+
+                  </div>
+            </div> -->
+
+        </div>
+    
+
+      
+
+      <!--==========================
+      Inventory
+    ============================-->
+    
+    <div class="section pp-scrollable">
+    
+        <!----- Input -->
+              
+        <div class="admin_input">
+
+            <h3>Inventory Input</h3>
+                    
+          <p style="color:#333333;padding:30px;">
+             <u>Note:</u> the short tag should be the shortened name of the item, in lower cases and no spaces: e.g
+            Item: "Adobe Premier Rush" will have a short tag of "adobepremierrush" and Item: "White board" will have a tag
+            of whiteboard
+          </p>
+
+                          <form class="form-horizontal" method="post">
+                              <fieldset>
+                                  <div class="form-group">
+                                          <input name="item" type="text" id="item" placeholder="Item" class="form-control feedback-input">
+                                  </div>
+
+                                  <div class="form-group">
+                                          <input id="short" name="short" type="text" placeholder="Short Tag" class="form-control feedback-input">
+                                  </div>
+
+                                  <div class="form-group">
+                                        <label for="inputFileToLoad" style="background:white;color:black;padding:20px;border-radius:5px;">Choose item Image...</label>
+                                        <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" required>
+                                        
+                                        
+                                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                      </div>
+  
+                                      <div class="img-fluid" id="imgTest admin-images"></div>
+                                 
+                                  <div class="form-group">
+  
+                                    <br>
+                                      <select required name="located" class="custom-selected form-control" id="located" >
+                                          <option value="">General Item Location</option>
+                                          <option value="https://cdn.glitch.com/14c8712d-21c8-46c7-bf2d-89daa7a13109%2FIMG_2064.JPG?v=1572386275572">Desktop Computers</option>
+                                          <option value="Tech Room">Tech Room</option>
+                                          <option value="Cubbies">Cubbies</option>
+                                          <option value="https://cdn.glitch.com/14c8712d-21c8-46c7-bf2d-89daa7a13109%2FIMG_1895.JPG?v=1569607993033">Back Closet</option>
+                                          <option value="Cubbies">Book Shelves</option>
+                                          <option value="Cubbies">Above Drawers</option>
+                                          <option value="Cubbies">Paper Drawer</option>
+                                          <option value="Cubbies">Grey Drawers</option>
+                                          <option value="Cubbies">Garage</option>
+                                          <option value="Cubbies">Black Lockers</option>
+                                      </select>
+                            
+                                    </div>
+                                      
+                                    <div class="form-group">
+                                        <select   required name="group" class="custom-selected form-control" id="group">
+                                            <option value="">Select The Item's Category</option>
+                                            <option value="software">Software</option>
+                                            <option value="tech">Tech</option>
+                                            <option value="crafts">Crafts</option>
+                                        </select>
+                                      </div>
+          
+                                  <div class="form-group">
+                                      <div class="col-md-12 text-center">
+                                          <input type="submit" id="submit" onclick="submitClick()" value="submit"/>
+                                      </div>
+                                  </div>
+                              </fieldset>
+                          </form>
+
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+
+        </div>
+    
+          <input
+            type="text"
+            id="myInput"
+            onkeyup="myFunction()"
+            placeholder="Search for names.."
+          />
+
+          <br>
+          <br>
+
+   
+    
+          <div class="album">
+                <ul id="myUL">
+                  <table id="array">
+                        <tr><th>Item</th><th>Location</th><th>Image</th><th></th></tr>
+                  </table>
+                </ul>
+              </div>
+            </div>
+
+</div>
+
+</div>
+
+
+   
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="js/piling.js"></script>
+
+
+  <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyCfwUVwmMb1IcwkWwHuaFZdsFe7_0uxoAA",
+          authDomain: "labby-30803.firebaseapp.com",
+          databaseURL: "https://labby-30803.firebaseio.com",
+          projectId: "labby-30803",
+          storageBucket: "labby-30803.appspot.com",
+          messagingSenderId: "783504716785",
+          appId: "1:783504716785:web:602161dcb1013e49ae0a50"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+      </script>
+
+<script src="js/admin.js"></script>
+
+
+
+   
+
+</body>
+</html>
