@@ -275,12 +275,7 @@ svg {
 # Inventory
 --------------------------------------------------------------*/
 
-.item-images{
-  
-  height:400px;
-  width:vheight;
-  border-radius:10px;
-}
+
 
 
 #inventory{
@@ -378,6 +373,12 @@ li a {
 # Modals
 --------------------------------------------------------------*/
 
+.item-images{
+  
+  width:400px;
+  border-radius:10px;
+}
+
 .pop-row{
   position: absolute;
   width:100%;
@@ -414,7 +415,7 @@ box-shadow: 15px 20px 4px rgba(0, 0, 0, .5); */
 .test{
   margin:5%;
   padding:5%;
-  width:50%;
+  width:60%;
   background:#002C53;
   border:10px dashed #F7FCFF;
   box-shadow: 15px 20px 4px rgba(0, 0, 0, .5);
