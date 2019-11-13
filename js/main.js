@@ -1,3 +1,11 @@
+//=======================================================
+
+//Name: Audio Inventory
+
+//Author: Tulsi Patel, Thien An Pham, Mphatso Simbao
+
+//=======================================================
+
 
 // Live Search
 
@@ -31,7 +39,7 @@ $(document).ready(function() {
 	    menu: null,
         direction: 'vertical',
         verticalCentered: true,
-        sectionsColor: ['#002C53', '#FE3808', '#002C53', '#FE3808', '#002C53'],
+        sectionsColor: ['#FE3808', '#002C53', '#FE3808', '#002C53', '#002C53'],
         anchors: [],
         scrollingSpeed: 700,
         easing: 'swing',
@@ -102,42 +110,111 @@ colorBlobs();
 
 
 
-// Speech Controls
-var speech  = function(){
-var x = "lol";
+// // Speech Controls
+// var speech  = function(){
+// var x = "lol";
 
-var recognition = new webkitSpeechRecognition();
- recognition.continuous = true;
- recognition.interimResults = true;
+// var recognition = new webkitSpeechRecognition();
+//  recognition.continuous = true;
+//  recognition.interimResults = true;
 
-recognition.onresult = function(event) {
- var colour = event.results[event.results.length - 1][0].transcript;
- // make it lowercase
- colour = colour.toLowerCase();
- // strip the spaces out of it
- colour = colour.replace(/\s/gi,'');
- $('.section').css('background',colour);
- $('h3').text(colour);
- if (colour == 'pencils') {
-	 $('#intro').animate({opacity:0},500, function() {
-		  $('#pencils').animate({opacity:1},300, function() {
-				$('#pencils').delay(3000).animate({opacity:0},1000, function() {
-					$('#intro').animate({opacity:1},500)
-					 $('h3').text("I am listening");
-				})
-			})
-	 })
+// recognition.onresult = function(event) {
+//  var colour = event.results[event.results.length - 1][0].transcript;
+//  // make it lowercase
+//  colour = colour.toLowerCase();
+//  // strip the spaces out of it
+//  colour = colour.replace(/\s/gi,'');
+//  $('.section').css('background',colour);
+//  $('.lock').text(colour);
+//  if (colour == 'pencils') {
+// 	 $('#pagepiling').animate({opacity:0},500, function() {
+// 		  $('#whiteboard').animate({opacity:1},300, function() {
+// 				$('#whiteboard').delay(3000).animate({opacity:0},1000, function() {
+// 					$('#pagepiling').animate({opacity:1},500)
+// 					 $('h3').text("I am listening");
+// 				})
+// 			})
+// 	 })
 
- }
-}
+//  }
+// }
 
-recognition.start();
+// recognition.start();
 
-}
+// }
 
-if (!('webkitSpeechRecognition' in window)) {
-alert("Sorry you require a browser that supports speech recognition");
-}
-else {
-speech();
-}
+// if (!('webkitSpeechRecognition' in window)) {
+// alert("Sorry you require a browser that supports speech recognition");
+// }
+// else {
+// speech();
+// }
+
+
+
+
+   // Inventory Reading
+
+   $(document).ready(function() {
+    var ref = firebase.app().database().ref();
+    var itemsRef = ref.child('Items');
+  
+    itemsRef.on("child_added", snap => {
+      var item = snap.child("item_text").val();
+      var group = snap.child("group").val();
+      var short = snap.child("short_text").val();
+      var image = snap.child("image_text").val();
+      var location = snap.child("located_text").val();
+      var location_short = snap.child("located_short_text").val();
+
+     $("#array").append(
+      "<li>" +
+        '<div class="col-md-4">' +
+        '<a href="#">' +
+        item +
+        '</a><div class="dbitem mb-4 box-shadow"  data-toggle="modal" data-target="#' +
+        short +
+        '"  >' +
+       '<div class="card-img-top" style="width:970px;">'+
+        '</div><div class="card-body '+ group +'">' +
+        ' <p class="card-text"><h6>' +
+        item +
+        "</h6></p>" +
+        ' <div class="d-flex justify-content-between align-items-center">' +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        "</li>" 
+      
+    );
+
+    $("#modals").append(
+        '<div class="modal" id="'+ short +'">' +
+    '<div class="row about-extra pop-row test">' +
+      '<div class="col-lg-6">' +
+        '<h4>'+
+          item +
+        '</h4>' +
+        '<p> Location: ' + 
+          location_short +
+        '</p>' +
+        '<p> Please ask an idea lab staff member for more help incase the item as been moved</p>' +
+      '</div>' +
+      '<div class="col-lg-6 wow fadeInUp">'+
+        ' <img src="'+image+'" class="img-fluid item-images" alt="" />'+
+      '</div>'+
+    '</div></div>'
+    );
+  });
+});
+
+   // Inventory Reading
+
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
+  
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
+
