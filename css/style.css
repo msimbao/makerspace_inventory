@@ -57,8 +57,8 @@ width:100%;
 height:100%;
 text-align:center;
 margin:auto;
--webkit-animation: disappear 0s forwards ;
-animation: disappear 0s forwards ;
+-webkit-animation: disappear 10s forwards ;
+animation: disappear 10s forwards ;
 vertical-align: middle;
 text-align: center;
 padding:10%;
@@ -421,6 +421,12 @@ box-shadow: 15px 20px 4px rgba(0, 0, 0, .5); */
   box-shadow: 15px 20px 4px rgba(0, 0, 0, .5);
 }
 
+.navbutton{
+  width:100%;
+  height:100%;
+  font-size:30px;
+}
+
 .card div{
   margin-top:3%;
 }
@@ -618,6 +624,7 @@ td {
 
 .overlay a:hover, .overlay a:focus {
   color: #FF3501;
+  border:none;
 }
 
 .overlay .closebtn {
@@ -634,4 +641,48 @@ td {
   top: 15px;
   right: 35px;
   }
+}
+
+
+
+/*--------------------------------------------------------------
+# Carousel
+--------------------------------------------------------------*/
+
+location-carousel {
+  text-align:center;
+  position:relative;
+}
+
+.navigation{
+  position:absolute;
+  bottom:10%;
+  right:0;
+  left:0;
+  margin:auto;
+  width:40%;
+}
+
+.navButtons {
+  position:absolute;
+  bottom:0;
+  right:0;
+  left:10%;
+  width:20%;
+  margin-top: 12px; /* Add some space below the input */
+  background:#002C53;
+  color:white;
+  font-size:10px;
+  float:left;
+  vertical-align:middle;
+  padding: 1%; /* Add some padding */
+  text-align: center;
+  border-radius:40px;
+  box-shadow: 2px 6px 1px rgba(0, 0, 0, .5);
+  cursor:pointer;
+  transition:.7s;
+  }
+
+.navButtons:hover{
+  box-shadow: 3px 8px 2px rgba(0, 0, 0, .5);
 }
