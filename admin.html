@@ -50,8 +50,8 @@
     ============================-->
   
 
-<div class="navbar" onclick="openNav()">
-  <a onclick="openNav()"><h4 onclick="openNav()">IdeaLab</h4></a>
+<div class="navbar">
+  <a onclick="openNav()"><h4 >IdeaLab</h4></a>
 </div>
 
 
@@ -164,7 +164,7 @@
 
                           <form class="form-horizontal" method="post">
                               <fieldset>
-                                  <div class="form-group">
+                                  <div class="form-group ">
                                           <input name="item" type="text" id="item" placeholder="Item" class="form-control feedback-input">
                                   </div>
 
@@ -172,15 +172,15 @@
                                           <input id="short" name="short" type="text" placeholder="Short Tag" class="form-control feedback-input">
                                   </div>
 
-                                  <div class="form-group">
-                                        <label for="inputFileToLoad" style="background:white;color:black;padding:20px;border-radius:5px;">Choose item Image...</label>
-                                        <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" required>
+                                  <div class="form-group custom-file">
+                                        <label  for="inputFileToLoad"  required>Choose item Image...</label>
+                                        <input class="form-control custom-file-input" id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" required>
                                         
                                         
                                         <div class="invalid-feedback">Example invalid custom file feedback</div>
                                       </div>
   
-                                      <div class="img-fluid" id="imgTest admin-images"></div>
+                                      <div class="img-fluid" id="imgTest"></div>
                                  
                                   <div class="form-group">
   
