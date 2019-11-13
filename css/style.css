@@ -435,6 +435,21 @@ box-shadow: 15px 20px 4px rgba(0, 0, 0, .5); */
 # Admin
 --------------------------------------------------------------*/
 
+.admin_input{
+  border:3px dashed white;
+  background:#00AEE0;
+  box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
+  padding:10%;
+  margin:10%;
+  border-radius:5px;
+}
+
+#imgTest img{
+  width:50%;
+  border:5px dashed white;
+  border-radius:5px;
+}
+
 .admin-images{
   position:relative;
   margin:auto;
