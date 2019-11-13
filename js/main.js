@@ -7,6 +7,17 @@
 //=======================================================
 
 
+  //  Location Carousels (uses the Owl Carousel library)
+  $(".location-carousel").owlCarousel({
+    autoplay:true,
+    dots: true,
+    nav:false,
+    loop: true,
+    items: 1,
+    margin:10,
+    // navText: ["<h6><i class='material-icons navbutton'>arrow_left</i> Prev</h6>","<h6>Next <i class='material-icons '>arrow_right</i></h6>"],
+  });
+
 // Live Search
 
 function myFunction() {
@@ -68,7 +79,7 @@ $(document).ready(function() {
 
 // Blob Colors and Control
 
-const colors = ['#fff','#fff','#fff'];
+const colors = ['#FE3808','#002C53','#00AEE0'];
 const numLines = 3;
 var currCount = numLines;
 const texts = document.querySelectorAll("#textClip text");
