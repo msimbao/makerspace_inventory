@@ -2,12 +2,12 @@
 <html lang="en">
   <head>
     <!-- =======================================================
-    Name: Audio Inventory
+    Name: Labby Audio Inventory
     Author: Tulsi Patel, Thien An Pham, Mphatso Simbao
  ======================================================= -->
 
     <meta charset="utf-8" />
-    <title>Idea Lab</title>
+    <title>Labby</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -21,6 +21,10 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
       rel="stylesheet"
     />
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -73,17 +77,17 @@
       <div class="intro-img">
         <svg viewbox="0 0 700 225" class="img-fluid">
           <clipPath id="textClip" class="filled-heading">
-            <text y="70">Find </text>
-            <text y="140">items </text>
-            <text y="210">you need</text>
+            <text y="70"> </text>
+            <text y="140">loading... </text>
+            <text y="210"></text>
 
-            <text y="70">in</text>
-            <text y="140">our</text>
-            <text y="210">makerspace</text>
+            <text y="70"></text>
+            <text y="140">loading...</text>
+            <text y="210"></text>
 
-            <text y="70">using</text>
-            <text y="140">voice</text>
-            <text y="210">and AI</text>
+            <text y="70"></text>
+            <text y="140"></text>
+            <text y="210"> </text>
           </clipPath>
 
           <g id="background" clip-path="url(#textClip)">
@@ -372,15 +376,10 @@
 
       <div class="row about-extra">
         <div class="col-lg-6 wow fadeInUp texts">
-          <h3>We have voice search too!</h3>
+          <h3>Use Our Map</h3>
           <p>
-            If you are looking for something in the idea lab, simply say the name of that item:
-          </p>
-          <p>
-            for example, "pencils", will show you the location of pencils in the space.
-          </p>
-          <p>
-            You can also say "down" or "up" to scroll up and down this page
+            If you are looking for something in the idea lab, you can check our
+            minimap to figure out the different areas of our makerspace
           </p>
 
           <div id="listen">
@@ -390,6 +389,13 @@
                 <div class="outline" id="delayed"></div>
                 <div class="button"></div>
                 <div class="button" id="circlein">
+                   <img src="https://img.icons8.com/nolan/96/000000/polyline.png"> 
+                 <!--  <img
+                        src="img/map.png"
+                        class="image"
+                        alt=""
+                        style="position:relative;margin:35px;width:50px"
+                      /> -->
                   <svg
                     class="mic-icon"
                     version="1.1"
@@ -403,9 +409,10 @@
                     style="fill:#1E2D70"
                   >
                     <g>
-                      <path
+                      <!-- <path
                         d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z"
-                      />
+                      /> -->
+
                     </g>
                   </svg>
                 </div>
@@ -419,11 +426,62 @@
         </div>
 
         <div class="col-lg-6 wow fadeInUp">
+          <br>
+          <br>
+          <br>
+
+         
+
+          <div class="owl-carousel location-carousel wow fadeInUp">
+
+            <div>
           <img
-            src="https://cdn.glitch.com/6a4f162b-6e94-4996-a703-3cc01fedcfcb%2FWebp.net-gifmaker.gif?v=1573414707928"
+            src="img/start_location.gif"
             class="image"
             alt=""
           />
+          <p class="navButtons">
+            Map
+          </p>
+          </div>
+          
+          <div>
+          <img
+            src="img/desktop.png"
+            class="image"
+            alt=""
+          />
+          <p class="navButtons">
+            Desktop Computers
+          </p>
+          </div>
+
+             <div>
+          <img
+            src="img/back.png"
+            class="image"
+            alt=""
+          />
+          <p class="navButtons">
+            Back Closets
+          </p>
+          </div>
+
+
+             <div>
+          <img
+            src="img/techroom.png"
+            class="image"
+            alt=""
+          />
+          <p class="navButtons">
+            Tech Room
+          </p>
+          </div>
+          
+
+
+          </div>
         </div>
       </div>
 
