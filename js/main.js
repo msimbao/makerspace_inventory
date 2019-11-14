@@ -51,7 +51,7 @@ $(document).ready(function() {
         direction: 'vertical',
         verticalCentered: true,
         sectionsColor: ['#FE3808', '#002C53', '#FE3808', '#002C53', '#002C53'],
-        anchors: ['search', 'secondPage', 'about', 'fourthPage', 'contact'],
+        anchors: ['search', 'locations', 'about', 'staff', 'contact'],
         menu: '#mainMenu',
         scrollingSpeed: 700,
         easing: 'swing',
