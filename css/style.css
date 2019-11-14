@@ -149,7 +149,6 @@ svg {
 
 
 
-
 /*--------------------------------------------------------------
 # Listening Icon
 --------------------------------------------------------------*/
@@ -405,6 +404,8 @@ top:10%;
 vertical-align:middle;
 padding:5%;
 position:absolute;
+right:0;
+left:0;
 margin:auto;
 opacity:0;
 /* border:10px dashed #F7FCFF;
@@ -435,6 +436,11 @@ box-shadow: 15px 20px 4px rgba(0, 0, 0, .5); */
   padding:10%;
 }
 
+.modal-words{
+  background:#002C53;
+  border:8px dashed #F7FCFF;
+  box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
+}
 
 
 /*--------------------------------------------------------------
