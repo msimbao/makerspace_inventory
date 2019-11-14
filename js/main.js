@@ -202,7 +202,7 @@ colorBlobs();
     $("#modals").append(
         '<div class="modal" id="'+ short +'">' +
     '<div class="row about-extra pop-row test">' +
-      '<div class="col-lg-6">' +
+      '<div class="col-lg-6 modal-words">' +
         '<h4>'+
           item +
         '</h4>' +
