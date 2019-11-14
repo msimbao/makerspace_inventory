@@ -298,19 +298,21 @@
     ============================-->
   
 
-<div class="navbar">
-  <a onclick="openNav()"><h4 >Labby</h4></a>
-</div>
-
-
-<div id="myNav" class="overlay" onclick="closeNav()">
-        <div class="overlay-content">
-          <a href="index.html#inventory">Inventory</a>
-          <a href="admin.html">Login</a>
-          <a href="index.html#about">About</a>
-          <a href="index.html#contact">Contact Us</a>   
-        </div>
+    <div class="navbar">
+        <a onclick="openNav()"><h4>Labby</h4></a>
       </div>
+      
+      
+      <div id="myNav" class="overlay" onclick="closeNav()">
+          <div class="overlay-content" >
+            <ul id="mainMenu">
+            <li><a href="admin.html">Login</a></li>
+            <li data-menuanchor="search"><a href="index.html#search">Search</a></li>
+            <li data-menuanchor="about"><a href="index.html#about">About</a></li>
+            <li data-menuanchor="contact"><a href="index.html#contact">Contact Us</a></li>
+          </ul>
+          </div>
+        </div>
 
 
 
@@ -326,7 +328,7 @@
         <div class="row about-extra" >
                 <div class="col-lg-6 texts">
                   <h4>
-                    Admin Account Login
+                    Admin Login
                   </h4>
                   <p>
                         <input type="email" placeholder="Email..." id="email_field" />
