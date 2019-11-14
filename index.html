@@ -49,24 +49,6 @@
 
   <body>
 
-    <!--==========================
-    Header
-    ============================-->
-  
-
-<div class="navbar">
-  <a onclick="openNav()"><h4>IdeaLab</h4></a>
-</div>
-
-
-<div id="myNav" class="overlay" onclick="closeNav()">
-    <div class="overlay-content">
-      <a href="index.html#inventory">Inventory</a>
-      <a href="admin.html">Login</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#contact">Contact Us</a>   
-    </div>
-  </div>
 
   
     <!--==========================
@@ -316,6 +298,28 @@
       </div>
     </div>
 
+    <!--==========================
+    Header
+    ============================-->
+  
+
+    <div class="navbar">
+        <a onclick="openNav()"><h4>Labby</h4></a>
+      </div>
+      
+      
+      <div id="myNav" class="overlay" onclick="closeNav()">
+          <div class="overlay-content">
+            <a href="index.html#inventory">Inventory</a>
+            <a href="admin.html">Login</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact Us</a>   
+          </div>
+        </div>
+      
+        <!--==========================
+    Modals
+    ============================-->
 
     <div id="modals">
 <!-- 
@@ -376,12 +380,13 @@
 
       <div class="row about-extra">
         <div class="col-lg-6 wow fadeInUp texts">
-          <h3>Use Our Map</h3>
+          <h3>Makerspace Locations</h3>
           <p>
-            If you are looking for something in the idea lab, you can check our
-            minimap to figure out the different areas of our makerspace
+            If you are looking for something, you can check our
+            minimaps to figure out the different areas of our makerspace.
           </p>
 
+          <a href="img/desktop.png" data-lightbox="map" data-title="Desktop Computers" class="link-preview" title="Map1">
           <div id="listen">
             <div class="box">
               <div class="object">
@@ -419,8 +424,11 @@
               </div>
             </div>
           </div>
+          </a>
 
-
+          <a href="img/drawers.png" data-lightbox="map" data-title="Drawers" class="link-preview" title="Map"></a>
+          <a href="img/techroom.png" data-lightbox="map" data-title="Techroom" class="link-preview" title="Map"></a> 
+          <a href="img/backcloset.png" data-lightbox="map" data-title="Back Closet" class="link-preview" title="Map"></a> 
 
 
         </div>
@@ -430,72 +438,26 @@
           <br>
           <br>
 
-         
-
-          <div class="owl-carousel location-carousel wow fadeInUp">
-
-            <div>
           <img
             src="img/start_location.gif"
             class="image"
             alt=""
           />
-          <p class="navButtons">
-            Map
-          </p>
-          </div>
           
-          <div>
-          <img
-            src="img/desktop.png"
-            class="image"
-            alt=""
-          />
-          <p class="navButtons">
-            Desktop Computers
-          </p>
-          </div>
-
-             <div>
-          <img
-            src="img/back.png"
-            class="image"
-            alt=""
-          />
-          <p class="navButtons">
-            Back Closets
-          </p>
-          </div>
-
-
-             <div>
-          <img
-            src="img/techroom.png"
-            class="image"
-            alt=""
-          />
-          <p class="navButtons">
-            Tech Room
-          </p>
-          </div>
           
-
-
           </div>
         </div>
       </div>
-
-    </div>
 
     <div class="section pp-scrollable" id="about">
 
       <div class="row about-extra" >
         <div class="col-lg-6 texts">
           <h4>
-            Database Powered Navigation
+            Browse our Inventory
           </h4>
-          <p>Simple and efficient audio or text based database querying for 21st century makerspaces</p>
-          <p>The new mode of interface design is voice so feel free to interact with our app and find your way around the idea lab using AI powered tools</p>
+          <p>Simple and efficient way to check our database of amazing supplies</p>
+          <p>Find whatever items you need for your projects and fun activities</p>
           </div>
 
         <div class="col-lg-6 wow fadeInUp">
@@ -529,7 +491,7 @@
       Simple Commands. Quick Results
     </h4>
     <p> Built with NoSql data structures to help you find your way and get back to doing what you love quickly</p>
-    <p>Ask our AI for any items you need with simple intuitive commands!</p>
+    <p>Ask our app for any items you need with simple commands!</p>
 
   </div>
 
