@@ -309,11 +309,13 @@
       
       
       <div id="myNav" class="overlay" onclick="closeNav()">
-          <div class="overlay-content">
-            <a href="index.html#inventory">Inventory</a>
-            <a href="admin.html">Login</a>
-            <a href="index.html#about">About</a>
-            <a href="index.html#contact">Contact Us</a>   
+          <div class="overlay-content" >
+            <ul id="mainMenu">
+            <li><a href="admin.html">Login</a></li>
+            <li data-menuanchor="search"><a href="index.html#search">Search</a></li>
+            <li data-menuanchor="about"><a href="index.html#about">About</a></li>
+            <li data-menuanchor="contact"><a href="index.html#contact">Contact Us</a></li>
+          </ul>
           </div>
         </div>
       
@@ -341,10 +343,9 @@
 
       </div>
 
-<div id="pagepiling">
-
-
-    <div class="section pp-scrollable" id="inventory">
+<div id="pagepiling"
+>
+    <div class="section pp-scrollable" id="search">
 
         <h1>
           Need to Find Something?
@@ -376,7 +377,7 @@
   
     </div>
 
-    <div class="section pp-scrollable" id="home">
+    <div class="section pp-scrollable" id="map">
 
       <div class="row about-extra">
         <div class="col-lg-6 wow fadeInUp texts">
