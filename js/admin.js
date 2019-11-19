@@ -7,40 +7,29 @@
 //=======================================================
 
 
-// Live Search
-
-function myFunction() {
-  // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName("li");
-
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
+   // ========================================================
+   // Sidebar Navigation
+   // ========================================================
+   function openNav() {
+    document.getElementById("myNav").style.width = "100%";
   }
-}
+  
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
 
 
-
-
-// pagepiling
-
+// ========================================================
+// pagepiling animated scrolling
+// ========================================================
 $(document).ready(function() {
 	$('#pagepiling').pagepiling({
 	    menu: null,
         direction: 'vertical',
         verticalCentered: true,
-        sectionsColor: ['#002C53', '#002C53', '#002C53', '#FE3808', '#002C53'],
-        anchors: [],
+        sectionsColor: ['#002C53', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)'],
+        anchors: ['home', 'dashboard', 'inventory', 'insert'],
+        menu: '#mainMenu',
         scrollingSpeed: 700,
         easing: 'swing',
         loopBottom: false,
@@ -67,7 +56,9 @@ $(document).ready(function() {
 });
 
 
-
+// ========================================================
+// User Authentication
+// ========================================================
 
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -114,9 +105,9 @@ firebase.auth().onAuthStateChanged(function(user) {
   function logout(){
     firebase.auth().signOut();
   }
-
-  // Write JavaScript
-
+// ========================================================  
+// Write To Database 
+// ========================================================
   var item = document.getElementById("item");
 var group = document.getElementById("group");
 var short = document.getElementById("short");
@@ -193,9 +184,9 @@ function submitClick() {
   }
 }
 
-
-  // Read Javascript
-
+// ========================================================
+// Read From Database
+// ========================================================
   $(document).ready(function() {
     var ref = firebase.app().database().ref();
     var itemsRef = ref.child('Items');
@@ -208,7 +199,9 @@ function submitClick() {
       var location = snap.child("located_text").val();
       var location_short = snap.child("located_short_text").val();
       $("#array").append(
-        '<tr class=" '+group+' table-item  "><td>' +item + '</td><td>' + location_short + '</td><td><img style="height:100px;border-radius:5px;"  src="' + image + '"></td><td><div class="close" onclick="removeItem(this)" aria-label="Delete">' +
+        '<a href="#">' +
+        item +
+        '</a><tr class=" '+group+' table-item  "><td>' +item + '</td><td>' + location_short + '</td><td><img style="height:100px;border-radius:5px;"  src="' + image + '"></td><td><div class="close" onclick="removeItem(this)" aria-label="Delete">' +
           '  &times' +
           ' </div> </td></tr>' 
       
@@ -217,8 +210,9 @@ function submitClick() {
     });
   });
 
-    // Input Filter
-
+// ========================================================
+// Input Filter
+// ========================================================
 function myFunction() {
   // Declare variables
   var input, filter, ul, li, a, i, txtValue;
@@ -239,7 +233,9 @@ function myFunction() {
   }
 }
 
+// ========================================================
 // Remove Firebase Script
+// ========================================================
 
 console.log('Admin Scripts Loaded');
  
@@ -255,20 +251,11 @@ window.location.reload();
 
 
 
-   // FullScreen Navigation
-
-   function openNav() {
-    document.getElementById("myNav").style.width = "100%";
-  }
-  
-  function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
-  }
 
 
-
-  // Blob Colors and Control
-
+// ========================================================
+// Blob Colors and Control
+// ========================================================
 const colors = ['#FE3808','#002C53','#00AEE0'];
 const numLines = 3;
 var currCount = numLines;
@@ -305,6 +292,245 @@ function nextIteration() {
 
 // Since all of our blobs are using the same animation, we only
 // need to listen to one of them
+
 blobs[0].addEventListener("animationiteration", nextIteration);
 
 colorBlobs();
+
+// ========================================================
+// Plot Search Key Words Bar Graph
+// ========================================================
+
+barplotRef = database.ref("search").orderByValue().limitToFirst(6);
+var array= [];
+var array2 = [];
+barplotRef.on('value', function(snap){
+
+   snap.forEach(function(childNodes){
+
+    array.push(childNodes.val().name);
+    array2.push(childNodes.val().count);
+
+    var data = [{
+    type: 'bar',
+    marker: {
+    color: '#FF3501',
+
+    },
+    x: array,
+    y: array2,
+        transforms: [{
+    type: 'sort',
+    target: 'y',
+    order: 'ascending'
+  }, {
+    type: 'filter',
+    target: 'y',
+    operation: '>=',
+    value: 1
+  }]
+  }];
+     
+     
+var layout = {
+title:'Bar Plot of Most Popular Keywords',
+  height: 550,
+  font: {
+    family: 'Arial',
+    size: 16,
+    color: '#fff'
+  },
+  paper_bgcolor:'#002C53',
+  plot_bgcolor: '#002C53',
+  margin: {
+    pad: 10
+  },
+  xaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: 'Keywords',
+      font: {
+        family: 'Arial, monospace',
+        size: 18,
+        color: '#fff'
+      }
+    },
+  },
+  yaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: '',
+      font: {
+        family: 'Arial, monospace',
+        size: 0,
+        color: 'rgb(8, 30, 49)'
+      }
+    }
+  }
+};
+     
+     
+  Plotly.newPlot('keyword_bar_graph', data,layout,{displayModeBar: false});
+
+
+      console.log(array);
+      console.log(array2);
+
+  });
+  });
+
+
+// ========================================================
+// Plot Search Times Histogram
+// ========================================================
+
+histogramRef = database.ref("usageTimes");
+var times= [];
+var list =[4, 5, 1, 25, 5, 7, 16, 22, 24, 2, 25, 21, 23, 17, 17, 8, 5, 16, 16, 13, 3, 15, 24, 22, 5, 16, 11, 25, 12, 23, 20, 21, 5, 23, 19, 21, 7, 8, 18, 11, 4, 16, 15, 13, 5, 22, 11, 14, 1, 4, 24, 9, 23, 10, 8, 17, 10, 6, 8, 3, 16, 10, 9, 18, 11, 15, 23, 19, 14, 15, 11, 21, 24, 12, 14, 7, 7, 25, 24, 9, 21, 3, 18, 24, 23, 4, 7, 21, 3, 1, 20, 6, 19, 19, 3, 21, 18, 8, 11, 21, 2, 11, 18, 20, 6, 3, 9, 1, 12, 24, 16, 8, 9, 11, 21, 4, 5, 19, 12, 19, 12, 5, 11, 19, 19, 10, 24, 24, 20, 25, 1, 9, 20, 2, 7, 21, 24, 6, 20, 12, 17, 10, 16, 15, 7, 12, 25, 12, 10, 15, 1, 5, 2, 24, 9, 6, 18, 7, 10, 1, 23, 15, 8, 11, 24, 13, 9, 10, 3, 19, 10, 23, 23, 24, 5, 3, 13, 8, 5, 15, 4, 19, 11, 24, 20, 22, 21, 2, 5, 7, 22, 9, 25, 14, 16, 1, 6, 9, 20, 10];
+histogramRef.on('value', function(snap){
+
+   snap.forEach(function(childNodes){
+
+    times.push(childNodes.val());
+
+    var hist_data = [{
+    type: 'bar',
+    marker: {
+    color: '#00AEE0',
+
+    },
+    x: list,
+    orientation: 'v',
+  }];
+     
+     
+var layout = {
+title:'Histogram of Search History',
+  height: 550,
+  font: {
+    family: 'Arial',
+    size: 16,
+    color: '#fff'
+  },
+  paper_bgcolor:'#002C53',
+  plot_bgcolor: '#002C53',
+  margin: {
+    pad: 10
+  },
+  xaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: 'Time Stamp',
+      font: {
+        family: 'Arial, monospace',
+        size: 18,
+        color: '#fff'
+      }
+    },
+  },
+  yaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: '',
+      font: {
+        family: 'Arial, monospace',
+        size: 18,
+        color: 'rgb(8, 30, 49)'
+      }
+    }
+  }
+};
+     
+     
+  Plotly.newPlot('searchtimes_histogram', hist_data,layout,{displayModeBar: false});
+
+  });
+  });
+
+
+
+// ========================================================
+// Count Total Inventory, Searches and Requests So Far
+// ========================================================
+
+//Items
+    var inventoryRef = firebase.app().database().ref();
+    var itemsRef = inventoryRef.child('Items');
+
+    var totalItems= 0;
+
+    itemsRef.on('value', function(snap){
+
+       snap.forEach(function(childNodes){
+          totalItems += 1
+
+       }); 
+       console.log(totalItems)
+       $('#totalItems').text(totalItems);
+     });
+
+//Count Searches
+        var searchesRef = firebase.app().database().ref();
+    var searchRef = searchesRef.child('search');
+
+    var totalSearches= 0;
+
+    searchRef.on('value', function(snap){
+
+       snap.forEach(function(childNodes){
+          totalSearches += 1
+
+       }); 
+       console.log(totalSearches)
+       $('#totalSearches').text(totalSearches);
+
+        });
+
+//Count Requests
+        var requestsRef = firebase.app().database().ref();
+    var requestRef = requestsRef.child('usageTimes');
+
+    var totalRequests= 0;
+
+    requestRef.on('value', function(snap){
+
+       snap.forEach(function(childNodes){
+          totalRequests += 1
+
+       }); 
+       console.log(totalRequests)
+       $('#totalRequests').text(totalRequests);
+     });
+
