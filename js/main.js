@@ -6,21 +6,73 @@
 
 //=======================================================
 
+// ========================================================
+// Filter Search
+// ========================================================
 
-  //  Location Carousels (uses the Owl Carousel library)
-  $(".location-carousel").owlCarousel({
-    autoplay:true,
-    dots: true,
-    nav:false,
-    loop: true,
-    items: 1,
-    margin:10,
-    // navText: ["<h6><i class='material-icons navbutton'>arrow_left</i> Prev</h6>","<h6>Next <i class='material-icons '>arrow_right</i></h6>"],
-  });
+function searchFunction() {
 
-// Live Search
+      // Declare General Variables
+        var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName("li");
 
-function myFunction() {
+// Keyword Related Variables
+
+          var searchterm = document.getElementById("myInput");
+        var searchterm = searchterm.value;
+        alert(searchterm)
+        searchRef = database.ref("search");
+
+// Time Related Variables
+
+        timeRef = database.ref("usageTimes")
+        var date = new Date();
+       var hours = date.getHours();
+
+     // Record Time of Search
+       
+        timeRef.push(hours)
+
+   // Collect Search Keyword Data
+
+           searchRef.child(searchterm).once('value', function(snapshot) {
+          if (snapshot.exists()) {
+           alert('exists');
+            var currentValue = snapshot.child('count').val(); 
+            alert('currentValue:' + currentValue)
+            var newValue = currentValue + 1;
+            alert('NewValue:' + newValue)
+            searchRef.child(searchterm).child('count').set(newValue);
+            // searchRef.child(searchterm).set(newValue);
+          } else {
+            alert('absent');
+            var newValue =  1;
+            searchRef.child(searchterm).child('name').set(searchterm);
+            searchRef.child(searchterm).child('count').set(newValue);
+          }
+});
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+
+  }
+
+
+
+}
+
+
+function recall() {
   // Declare variables
   var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById("myInput");
@@ -32,19 +84,14 @@ function myFunction() {
   for (i = 0; i < li.length; i++) {
     a = li[i].getElementsByTagName("a")[0];
     txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
     }
   }
-}
 
 
-
-
-// pagepiling
-
+// ========================================================
+// pagepiling animated scrolling
+// ========================================================
 $(document).ready(function() {
 	$('#pagepiling').pagepiling({
 	    menu: null,
@@ -78,7 +125,9 @@ $(document).ready(function() {
 	});
 });
 
-// Blob Colors and Control
+// ========================================================
+// Splash Screen Controls
+// ========================================================
 
 const colors = ['#FE3808','#002C53','#00AEE0'];
 const numLines = 3;
@@ -121,8 +170,10 @@ blobs[0].addEventListener("animationiteration", nextIteration);
 colorBlobs();
 
 
-
+// ========================================================
 // // Speech Controls
+// ========================================================
+
 // var speech  = function(){
 // var x = "lol";
 
@@ -162,14 +213,13 @@ colorBlobs();
 // speech();
 // }
 
-
-
-
-   // Inventory Reading
+// ========================================================
+   // Read From Database
+// ========================================================
 
    $(document).ready(function() {
-    var ref = firebase.app().database().ref();
-    var itemsRef = ref.child('Items');
+    var inventoryRef = firebase.app().database().ref();
+    var itemsRef = inventoryRef.child('Items');
   
     itemsRef.on("child_added", snap => {
       var item = snap.child("item_text").val();
@@ -220,8 +270,10 @@ colorBlobs();
   });
 });
 
-   // Inventory Reading
 
+// ========================================================
+// NavBar
+// ========================================================
 function openNav() {
     document.getElementById("myNav").style.width = "100%";
   }
