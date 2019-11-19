@@ -22,6 +22,8 @@
       rel="stylesheet"
     />
 
+
+
     <!-- Bootstrap CSS File -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -41,6 +43,9 @@
     <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-database.js"></script>
+
+     <!---Plotly Sript to Be Placed in head-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
 
   <body>
@@ -299,7 +304,7 @@
   
 
     <div class="navbar">
-        <a onclick="openNav()"><h4>Labby</h4></a>
+        <a onclick="openNav()"><i class="fa fa-bars" style="font-size:48px;color:#002C53"></i></a>
       </div>
       
       
@@ -309,7 +314,7 @@
             <li><a href="admin.html">Login</a></li>
             <li data-menuanchor="search"><a href="index.html#search">Search</a></li>
             <li data-menuanchor="about"><a href="index.html#about">About</a></li>
-            <li data-menuanchor="contact"><a href="index.html#contact">Contact Us</a></li>
+            <li data-menuanchor="contact"><a href="index.html#contact">Contact</a></li>
           </ul>
           </div>
         </div>
@@ -352,8 +357,9 @@
   
   <div id="user_div">
 
+
         <div id="pagepiling">
-                <div class="section">
+                <div class="section" id="home">
 
                         <div class="row about-extra" >
                                 <div class="col-lg-6 texts">
@@ -402,18 +408,138 @@
     ============================-->
     
     <div class="section pp-scrollable">
-    
-        <!----- Input -->
-              
-        <div class="admin_input">
 
-            <h3>Inventory Input</h3>
-                    
-          <p style="color:#333333;padding:30px;">
-             <u>Note:</u> the short tag should be the shortened name of the item, in lower cases and no spaces: e.g
-            Item: "Adobe Premier Rush" will have a short tag of "adobepremierrush" and Item: "White board" will have a tag
-            of whiteboard
-          </p>
+      <h3>Dashboard</h3>
+    
+        <!----- Plotly Graph -->
+<div class="row about-extra " id="metrics" >
+                               
+                                <div class="metric">
+                                  <div class="metric_part">
+                                    <h2><i class="fa fa-cubes" style="font-size:52px;color:red;text-align:left;"></i></h2>
+                                  </div>
+
+                                   <div class="metric_part">
+                                     <h2 id="totalItems"></h2>
+                          
+                                  <p>Total Items</p>
+                                  </div>
+                                      
+                                     
+
+                                  </div>
+                        
+                         
+                           <div class="metric">
+                                  <div class="metric_part">
+                                    <h2><i class="fa fa-search" style="font-size:52px;color:red;text-align:left;"></i></h2>
+                                  </div>
+
+                                   <div class="metric_part">
+                                     <h2 id="totalSearches"></h2>
+                          
+                                  <p>Searches</p>
+                                  </div>
+                                      
+                                     
+
+                                  </div>
+
+
+                                    <div class="metric">
+                                  <div class="metric_part">
+                                    <h2><i class="fa fa-send" style="font-size:52px;color:red;text-align:left;"></i></h2>
+                                  </div>
+
+                                   <div class="metric_part">
+                                     <h2 id="totalRequests"></h2>
+                          
+                                  <p>Requests</p>
+                                  </div>
+                                      
+                                     
+
+                                  </div>
+
+                                    <div class="metric">
+                                  <div class="metric_part">
+                                    <h2><i class="fa fa-tasks" style="font-size:52px;color:red;text-align:left;"></i></h2>
+                                  </div>
+
+                                   <a href="#inventory"><div class="metric_part">
+                                     <h2>Edit</h2>
+                          
+                                  <p>Items</p>
+                                  </div></a>
+                                      
+                                     
+
+                                  </div>
+                      
+  
+   </div>
+
+<div class="row about-extra" >
+                                <div class="col-lg-6 ">
+                                 <div id="keyword_bar_graph" ><!-- Plotly chart will be drawn inside this DIV --></div>
+
+                                  </div>
+                        
+                                  <div class="col-lg-6 wow fadeInUp">
+                                          <div id="searchtimes_histogram" >
+
+                                      </div>
+                              </div>
+  
+    </div>
+    </div>
+
+
+ <div class="section pp-scrollable" id="inventory">
+              <!----- Input -->
+
+               <h3>Inventory</h3>
+
+          <input
+            type="text"
+            id="myInput"
+            onkeyup="myFunction()"
+            placeholder="Search for names.."
+          />
+            <a href="#insert"><button style="float:right;width:10%;border:none;margin:1%;"> Insert </button></a>
+          <br>
+          <br>
+
+   
+    
+          <div class="album">
+                <ul id="myUL">
+                  <table id="array">
+                        <tr><th>Item</th><th>Location</th><th>Image</th><th></th></tr>
+                  </table>
+                </ul>
+              </div>
+            </div>
+
+
+
+
+      <div class="section pp-scrollable" id="insert">
+
+ <h3>Insert New Items</h3>
+
+ <br>
+ <br>
+
+ <div class="admin_input">
+    
+       <h6 style="color:#333333;padding:30px;">
+                             <u>Note:</u> the short tag should be the shortened name of the item, in lower cases and no spaces: e.g
+                            Item: "Adobe Premier Rush" will have a short tag of "adobepremierrush" and Item: "White board" will have a tag
+                            of whiteboard
+                          </h6>
+
+                          <br>
 
                           <form class="form-horizontal" method="post">
                               <fieldset>
@@ -471,34 +597,13 @@
                               </fieldset>
                           </form>
 
+                                   
+
                           <br>
-                          <br>
-                          <br>
-                          <br>
-                          <br>
+
 
         </div>
-    
-          <input
-            type="text"
-            id="myInput"
-            onkeyup="myFunction()"
-            placeholder="Search for names.."
-          />
-
-          <br>
-          <br>
-
-   
-    
-          <div class="album">
-                <ul id="myUL">
-                  <table id="array">
-                        <tr><th>Item</th><th>Location</th><th>Image</th><th></th></tr>
-                  </table>
-                </ul>
-              </div>
-            </div>
+      </div>
 
 </div>
 
