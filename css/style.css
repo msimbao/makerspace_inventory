@@ -10,13 +10,31 @@ ul {
 }
 
 body {
-
+  overflow:hidden;
   padding:15%;
   padding-top:-20%;
   color:white;
   background:#FF3501;
   font-family: 'Lilita One', cursive;
 }
+
+
+body::-webkit-scrollbar {
+  width: 0em;
+  display:none;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #00333F;
+}
+
+body::-webkit-scrollbar-thumb {
+background-color: #002C53;
+outline: 1px solid #00333F;
+border-radius:10px;
+}
+
+
 
 h4, p, h3 {
   /* mix-blend-mode: difference; */
@@ -48,6 +66,12 @@ text{
   font-family: 'Lilita One', cursive;
 }
 
+a{text-decoration:none;
+color:white;
+transition:0.5s;}
+
+
+
 /*--------------------------------------------------------------
 # Splash Screen
 --------------------------------------------------------------*/
@@ -61,8 +85,8 @@ width:100%;
 height:100%;
 text-align:center;
 margin:auto;
--webkit-animation: disappear 10s forwards ;
-animation: disappear 10s forwards ;
+-webkit-animation: disappear 0s forwards ;
+animation: disappear 0s forwards ;
 vertical-align: middle;
 text-align: center;
 padding:10%;
@@ -278,11 +302,44 @@ svg {
 /*--------------------------------------------------------------
 # Inventory
 --------------------------------------------------------------*/
+#myUL{
+  background:#FF3501;
+  z-index:0;
+  
+}
 
+.no_item{
+  position: relative;
+  margin:1%;
+  font-size:30px;
+  width:40%;
+  text-align:center;
+  background:#002C53;
+  border-radius:50px;
+  padding:10px;
+  box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
+  transition:0.5s;
+  border:5px dashed white;
+}
+
+
+.no_item:hover{
+  padding:10px;
+  box-shadow: 15px 20px 4px rgba(0, 0, 0, .5);
+}
+
+.no_item a:hover{
+  text-decoration: none;
+  color:white;
+}
 
 
 
 #inventory{
+  vertical-align:right;
+}
+
+#requests{
   vertical-align:right;
 }
 
@@ -303,6 +360,14 @@ h1{
 }
 
 #myUL {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position:relative;
+}
+
+#secondUL {
   /* Remove default list styling */
   list-style-type: none;
   padding: 0;
@@ -377,6 +442,14 @@ li a {
 # Modals
 --------------------------------------------------------------*/
 
+.x_button{
+  position:absolute;
+  background:none;
+  margin-right:50px;
+  cursor:pointer;
+  font-size:100px;
+}
+
 .item-images{
   
   width:400px;
@@ -449,6 +522,9 @@ box-shadow: 15px 20px 4px rgba(0, 0, 0, .5); */
   box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
 }
 
+.modal{
+  transition:0.4s;
+}
 
 /*--------------------------------------------------------------
 # Admin
@@ -569,6 +645,18 @@ input[type="submit"] {
   box-shadow: 15px 20px 4px rgba(0, 0, 0, .5);
 }
 
+textarea {
+  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 50%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-top: 12px; /* Add some space below the input */
+  border-radius:50px;
+}
+
 table{
   position:relative;
   width:100%;
@@ -595,7 +683,15 @@ table{
 tr{
   padding:3%;
   margin:3%;
-
+  color:white;
+  margin:30px;
+  padding:30px;
+  border:3px dashed white;
+  height:50px;
+  
+  background:#002C53;
+  box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
+  transition:1s;
 }
 
 .close{
@@ -734,4 +830,63 @@ td {
 
 .mpart_right{
   text-align:left;
+}
+
+
+/*--------------------------------------------------------------
+# Request Section
+--------------------------------------------------------------*/
+
+#contactNav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index:100000;
+  top: 0;
+  left: 0;
+  background-color: rgb(2, 30, 36);
+  overflow-x: hidden;
+  transition: 0.5s;
+  text-align:center;
+  padding-top: 7%;
+}
+
+.contact-content {
+  vertical-align: middle;
+  position: relative;
+  top: 5%;
+  width: 100%;
+  text-align: center;
+  margin-left:2%;
+  margin-top: 10%;
+}
+
+#contactNav  a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 60px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+#contactNav  a:hover, .overlay a:focus {
+  color: #FF3501;
+  border:none;
+}
+
+#contactNav  .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
 }
