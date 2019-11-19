@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- =======================================================
+<!-- =======================================================
     Name: Labby Audio Inventory
     Author: Tulsi Patel, Thien An Pham, Mphatso Simbao
  ======================================================= -->
@@ -53,10 +53,9 @@
   <body>
 
 
-  
-    <!--==========================
-    Splash Screen
-    ============================-->
+<!-- ================================================================================================================ 
+# Splash Screen
+================================================================================================================--> 
 
     <div id="load">
       <div class="intro-img">
@@ -301,13 +300,12 @@
       </div>
     </div>
 
-    <!--==========================
-    Header
-    ============================-->
-  
+<!-- ================================================================================================================ 
+# Header
+================================================================================================================--> 
 
     <div class="navbar">
-        <a onclick="openNav()"><h4>Labby</h4></a>
+        <a onclick="openNav()"><h4><i class="fa fa-bars" style="font-size:48px;color:#002C53"></i></h4></a>
       </div>
       
       
@@ -322,9 +320,11 @@
           </div>
         </div>
       
-        <!--==========================
-    Modals
-    ============================-->
+<!-- ================================================================================================================ 
+# Modals
+================================================================================================================--> 
+
+
 
     <div id="modals">
 <!-- 
@@ -345,6 +345,11 @@
     </div> -->
 
       </div>
+
+
+<!-- ================================================================================================================ 
+# Pagepiling Start
+================================================================================================================--> 
 
 <div id="pagepiling"
 >
@@ -385,8 +390,9 @@
         </div>
 
 
-    
-
+        <div class="no_item">
+          <a href="#staff">Cant find something? Click Me!</a>
+        </div>
   
     </div>
 
@@ -463,6 +469,10 @@
         </div>
       </div>
 
+<!-- ================================================================================================================ 
+# About
+================================================================================================================--> 
+
     <div class="section pp-scrollable" id="about">
 
       <div class="row about-extra" >
@@ -485,10 +495,12 @@
 
       </div>
 
+<!-- ================================================================================================================ 
+# Staff and Requests Section
+================================================================================================================--> 
 
 
-
-  <div class="section pp-scrollable" id="database">
+  <div class="section" id="staff">
 
 <div class="row about-extra" >
 
@@ -506,14 +518,64 @@
     </h4>
     <p> If you need a helping hand feel free to ask our student staff about whatever you can't find on this app.</p>
     <p>They will also give you access to some areas like the techroom that are off limits to patrons.</p>
+    <p>You can also Request an item and we will try to acquire it depending on its need</p>
+    <button onclick="openContact()">Request</button>
 
-  </div>
+    <div id="contactNav" >
+      <div class="contact-content" >
+
+        <header class="section-header">
+          <h3>Request an Item</h3>
+       </header>
+       <br>
+       <br>
+    
+
+        
+                  <form method="POST" class="gform"
+                  action="https://script.google.com/macros/s/AKfycbxb342DY2OmLm2lqGk86i1z5J9vFmkHpORgZBn8jPJ_Gy7Z90E/exec">
+        
+                    <input
+                      id="first_name"
+                      name="first_name" 
+                      required
+                      type="text"
+                      class="feedback-input"
+                      placeholder="Name....."
+                    />
+                    <input
+                      id="email_address"
+                      name="email_address"
+                      required
+                      type="text"
+                      class="feedback-input"
+                      placeholder="Email...."
+                    />
+                    <textarea
+                     id="comments"
+                     name="comments" maxlength="500"
+                     required
+                      class="feedback-input"
+                      placeholder="Item and why its needed....."
+                    ></textarea>
+        
+                    <div onclick="contactSubmit()"><input onclick="closeContact()" type="submit"  name="submit" value="Submit" /></div>
+                  </form>
+              
+                </div>
+        </div>
+        
+      </div>
+
+
 
 
 </div>
 </div>
 
-
+<!-- ================================================================================================================ 
+# Contact
+================================================================================================================--> 
 
 <div class="section pp-scrollable" id="contact">
 
@@ -544,6 +606,10 @@
 
 </div>
 
+
+<!-- ================================================================================================================ 
+# Libraries and File imports That need to be placed at the end
+================================================================================================================--> 
 
 
     <!-- JavaScript Libraries -->
