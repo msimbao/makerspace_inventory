@@ -22,9 +22,12 @@
       rel="stylesheet"
     />
 
-    <!-- Google Icons -->
+    <!-- Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <!-- Bootstrap CSS File -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -314,7 +317,7 @@
             <li><a href="admin.html">Login</a></li>
             <li data-menuanchor="search"><a href="#search">Search</a></li>
             <li data-menuanchor="about"><a href="#about">About</a></li>
-            <li data-menuanchor="contact"><a href="#contact">Contact Us</a></li>
+            <li data-menuanchor="contact"><a href="#contact">Contact</a></li>
           </ul>
           </div>
         </div>
@@ -350,13 +353,19 @@
         <h1>
           Need to Find Something?
         </h1>
+
+        <div>
   
         <input
           type="text"
           id="myInput"
-          onkeyup="myFunction()"
           placeholder="Search for names.."
+          onkeyup="recall()"
         />
+
+        <button id="searchButton" onclick="searchFunction()"><i class="fa fa-search" style="font-size:22px"></i></button>
+
+      </div>
         <!--       
         <div style="text-align:center;">
         <button type="button" class="btn btn-primary" >All</button>
@@ -374,6 +383,10 @@
             </div>
           </div>
         </div>
+
+
+    
+
   
     </div>
 
