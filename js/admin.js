@@ -28,7 +28,7 @@ $(document).ready(function() {
         direction: 'vertical',
         verticalCentered: true,
         sectionsColor: ['#002C53', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)'],
-        anchors: ['home', 'dashboard', 'inventory', 'insert'],
+        anchors: ['home', 'dashboard', 'request', 'inventory','insert'],
         menu: '#mainMenu',
         scrollingSpeed: 700,
         easing: 'swing',
@@ -185,7 +185,7 @@ function submitClick() {
 }
 
 // ========================================================
-// Read From Database
+// Read Items From Database
 // ========================================================
   $(document).ready(function() {
     var ref = firebase.app().database().ref();
@@ -196,19 +196,40 @@ function submitClick() {
       var group = snap.child("group").val();
       var short = snap.child("short_text").val();
       var image = snap.child("image_text").val();
-      var location = snap.child("located_text").val();
+      var location = snap.child("located_text").val(); // Not used here
       var location_short = snap.child("located_short_text").val();
       $("#array").append(
         '<a href="#">' +
         item +
-        '</a><tr class=" '+group+' table-item  "><td>' +item + '</td><td>' + location_short + '</td><td><img style="height:100px;border-radius:5px;"  src="' + image + '"></td><td><div class="close" onclick="removeItem(this)" aria-label="Delete">' +
+        '</a><tr class=" '+group+' table-item "><td>' +item + '</td><td>' + location_short + '</td><td><img style="height:100px;border-radius:5px;"  src="' + image + '"></td><td><div class="close" onclick="removeItem(this)" aria-label="Delete">' +
           '  &times' +
           ' </div> </td></tr>' 
       
     );
+  });
+
+// ========================================================
+// Read Requests From Database
+// ========================================================
+
+
+    var ref = firebase.app().database().ref();
+    var requestReference = ref.child('requests');
+  
+    requestReference.on("child_added", snap => {
+      var name = snap.child("name").val();
+      var email = snap.child("email").val();
+      var comment = snap.child("comment").val();
+      $("#requests").append(
+        '<tr class=" table-item "> <td>' +name + '</td><td>' + email + '</td> <td>'+ comment +'</td> <td><div class="close" onclick="removeItem(this)" aria-label="Delete">&times</div></td> </tr>' 
+    );
+  
+    
 
     });
   });
+
+
 
 // ========================================================
 // Input Filter
@@ -218,8 +239,8 @@ function myFunction() {
   var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName("li");
+  ul = document.getElementById("array");
+  li = ul.getElementsByTagName("tr");
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
@@ -234,10 +255,10 @@ function myFunction() {
 }
 
 // ========================================================
-// Remove Firebase Script
+// Remove Item Firebase Script
 // ========================================================
 
-console.log('Admin Scripts Loaded');
+console.log('Item Admin Scripts Loaded');
  
  function removeItem(elem)
 {
@@ -250,6 +271,21 @@ window.location.reload();
 }
 
 
+// ========================================================
+// Remove Request Script
+// ========================================================
+
+console.log('Requests Scripts Loaded');
+ 
+ function removeItem(elem)
+{
+var item = elem.parentNode.id;
+var ref = firebase.app().database().ref();
+var itemRef = ref.child('requests').child(item);
+alert(elem.parentNode.id + "Removed from Database");
+itemRef.remove();  
+window.location.reload();
+}
 
 
 
