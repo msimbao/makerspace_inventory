@@ -247,6 +247,7 @@ svg {
 
 
   .navbar {
+    cursor:pointer;
     z-index:1000;
   overflow: hidden;
   background: rgba(0, 0, 0, 0);
@@ -426,6 +427,10 @@ box-shadow: 15px 20px 4px rgba(0, 0, 0, .5); */
   box-shadow: 15px 20px 4px rgba(0, 0, 0, .5);
 }
 
+.texts{
+  padding:10%;
+}
+
 .navbutton{
   width:100%;
   height:100%;
@@ -436,9 +441,7 @@ box-shadow: 15px 20px 4px rgba(0, 0, 0, .5); */
   margin-top:3%;
 }
 
-.texts{
-  padding:10%;
-}
+
 
 .modal-words{
   background:#002C53;
@@ -455,14 +458,16 @@ box-shadow: 15px 20px 4px rgba(0, 0, 0, .5); */
   border:3px dashed white;
   background:#00AEE0;
   box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
-  padding:10%;
-  margin:10%;
-  border-radius:5px;
+  padding-left:10%;
+  padding-right:10%;
+  margin-left:15%;
+  margin-right:15%;
+  border-radius:0px;
 }
 
 #imgTest img{
   width:50%;
-  border:5px dashed white;
+  border:4px dashed white;
   border-radius:5px;
 }
 
@@ -499,15 +504,32 @@ button {
   position:relative;
   opacity:1;
   border-radius:40px;
-  border:8px dashed #F7FCFF;
+  border:5px dashed #F7FCFF;
   box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
   cursor:pointer;
   transition:.7s;
   }
 
 button:hover{
-  border:8px dashed #F7FCFF;
+  border:5px dashed #F7FCFF;
   box-shadow: 15px 20px 4px rgba(0, 0, 0, .5);
+}
+
+#searchButton{
+  box-shadow:none;
+  margin-top:0px;
+  padding:13px;
+  border:none;
+  width:100px;
+  margin-left:-100px;
+  background:#002C53;
+  vertical-align:middle;
+  border-radius:0px 40px 40px 0px;
+}
+
+#searchButton:hover{
+  background:#00AEE0;
+  box-shadow:none;
 }
 
 
@@ -522,7 +544,7 @@ input[type="submit"] {
   position:relative;
   opacity:1;
   border-radius:40px;
-  border:8px dashed #F7FCFF;
+  border:4px dashed #F7FCFF;
   box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
   cursor:pointer;
   transition:.7s;
@@ -543,7 +565,7 @@ input[type="submit"] {
     }
 
   input[type="submit"] :hover{
-  border:8px dashed #F7FCFF;
+  border:4px dashed #F7FCFF;
   box-shadow: 15px 20px 4px rgba(0, 0, 0, .5);
 }
 
@@ -616,7 +638,7 @@ td {
 
 .overlay-content {
   position: relative;
-  top: 10%;
+  top: 5%;
   width: 100%;
   text-align: left;
   padding:10%;
@@ -656,43 +678,60 @@ td {
 
 
 /*--------------------------------------------------------------
-# Carousel
+# Admin Side Bar
 --------------------------------------------------------------*/
 
-location-carousel {
-  text-align:center;
-  position:relative;
-}
 
-.navigation{
-  position:absolute;
-  bottom:10%;
-  right:0;
-  left:0;
-  margin:auto;
-  width:40%;
-}
 
-.navButtons {
-  position:absolute;
-  bottom:0;
-  right:0;
-  left:10%;
-  width:20%;
-  margin-top: 12px; /* Add some space below the input */
+
+/*--------------------------------------------------------------
+# Admin Dashboard
+--------------------------------------------------------------*/
+
+
+.graphs{
+  margin-left:5px;
   background:#002C53;
-  color:white;
-  font-size:10px;
-  float:left;
-  vertical-align:middle;
-  padding: 1%; /* Add some padding */
-  text-align: center;
-  border-radius:40px;
-  box-shadow: 2px 6px 1px rgba(0, 0, 0, .5);
-  cursor:pointer;
-  transition:.7s;
-  }
+  box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
+  transition: 0.5s;
+}
 
-.navButtons:hover{
-  box-shadow: 3px 8px 2px rgba(0, 0, 0, .5);
+
+.graphs:hover {
+  box-shadow: 0 22px 46px 0 rgba(0,0,0,0.5);
+}
+
+#metrics{
+  width:100%;
+  text-align:center;
+}
+
+.metric{
+  width:21%;
+  margin:2%;
+  float:left;
+  padding:2%;
+  background:#002C53;
+  box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
+  text-align:center;
+  transition: 0.5s;
+}
+
+
+.metric:hover {
+  box-shadow: 0 22px 46px 0 rgba(0,0,0,0.5);
+}
+
+.metric h1{
+  vertical-align:middle;
+}
+
+.metric_part{
+  float:left;
+  width:50%;
+  height:100%;
+}
+
+.mpart_right{
+  text-align:left;
 }
