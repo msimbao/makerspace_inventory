@@ -337,7 +337,7 @@ colorBlobs();
 // Plot Search Key Words Bar Graph
 // ========================================================
 
-barplotRef = database.ref("search").orderByValue().limitToFirst(6);
+barplotRef = database.ref("search").orderByChild('count').limitToLast(6);
 var array= [];
 var array2 = [];
 barplotRef.on('value', function(snap){
