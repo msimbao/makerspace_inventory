@@ -374,7 +374,7 @@ title:'Bar Plot of Most Popular Keywords',
   font: {
     family: 'Arial',
     size: 16,
-    color: '#fff'
+    color: '#D3D3D3'
   },
   paper_bgcolor:'#002C53',
   plot_bgcolor: '#002C53',
@@ -396,7 +396,7 @@ title:'Bar Plot of Most Popular Keywords',
       font: {
         family: 'Arial, monospace',
         size: 18,
-        color: '#fff'
+        color: '#D3D3D3'
       }
     },
   },
@@ -462,7 +462,7 @@ title:'Histogram of Search History',
   font: {
     family: 'Arial',
     size: 16,
-    color: '#fff'
+    color: '#D3D3D3'
   },
   paper_bgcolor:'#002C53',
   plot_bgcolor: '#002C53',
@@ -475,8 +475,11 @@ title:'Histogram of Search History',
     zeroline: true,
     showline: true,
     autotick: true,
-    ticks: '',
-    showticklabels: false,
+    tickmode: 'array',
+    tickvals: [ 1, 8 , 16, 23],
+    /* Set the text displayed at the ticks position via tickvals */
+    ticktext: [ '1:00' , '8:00' , '16:00' , '23:00' ],
+    showticklabels: true,
     backgroundcolor: "rgb(255,0,0)",
    showbackground: true,
     title: {
@@ -484,7 +487,7 @@ title:'Histogram of Search History',
       font: {
         family: 'Arial, monospace',
         size: 18,
-        color: '#fff'
+        color: '#D3D3D3'
       }
     },
   },
