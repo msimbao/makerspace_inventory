@@ -114,6 +114,7 @@ padding:10%;
 .section{
   padding:5%;
   overflow:hidden;
+  padding-left:20%;
 }
 
 .colorTheme{
@@ -676,8 +677,8 @@ table{
 }
 
 .table-item{
-  background:#00AEE0;
-  color:black;
+  background:#002C53;
+  color:white;
 }
 
 tr{
@@ -689,7 +690,7 @@ tr{
   border-bottom:10px solid rgb(8, 30, 49);
   height:50px;
   border-radius:5px;
-  background:#00AEE0;
+  background:#002C53;
   transition:1s;
 }
 
@@ -797,25 +798,21 @@ td {
 }
 
 #metrics{
-  width:100%;
+  width:103%;
   text-align:center;
+  padding:1%;
 }
 
 .metric{
-  width:21%;
-  margin:2%;
+  width:25%;
   float:left;
-  padding:2%;
-  background:#002C53;
-  box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
+  padding:1%;
   text-align:center;
   transition: 0.5s;
 }
 
 
-.metric:hover {
-  box-shadow: 0 22px 46px 0 rgba(0,0,0,0.5);
-}
+
 
 .metric h1{
   vertical-align:middle;
@@ -825,6 +822,14 @@ td {
   float:left;
   width:50%;
   height:100%;
+  background:#002C53;
+  box-shadow: 5px 8px 1px rgba(0, 0, 0, .5);
+  padding:5%;
+}
+
+
+.metric:hover {
+  box-shadow: 0 22px 46px 0 rgba(0,0,0,0.5);
 }
 
 .mpart_right{
