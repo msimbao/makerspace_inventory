@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<!-- =======================================================
+    <!-- =======================================================
     Name: Labby Audio Inventory
     Author: Tulsi Patel, Thien An Pham, Mphatso Simbao
  ======================================================= -->
@@ -23,11 +23,15 @@
     />
 
     <!-- Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
     <!-- Bootstrap CSS File -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -48,21 +52,23 @@
     <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-database.js"></script>
+
+    <!---Popper JS. Would rather insert this at the head to avoid problems-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   </head>
 
+
   <body>
-
-
 <!-- ================================================================================================================ 
 # Splash Screen
-================================================================================================================--> 
+================================================================================================================-->
 
     <div id="load">
       <div class="intro-img">
         <svg viewbox="0 0 700 225" class="img-fluid">
           <clipPath id="textClip" class="filled-heading">
-            <text y="70"> </text>
-            <text y="140">loading... </text>
+            <text y="70"></text>
+            <text y="140">loading...</text>
             <text y="210"></text>
 
             <text y="70"></text>
@@ -71,7 +77,7 @@
 
             <text y="70"></text>
             <text y="140"></text>
-            <text y="210"> </text>
+            <text y="210"></text>
           </clipPath>
 
           <g id="background" clip-path="url(#textClip)">
@@ -300,34 +306,34 @@
       </div>
     </div>
 
-<!-- ================================================================================================================ 
+  <!-- ================================================================================================================ 
 # Header
-================================================================================================================--> 
+================================================================================================================-->
 
     <div class="navbar">
-        <a onclick="openNav()"><h4><i class="fa fa-bars" style="font-size:48px;color:#002C53"></i></h4></a>
+      <a onclick="openNav()"
+        ><h4><i class="fa fa-bars" style="font-size:48px;color:#002C53"></i></h4
+      ></a>
+    </div>
+
+    <div id="myNav" class="overlay" onclick="closeNav()">
+      <div class="overlay-content">
+        <ul id="mainMenu">
+          <li><a href="admin.html">Login</a></li>
+          <li data-menuanchor="search"><a href="#search">Search</a></li>
+          <li data-menuanchor="map"><a href="#map">Map</a></li>
+          <li data-menuanchor="about"><a href="#about">About</a></li>
+          <li data-menuanchor="contact"><a href="#contact">Contact</a></li>
+        </ul>
       </div>
-      
-      
-      <div id="myNav" class="overlay" onclick="closeNav()">
-          <div class="overlay-content" >
-            <ul id="mainMenu">
-            <li><a href="admin.html">Login</a></li>
-            <li data-menuanchor="search"><a href="#search">Search</a></li>
-            <li data-menuanchor="about"><a href="#about">About</a></li>
-            <li data-menuanchor="contact"><a href="#contact">Contact</a></li>
-          </ul>
-          </div>
-        </div>
-      
+    </div>
+
 <!-- ================================================================================================================ 
 # Modals
-================================================================================================================--> 
-
-
+================================================================================================================-->
 
     <div id="modals">
-<!-- 
+      <!-- 
     <div class="row about-extra" id="pencils">
       <div class="col-lg-3 test">
         <h4>
@@ -343,34 +349,32 @@
         />
       </div>
     </div> -->
-
-      </div>
-
+    </div>
 
 <!-- ================================================================================================================ 
 # Pagepiling Start
-================================================================================================================--> 
+================================================================================================================-->
 
-<div id="pagepiling"
->
-    <div class="section pp-scrollable" id="search">
-
+    <div id="pagepiling">
+      <div class="section pp-scrollable" id="search">
         <h1>
           Need to Find Something?
         </h1>
 
+        <form onsubmit="return searchFunction();">
         <div>
-  
-        <input
-          type="text"
-          id="myInput"
-          placeholder="Search for names.."
-          onkeyup="recall()"
-        />
+          <input
+            type="text"
+            id="myInput"
+            placeholder="Search for names.."
+            onkeyup="recall()"
+          />
 
-        <button id="searchButton" onclick="searchFunction()"><i class="fa fa-search" style="font-size:22px"></i></button>
-
-      </div>
+          <button id="searchButton" onclick="searchFunction()">
+            <i class="fa fa-search" style="font-size:22px"></i>
+          </button>
+        </div>
+      </form>
         <!--       
         <div style="text-align:center;">
         <button type="button" class="btn btn-primary" >All</button>
@@ -378,7 +382,7 @@
         <button type="button" class="btn btn-primary" >Tech</button>
         <button type="button" class="btn btn-primary" >Software</button>
         </div> -->
-  
+
         <div class="album py-5">
           <div class="container-fluid">
             <div class="row">
@@ -389,233 +393,281 @@
           </div>
         </div>
 
-
-        <div class="no_item">
-          <a href="#staff">Cant find something? Click Me!</a>
+        <div id="toStaff">
+          <a href="#staff"><button >Cant find something? Submit a Request Form</button></a>
         </div>
-  
-    </div>
+      </div>
 
-    <div class="section pp-scrollable" id="map">
+<!-- ================================================================================================================ 
+# Map
+================================================================================================================-->
 
-      <div class="row about-extra">
-        <div class="col-lg-6 wow fadeInUp texts">
-          <h3>Makerspace Locations</h3>
-          <p>
-            If you are looking for something, you can check our
-            minimaps to figure out the different areas of our makerspace.
-          </p>
+      <div class="section pp-scrollable" id="map">
+        <br />
+        <br />
+        <br />
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp texts">
+            <h3>Makerspace Locations</h3>
 
-          <a href="img/desktop.png" data-lightbox="map" data-title="Desktop Computers" class="link-preview" title="Map1">
-          <div id="listen">
-            <div class="box">
-              <div class="object">
-                <div class="outline"></div>
-                <div class="outline" id="delayed"></div>
-                <div class="button"></div>
-                <div class="button" id="circlein">
-                   <img src="img/polyline.png">  
-                 <!--  <img
+            <p>
+              The Idea Lab is a community-oriented workspace designed to
+              encourage collaboration.
+            </p>
+
+            <p>
+              Our Makerspace is fairly small right now but still growing as we
+              add more areas of interest.
+            </p>
+
+            <p>
+              If you are looking for something, you can check our minimaps to
+              figure out the different areas of our makerspace.
+            </p>
+
+            <br />
+            <br />
+
+            <a
+              href="img/desktop.png"
+              data-lightbox="map"
+              data-title="Desktop Computers"
+              class="link-preview"
+              title="Map1"
+            >
+              <div id="listen">
+                <div class="box">
+                  <div class="object">
+                    <div class="outline"></div>
+                    <div class="outline" id="delayed"></div>
+                    <div class="button"></div>
+                    <div class="button" id="circlein">
+                      <img src="img/polyline.png" />
+                      <!--  <img
                         src="img/map.png"
                         class="image"
                         alt=""
                         style="position:relative;margin:35px;width:50px"
                       /> -->
-                  <svg
-                    class="mic-icon"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    x="0px"
-                    y="0px"
-                    viewbox="0 0 1000 1000"
-                    enable-background="new 0 0 1000 1000"
-                    xml:space="preserve"
-                    style="fill:#1E2D70"
-                  >
-                    <g>
-                      <!-- <path
+                      <svg
+                        class="mic-icon"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px"
+                        y="0px"
+                        viewbox="0 0 1000 1000"
+                        enable-background="new 0 0 1000 1000"
+                        xml:space="preserve"
+                        style="fill:#1E2D70"
+                      >
+                        <g>
+                          <!-- <path
                         d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z"
                       /> -->
-
-                    </g>
-                  </svg>
+                        </g>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
+
+            <a
+              href="img/drawers.png"
+              data-lightbox="map"
+              data-title="Drawers"
+              class="link-preview"
+              title="Map"
+            ></a>
+            <a
+              href="img/techroom.png"
+              data-lightbox="map"
+              data-title="Techroom"
+              class="link-preview"
+              title="Map"
+            ></a>
+            <a
+              href="img/backcloset.png"
+              data-lightbox="map"
+              data-title="Back Closet"
+              class="link-preview"
+              title="Map"
+            ></a>
           </div>
-          </a>
 
-          <a href="img/drawers.png" data-lightbox="map" data-title="Drawers" class="link-preview" title="Map"></a>
-          <a href="img/techroom.png" data-lightbox="map" data-title="Techroom" class="link-preview" title="Map"></a> 
-          <a href="img/backcloset.png" data-lightbox="map" data-title="Back Closet" class="link-preview" title="Map"></a> 
+          <div class="col-lg-6 wow fadeInUp">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
 
-
-        </div>
-
-        <div class="col-lg-6 wow fadeInUp">
-          <br>
-          <br>
-          <br>
-
-          <img
-            src="img/start_location.gif"
-            class="image"
-            alt=""
-          />
-          
-          
+            <img src="img/start_location.gif" class="image" alt="" />
           </div>
         </div>
       </div>
 
 <!-- ================================================================================================================ 
 # About
-================================================================================================================--> 
+================================================================================================================-->
 
-    <div class="section pp-scrollable" id="about">
+      <div class="section pp-scrollable" id="about">
+        <div class="row about-extra">
+          <div class="col-lg-6 texts">
+            <h4>
+              Browse Our Inventory
+            </h4>
 
-      <div class="row about-extra" >
-        <div class="col-lg-6 texts">
-          <h4>
-            Browse our Inventory
-          </h4>
-          <p>Simple and efficient way to check our database of amazing supplies.</p>
-          <p>Find whatever items you need for your projects and fun activities.</p>
+            <p>
+              To help you create amazing products and projects, we have stocked
+              our makerspace with the tools and support everyone needs to
+              realize their ideas.
+            </p>
+            <p>
+              Find whatever items you need for your projects and fun activities
+              in our makerspace using our simple search engine
+            </p>
+            <a href="#search"><button>Search</button></a>
           </div>
 
-        <div class="col-lg-6 wow fadeInUp">
-          <img
-            src="img/flame-remote-working.png"
-            class="img-fluid"
-            alt=""
-          />
+          <div class="col-lg-6 wow fadeInUp">
+            <img src="img/flame-remote-working.png" class="img-fluid" alt="" />
+          </div>
         </div>
-      </div>
-
       </div>
 
 <!-- ================================================================================================================ 
 # Staff and Requests Section
-================================================================================================================--> 
+================================================================================================================-->
 
+      <div class="section" id="staff">
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp">
+            <img src="img/flame-6.png" class="img-fluid" alt="" />
+          </div>
 
-  <div class="section" id="staff">
+          <div class="col-lg-6 texts">
+            <h4>
+              Ask our Assistants too!
+            </h4>
+            <p>
+              If you need a helping hand feel free to ask our student staff
+              about whatever you can't find on this app.
+            </p>
+            <p>
+              They will also give you access to some areas like the techroom
+              that are off limits to patrons.
+            </p>
+            <p>
+              You can also Request an item and we will try to acquire it
+              depending on its need
+            </p>
+            <button onclick="openContact()">Request</button>
 
-<div class="row about-extra" >
+            <div id="contactNav">
+              <div class="contact-content">
+                <header class="section-header">
+                  <h3>Request an Item</h3>
+                </header>
+                <br />
+                <br />
 
-  <div class="col-lg-6 wow fadeInUp">
-    <img
-      src="img/flame-6.png"
-      class="img-fluid"
-      alt=""
-    />
-  </div>
+                <form
+                  method="POST"
+                  class="gform"
+                  action="https://script.google.com/macros/s/AKfycbxb342DY2OmLm2lqGk86i1z5J9vFmkHpORgZBn8jPJ_Gy7Z90E/exec"
+                >
+                  <input
+                    id="first_name"
+                    name="first_name"
+                    required
+                    type="text"
+                    class="feedback-input"
+                    placeholder="Name....."
+                  />
+                  <input
+                    id="email_address"
+                    name="email_address"
+                    required
+                    type="text"
+                    class="feedback-input"
+                    placeholder="Email...."
+                  />
+                  <textarea
+                    id="comments"
+                    name="comments"
+                    maxlength="500"
+                    required
+                    class="feedback-input"
+                    placeholder="Item and why its needed....."
+                  ></textarea>
 
-  <div class="col-lg-6 texts">
-    <h4>
-      Ask our Assistants too!
-    </h4>
-    <p> If you need a helping hand feel free to ask our student staff about whatever you can't find on this app.</p>
-    <p>They will also give you access to some areas like the techroom that are off limits to patrons.</p>
-    <p>You can also Request an item and we will try to acquire it depending on its need</p>
-    <button onclick="openContact()">Request</button>
-
-    <div id="contactNav" >
-      <div class="contact-content" >
-
-        <header class="section-header">
-          <h3>Request an Item</h3>
-       </header>
-       <br>
-       <br>
-    
-
-        
-                  <form method="POST" class="gform"
-                  action="https://script.google.com/macros/s/AKfycbxb342DY2OmLm2lqGk86i1z5J9vFmkHpORgZBn8jPJ_Gy7Z90E/exec">
-        
+                  <div onclick="contactSubmit()">
                     <input
-                      id="first_name"
-                      name="first_name" 
-                      required
-                      type="text"
-                      class="feedback-input"
-                      placeholder="Name....."
+                      onclick="closeContact()"
+                      type="submit"
+                      name="submit"
+                      value="Submit"
                     />
-                    <input
-                      id="email_address"
-                      name="email_address"
-                      required
-                      type="text"
-                      class="feedback-input"
-                      placeholder="Email...."
-                    />
-                    <textarea
-                     id="comments"
-                     name="comments" maxlength="500"
-                     required
-                      class="feedback-input"
-                      placeholder="Item and why its needed....."
-                    ></textarea>
-        
-                    <div onclick="contactSubmit()"><input onclick="closeContact()" type="submit"  name="submit" value="Submit" /></div>
-                  </form>
-              
-                </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-        
       </div>
-
-
-
-
-</div>
-</div>
 
 <!-- ================================================================================================================ 
 # Contact
-================================================================================================================--> 
+================================================================================================================-->
 
-<div class="section pp-scrollable" id="contact">
+      <div class="section pp-scrollable" id="contact">
+        <div class="row about-extra">
+          <div class="col-lg-6 texts">
+            <h4>
+              Any Questions?
+            </h4>
+            <p>
+              If you have any suggestions or problems email us at
+              <a href="mailto:idealab@macalester.edu">idealab@macalester.edu</a>
+            </p>
+            <p>
+              You can also find us on our
+              <a
+                href="https://www.macalester.edu/entrepreneurship-and-innovation/"
+                ><u>main website</u></a
+              >
+              Or our
+              <a href="https://www.facebook.com/groups/themacentrepreneur/"
+                ><u>facebook</u></a
+              >,
+              <a href="https://www.instagram.com/mac_eship/"
+                ><u>instagram</u></a
+              >
+              and
+              <a href="https://twitter.com/MAC_ideas?9f"><u>twitter</u></a>
+              pages.
+            </p>
+          </div>
 
-<div class="row about-extra" >
-  <div class="col-lg-6 texts">
-    <h4>
-      Any Questions?
-    </h4>
-    <p>If you have any suggestions or problems
-    email us at <a href="mailto:idealab@macalester.edu">idealab@macalester.edu</a></p>
-    <p>You can also find us on our <a href="https://www.macalester.edu/entrepreneurship-and-innovation/"><u>main website</u></a>
-    Or our <a href="https://www.facebook.com/groups/themacentrepreneur/"><u>facebook</u></a>, <a href="https://www.instagram.com/mac_eship/"><u>instagram</u></a> and <a href="https://twitter.com/MAC_ideas?9f"><u>twitter</u></a> pages.</p>
-
-  </div>
-
-  <div class="col-lg-6 wow fadeInUp">
-    <img
-      src="img/flame-no-comments.png"
-      class="img-fluid"
-      alt=""
-    />
-  </div>
-</div>
-
-</div>
-
-
-
-</div>
-
+          <div class="col-lg-6 wow fadeInUp">
+            <img src="img/flame-no-comments.png" class="img-fluid" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
 
 <!-- ================================================================================================================ 
 # Libraries and File imports That need to be placed at the end
-================================================================================================================--> 
-
+================================================================================================================-->
 
     <!-- JavaScript Libraries -->
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/jquery/jquery-migrate.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/mobile-nav/mobile-nav.js"></script>
     <script src="lib/wow/wow.min.js"></script>
@@ -627,9 +679,7 @@
     <script src="js/piling.js"></script>
     <!-- Contact Form JavaScript File -->
 
-
-
- <script>
+    <script>
       // Your web app's Firebase configuration
       var firebaseConfig = {
         apiKey: "AIzaSyCfwUVwmMb1IcwkWwHuaFZdsFe7_0uxoAA",
@@ -645,7 +695,6 @@
       const database = firebase.database();
     </script>
 
-<script src="js/main.js"></script>
-
+    <script src="js/main.js"></script>
   </body>
 </html>
