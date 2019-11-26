@@ -78,7 +78,6 @@
    background: #002C53;
    position: absolute;
    bottom: 0;
-   z-index: 500;
    width: 100%;
    height: 100%;
    text-align: center;
@@ -88,6 +87,8 @@
    vertical-align: middle;
    text-align: center;
    padding: 10%;
+   z-index:1;
+   display:none;
  }
  
  /* Safari */
@@ -96,25 +97,29 @@
      -webkit-opacity: 1;
      height: 100%;
      bottom: 0;
-     z-index: 500;
+     z-index: 1;
+     display:block;
    }
    90% {
      -webkit-opacity: 1;
      height: 100%;
      bottom: 0;
-     z-index: 500;
+     z-index: 1;
+     display:block;
    }
    99.999% {
      -webkit-opacity: 1;
-     height: 100%%;
+     height: 100%;
      bottom: -100%;
-     z-index: 500;
+     z-index: 1;
+     display:block;
    }
    100% {
      -webkit-opacity: 1;
-     height: 100%%;
+     height: 100%;
      bottom: -100%;
      z-index: -10;
+     display: none;
    }
  }
  
@@ -123,25 +128,29 @@
      opacity: 1;
      height: 100%;
      bottom: 0;
-     z-index: 500;
+     z-index: 1;
+     display:block;
    }
    90% {
      opacity: 1;
      height: 100%;
      bottom: 0;
-     z-index: 500;
+     z-index: 1;
+     display:block;
    }
    99.999% {
      opacity: 1;
      height: 100%;
      bottom: -100%;
-     z-index: 500;
+     z-index: 1;
+     display:block;
    }
    100% {
      opacity: 1;
      height: 100%;
      bottom: -100%;
      z-index: -10;
+     display: none;
    }
  }
  
@@ -308,31 +317,33 @@
  
  .navbar {
    cursor: pointer;
-   z-index: 1000;
    overflow: hidden;
    background: rgba(0, 0, 0, 0);
    position: fixed;
    top: 0;
+   z-index:10;
    width: 100%;
-   transition: 2s;
+   transition: .2s;
  }
  
  .navbar a h4 {
-   color: #002C53;
+  mix-blend-mode: difference;
+  transition: .2s;
+  color:white;
  }
  
  .navbar a {
    float: left;
    display: block;
-   color: #002C53;
+   mix-blend-mode: difference; 
    text-align: center;
    padding: 14px 16px;
    text-decoration: none;
    font-size: 17px;
  }
  
- .navbar a:hover {
-   color: black;
+ .navbar a h4:hover {
+   color: #FCB900;
  }
  
  /*--------------------------------------------------------------
@@ -503,7 +514,7 @@
  }
  
  .tech {
-   background: #002C53;
+   background: rgb(43, 94, 105);
    color: white;
  }
  
@@ -520,18 +531,6 @@
  # Modals
  --------------------------------------------------------------*/
  
- .x_button {
-   position: absolute;
-   background: none;
-   margin-right: 50px;
-   cursor: pointer;
-   font-size: 100px;
- }
- 
- .item-images {
-   width: 400px;
-   border-radius: 10px;
- }
  
  .pop-row {
    position: absolute;
@@ -543,12 +542,7 @@
  }
  
  #modals {
-   width: 100%;
-   height: 100%;
-   position: absolute;
-   top: 0;
-   background: none;
-   padding: 5%;
+   z-index:50;
  }
  
  .card {
@@ -568,17 +562,19 @@
  }
  
  .test {
+   position:absolute;
+   top:60%;
    margin: 5%;
-   padding: 5%;
-   width: 70%;
-   background: #002C53;
-   border: 5px dashed #F7FCFF;
-   box-shadow: 15px 20px 4px rgba(0, 0, 0, 0.5);
-   border-radius:5px;
+   width: 390px;
+   height:570px;
+   box-shadow: 0 22px 46px 0 rgba(0, 0, 0, 0.5);
+   border-radius:15px;
+   transition:0.5s;
+   border: 4px dashed white;
  }
 
  .test:hover {
-  box-shadow: 0 22px 46px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 15px 20px 4px rgba(0, 0, 0, 0.5);
 }
  
  .texts {
@@ -594,18 +590,92 @@
  .card div {
    margin-top: 3%;
  }
- 
- .modal-words {
-   background: #002C53;
-   border: 5px solid #F7FCFF;
-   box-shadow: 7px 8px 1px rgba(0, 0, 0, 0.5);
- }
+
+
  
  .modal {
+   padding-top:10%;
    transition: 0.4s;
-   background:black;
+   background:#221f1fd5;
  }
  
+
+.item-images {
+  position:absolute;
+  left:-20%;
+  top:5%;
+  width: 300px;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+.image {
+  display: block;
+  position: relative;
+  box-shadow: 0 22px 46px 0 rgba(0, 0, 0, 0.5);
+  width: 300px;
+  border-radius: 15px;
+}
+
+.shadow {
+  bottom: -20px;
+  filter: blur(20px);/* this is the magic part */
+  height: 100%;
+  right: 0;
+  width: 300px;
+  position: absolute;
+  transform: scale(0.95);
+  width: 100%;
+  z-index:-10;
+}
+
+
+
+.modal-words {
+  padding-top:7%;
+  padding:5%;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  font:30px;
+
+}
+
+
+.modal_controls{
+  height:100%;
+  width:30%;
+  padding:10px;
+  position:absolute;
+  right:5%;
+  top:10px;
+  list-style: none;
+  text-align:center;
+}
+
+.modal_controls li {
+  position: relative;
+  background: none;
+  cursor: pointer;
+  font-size: 30px;
+  border-radius:55%;
+  margin-bottom:30px;
+  text-align:center;
+  vertical-align: middle;
+  padding:20px;
+  border: 4px dashed #00000000;
+}
+
+.modal_controls li:hover {
+  box-shadow: 
+  -2px -2px 2px 2px  rgba(0, 0, 0, 0.1),
+  2px 2px 2px 2px  rgba(0, 0, 0, 0.1),
+  2px -2px 2px 2px  rgba(0, 0, 0, 0.1),
+  -2px 2px 2px 2px  rgba(0, 0, 0, 0.1);
+  padding:25px;
+  color:#002C53;
+  border: 4px dashed white;
+}
  /*--------------------------------------------------------------
  # Admin
  --------------------------------------------------------------*/
@@ -797,9 +867,9 @@
    height: 100%;
    width: 0;
    position: fixed;
-   z-index: 100000;
    top: 0;
    left: 0;
+   z-index:10;
    background-color: rgba(0, 175, 224, 0.589);
    overflow-x: hidden;
    transition: 0.5s;
@@ -913,7 +983,6 @@
    height: 100%;
    width: 0;
    position: fixed;
-   z-index: 100000;
    top: 0;
    left: 0;
    background-color: rgb(2, 30, 36);
