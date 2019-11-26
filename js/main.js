@@ -254,6 +254,50 @@ colorBlobs();
 // Read From Database
 // ========================================================
 
+// Experimental
+ 
+  // //click next
+  // function click_next(){
+  //   console.log('hello')
+  //   var currentModal = $(this).parent().parent().parent().parent().parent();
+  //   alert(currentModal)
+
+
+  //   var x = document.getElementById("myLI").parentElement.nodeName;
+  //   document.getElementById("demo").innerHTML = x;
+
+  //   var nodes = Array.prototype.slice.call( document.getElementById('nodes').children ),
+  //   errorNode = document.getElementsByClassName('error')[0];
+  //   var indexOfError = nodes.indexOf(errorNode);
+  //   var nextElement = nodes[indexOfError + 2];
+  //   alert(nextElement.innerText);
+
+
+  //   if (currentModal.next() != null){
+  //     currentModal.modal('hide');
+  //     currentModal.next().modal('show'); 
+  //   } else {
+  //     currentModal.modal('hide');
+  //   }
+
+  // };
+  
+  // //click prev
+  // $('.btn-prev').click(function(){
+  //   var currentModal = $(this).parent().parent().parent().parent().parent();
+  //   alert(currentModal)
+  //   if (currentModal.prev() != null){
+  //     currentModal.modal('hide');
+  //   currentModal.prev().modal('show'); 
+  //   } else {
+  //     currentModal.modal('hide');
+  //   }
+    
+  // });
+
+
+
+
 $(document).ready(function() {
   var inventoryRef = firebase
     .app()
@@ -266,7 +310,7 @@ $(document).ready(function() {
     var group = snap.child("group").val();
     var short = snap.child("short_text").val();
     var image = snap.child("image_text").val();
-    var location = snap.child("located_text").val();
+    // var location = snap.child("located_text").val();
     var location_short = snap.child("located_short_text").val();
 
     $("#array").append(
@@ -295,31 +339,41 @@ $(document).ready(function() {
       '<div class="modal fade" id="' +
         short +
         '" >' +
-        ' <div class="x_button" data-dismiss="modal" aria-label="Close">&times;</div>' +
-        '<div class="modal-dialog"><div class="modal-content">' +
-        '<div class="row about-extra pop-row test">' +
-        '<div class="col-lg-6 modal-words">' +
-        "<h4  >" +
+        '<div class="modal-dialog">' +
+        '<div class="modal-content">' +
+        '<div class=" test  '+group+' ">' +
+        '<ul class="modal_controls">' +
+        ' <li data-dismiss="modal" aria-label="Close">&times;</li>' +
+        ' <li class="btn-next controller" onclick="click_next()" aria-label="Next"><i class="fa fa-hand-o-right" "></i></li>' +
+        ' <li class="btn-prev controller" aria-label="Prev"><i class="fa fa-hand-o-left" "></i></li>' +
+        '</ul>' +
+        '<div class="modal-words">' +
+        "<h5 style='font-size:30px;color:#333333'><b>" +
         item +
-        "</h4>" +
-        "<p> Location: " +
+        "</b></h5>" +
+        "<h5> <u>Group:  </u>" +
+        group +
+        "</h5>" +
+        "<h5> <u> Location:  </u>" +
         location_short +
-        "</p>" +
-        "<p> Please ask an idea lab staff member for more help incase the item as been moved</p>" +
+        "</h5><br>" +
+        '<a href="#map"><div id="toMap" style="text-align:center"><button >Map</button></div></a>'+
         "</div>" +
-        '<div class="col-lg-6 wow fadeInUp">' +
-        ' <img src="' +
-        image +
-        '" class="img-fluid item-images" alt="" />' +
+        '<div class="col-lg-6 item-images">' +
+        ' <img src=" ' +image +' " class="image" alt="" />' +
+        ' <img src=" ' +image +' " class="shadow" alt="" />' +
         "</div>" +
         "</div>"+
-        '</div></div>'+
+        '</div>'+
+        '</div>'+
         "</div>"
     );
   });
 });
 
-$(".close").modal("toggle");
+$('#toMap').on('click' , function() { 
+  $('.modal').modal('hide')
+});
 
 // ========================================================
 // NavBar
