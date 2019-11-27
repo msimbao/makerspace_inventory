@@ -250,50 +250,7 @@ colorBlobs();
 // speech();
 // }
 
-// ========================================================
-// Read From Database
-// ========================================================
 
-// Experimental
- 
-  // //click next
-  // function click_next(){
-  //   console.log('hello')
-  //   var currentModal = $(this).parent().parent().parent().parent().parent();
-  //   alert(currentModal)
-
-
-  //   var x = document.getElementById("myLI").parentElement.nodeName;
-  //   document.getElementById("demo").innerHTML = x;
-
-  //   var nodes = Array.prototype.slice.call( document.getElementById('nodes').children ),
-  //   errorNode = document.getElementsByClassName('error')[0];
-  //   var indexOfError = nodes.indexOf(errorNode);
-  //   var nextElement = nodes[indexOfError + 2];
-  //   alert(nextElement.innerText);
-
-
-  //   if (currentModal.next() != null){
-  //     currentModal.modal('hide');
-  //     currentModal.next().modal('show'); 
-  //   } else {
-  //     currentModal.modal('hide');
-  //   }
-
-  // };
-  
-  // //click prev
-  // $('.btn-prev').click(function(){
-  //   var currentModal = $(this).parent().parent().parent().parent().parent();
-  //   alert(currentModal)
-  //   if (currentModal.prev() != null){
-  //     currentModal.modal('hide');
-  //   currentModal.prev().modal('show'); 
-  //   } else {
-  //     currentModal.modal('hide');
-  //   }
-    
-  // });
 
 
 
@@ -341,11 +298,16 @@ $(document).ready(function() {
         '" >' +
         '<div class="modal-dialog">' +
         '<div class="modal-content">' +
+        //The Extra cards behind the main one
+        '<div class="random_cards">' +
+        '<div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div>' +
+        '</div>' +
+
         '<div class=" test  '+group+' ">' +
         '<ul class="modal_controls">' +
         ' <li data-dismiss="modal" aria-label="Close">&times;</li>' +
-        ' <li class="btn-next controller" onclick="click_next()" aria-label="Next"><i class="fa fa-hand-o-right" "></i></li>' +
-        ' <li class="btn-prev controller" aria-label="Prev"><i class="fa fa-hand-o-left" "></i></li>' +
+        ' <li class="btn-next controller" onclick="next(this)" aria-label="Next"><i class="fa fa-hand-o-right" "></i></li>' +
+        ' <li class="btn-prev controller" onclick="prev(this)" aria-label="Prev"><i class="fa fa-hand-o-left" "></i></li>' +
         '</ul>' +
         '<div class="modal-words">' +
         "<h5 style='font-size:30px;color:#333333'><b>" +
@@ -357,7 +319,7 @@ $(document).ready(function() {
         "<h5> <u> Location:  </u>" +
         location_short +
         "</h5><br>" +
-        '<a href="#map"><div id="toMap" style="text-align:center"><button >Map</button></div></a>'+
+        '<a href="#map"><div  style="text-align:center"><button class="toMap">Map</button></div></a>'+
         "</div>" +
         '<div class="col-lg-6 item-images">' +
         ' <img src=" ' +image +' " class="image" alt="" />' +
@@ -374,6 +336,70 @@ $(document).ready(function() {
 $('#toMap').on('click' , function() { 
   $('.modal').modal('hide')
 });
+
+
+// ========================================================
+// Modal Carousel
+// ========================================================
+
+
+// Experimental Really Bad Code ._. need help to patch this up
+ 
+  //click next
+  function next(e){
+    console.log('Showing Next Modal');
+    var currentModal = $(e).parent().parent().parent().parent().parent();
+    var nextModal = currentModal.next();
+
+    if (nextModal != null){
+      currentModal.modal('toggle').delay(1000);
+      nextModal.modal('toggle'); 
+    } else {
+      currentModal.modal('toggle');
+      console.log('No Next Modal');
+    }
+
+  };
+
+
+    //click next
+  function prev(e){
+    console.log('Showing Previous Modal');
+    var currentModal = $(e).parent().parent().parent().parent().parent();
+    var prevModal = currentModal.prev();
+
+    if (prevModal != null){
+      currentModal.modal('toggle').delay(1000);
+      prevModal.modal('toggle'); 
+    } else {
+      currentModal.modal('toggle');
+      console.log('No Previous Modal');
+    }
+
+  };
+
+
+// ========================================================
+// Modal Random Colors
+// ========================================================
+
+// var myArray = ['red', 'green', 'blue'];    
+// var rand = myArray[Math.floor(Math.random() * myArray.length)];
+// // document.getElementsByClassName("tech").style.background = rand;
+
+// var randAngle = Math.random()
+// // document.getElementsByClassName("test").style.transform = "rotate(7deg)";
+// $(".tech").css({"background": "red"});
+
+
+
+$(document).ready(function() {
+  var colors = ['red', 'blue', 'green', 'yellow', 'cyan', 'orange'];
+  var new_color = colors[Math.floor(Math.random() * colors.length)];
+  $('.color-div').css('background-color', new_color);
+});
+
+
 
 // ========================================================
 // NavBar
