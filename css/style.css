@@ -570,12 +570,61 @@
    box-shadow: 0 22px 46px 0 rgba(0, 0, 0, 0.5);
    border-radius:15px;
    transition:0.5s;
-   border: 4px dashed white;
+   /*border: 4px dashed white;*/
  }
+
+
 
  .test:hover {
   box-shadow: 15px 20px 4px rgba(0, 0, 0, 0.5);
 }
+
+.random_cards{
+  top:60%;
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+ .random_cards div{
+  position:absolute;
+  top:60%;
+   margin: 5%;
+   width: 390px;
+   height:570px;
+   box-shadow: 0 22px 46px 0 rgba(0, 0, 0, 0.5);
+   border-radius:15px;
+   transition:0.5s;
+ }
+
+  .random_cards:hover {
+  box-shadow: 15px 20px 4px rgba(0, 0, 0, 0.5);
+}
+
+ .random_cards div:nth-child(1) {
+  background: #FF3501;
+    right:-10%;
+    transform: rotate(40deg)
+}
+
+ .random_cards div:nth-child(2) {
+  background: #FF3501;
+    right:10%;
+    transform: rotate(50deg)
+}
+
+ .random_cards div:nth-child(3) {
+  background: #FF3501;
+    right:-5%;
+    transform: rotate(10deg)
+}
+
+ .random_cards div:nth-child(4) {
+  background: #FF3501;
+    right:5%;
+    transform: rotate(70deg)
+}
+
+
  
  .texts {
    padding: 10%;
@@ -629,7 +678,10 @@
   z-index:-10;
 }
 
-
+.toMap{
+  border:3px solid #00000000;
+  box-shadow:none;
+}
 
 .modal-words {
   padding-top:7%;
