@@ -396,7 +396,7 @@
         </div>
 
         <div id="toStaff">
-          <a href="#staff"><button >Cant find something? Submit a Request Form</button></a>
+          <a href="#staff"><button style="border:none;">Cant find something? Submit a Request Form</button></a>
         </div>
       </div>
 
@@ -567,6 +567,7 @@
               depending on its need
             </p>
             <button onclick="openContact()">Request</button>
+            <div id="close_request" onclick="closeContact()">&times;</div>
 
             <div id="contactNav">
               <div class="contact-content">
@@ -587,7 +588,7 @@
                     required
                     type="text"
                     class="feedback-input"
-                    placeholder="Name....."
+                    placeholder="First Name Only....."
                   />
                   <input
                     id="email_address"
