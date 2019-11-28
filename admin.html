@@ -22,7 +22,16 @@
       rel="stylesheet"
     />
 
-
+    <!-- Icons -->
+       <link
+       href="https://fonts.googleapis.com/icon?family=Material+Icons"
+       rel="stylesheet"
+     />
+ 
+     <link
+       rel="stylesheet"
+       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+     />
 
     <!-- Bootstrap CSS File -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -312,9 +321,10 @@
           <div class="overlay-content" >
             <ul id="mainMenu">
             <li><a href="admin.html">Login</a></li>
-            <li data-menuanchor="search"><a href="index.html#search">Search</a></li>
-            <li data-menuanchor="about"><a href="index.html#about">About</a></li>
-            <li data-menuanchor="contact"><a href="index.html#contact">Contact</a></li>
+            <li></li><a href="index.html#search">Search</a></li>
+            <li><a href="admin.html#map">map</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
           </ul>
           </div>
         </div>
@@ -328,9 +338,13 @@
  
 
        <div id="login_div">
-
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <div class="row about-extra" >
-                <div class="col-lg-6 texts">
+                <div class="col-lg-6 texts" style="width:100%;padding-right:0px;padding-left:10%;">
                   <h4>
                     Admin Login
                   </h4>
@@ -360,9 +374,17 @@
   
   <div id="user_div">
 
+       <!----- Side Bar Navigation -->
+      <ul id="sidebar">
+          <a href="#home"><li data-menuanchor="home" class="active"><i class="fa fa-user-circle-o" style="font-size:24px"></i><p>Logout</p></li></a>
+          <a href="#dashboard"><li data-menuanchor="dashboard"><i class="fa fa-dashboard" style="font-size:24px"></i></i><p>Dashboard</p></li></a>
+          <a href="#requests_section"><li data-menuanchor="requests_section"><i class="fa fa-sticky-note-o" style="font-size:24px"></i><p>Requests</p></li></a>
+          <a href="#inventory"><li data-menuanchor="inventory"><i class="fa fa-server" style="font-size:24px"></i><p>Inventory</p></li></a>
+          <a href="#insert"><li data-menuanchor="insert"><i class="fa fa-edit" style="font-size:24px"></i><p>Insert</p></li></a>
+      </ul>
 
         <div id="pagepiling">
-                <div class="section" id="home">
+           <div class="section" id="home">
 
                         <div class="row about-extra" >
                                 <div class="col-lg-6 texts">
@@ -370,8 +392,9 @@
                                         Welcome!
                                   </h4>
                                   <p>This is the admin page for the website's content. Feel free to edit the different parts of the website that are currently open to change</p>
-                                  <p>To change content, you can fill in the form and click submit to enter a new item</p>
+                                  <p>You can view latest data collected by this app on different inventory items in this makerspace</p>
                                   <p>You can also remove items in a section by clicking the 'X' next to the item</p>
+                                  <p><b><u>Scroll Down to get started!</b></u></p>
                                   <br>
                                   <button onclick="logout()">Logout</button>
                                   </div>
@@ -399,11 +422,11 @@
 <div class="row about-extra " id="metrics" >
                                
                                 <div class="metric">
-                                  <div class="metric_part">
-                                    <h2><i class="fa fa-cubes" style="font-size:52px;color:red;text-align:left;"></i></h2>
+                                  <div class="metric_part mpart_left">
+                                    <h2><i class="fa fa-cubes" style="font-size:52px;text-align:left;"></i></h2>
                                   </div>
 
-                                   <div class="metric_part">
+                                   <div class="metric_part mpart_right">
                                      <h2 id="totalItems"></h2>
                           
                                   <p>Total Items</p>
@@ -415,11 +438,11 @@
                         
                          
                            <div class="metric">
-                                  <div class="metric_part">
-                                    <h2><i class="fa fa-search" style="font-size:52px;color:red;text-align:left;"></i></h2>
+                                  <div class="metric_part mpart_left">
+                                    <h2><i class="fa fa-search" style="font-size:52px;text-align:left;"></i></h2>
                                   </div>
 
-                                   <div class="metric_part">
+                                   <div class="metric_part mpart_right">
                                      <h2 id="totalSearches"></h2>
                           
                                   <p>Searches</p>
@@ -431,11 +454,11 @@
 
 
                                     <div class="metric">
-                                  <div class="metric_part">
-                                    <h2><i class="fa fa-send" style="font-size:52px;color:red;text-align:left;"></i></h2>
+                                  <div class="metric_part mpart_left">
+                                    <h2><i class="fa fa-send" style="font-size:52px;text-align:left;"></i></h2>
                                   </div>
 
-                                   <div class="metric_part">
+                                   <div class="metric_part mpart_right">
                                      <h2 id="totalRequests"></h2>
                           
                                   <p>Requests</p>
@@ -446,14 +469,14 @@
                                   </div>
 
                                     <div class="metric">
-                                  <div class="metric_part">
-                                    <h2><i class="fa fa-tasks" style="font-size:52px;color:red;text-align:left;"></i></h2>
+                                  <div class="metric_part mpart_left">
+                                    <h2><i class="fa fa-clock-o" style="font-size:52px;text-align:left;"></i></h2>
                                   </div>
 
-                                   <a href="#inventory"><div class="metric_part">
-                                     <h2>Edit</h2>
+                                   <a href="#inventory"><div class="metric_part mpart_right">
+                                     <h2 id="mostFrequent"></h2>
                           
-                                  <p>Items</p>
+                                  <p style="font-size:15px;">Most Frequent Time for Searches</p>
                                   </div></a>
                                       
                                      
@@ -464,15 +487,10 @@
    </div>
 
 <div class="row about-extra" >
-                                <div class="col-lg-6 ">
-                                 <div id="keyword_bar_graph" ><!-- Plotly chart will be drawn inside this DIV --></div>
-
-                                  </div>
-                        
-                                  <div class="col-lg-6 wow fadeInUp">
-                                          <div id="searchtimes_histogram" >
-
-                                      </div>
+                                <div id="graphs">
+                                  <div class="graph"><div id="keyword_bar_graph" ></div></div><!-- Graph showing Main Keyword Searches -->
+                                  <div class="graph"><div id="searchtimes_histogram" ></div></div> <!-- Graph showing most frequent Search Times -->
+                                  <div class="graph"><div id="bounce_rate_chart" ></div></div> <!-- Graph showing most frequent Search Times -->
                               </div>
   
     </div>
@@ -484,7 +502,7 @@
 ================================================================================================================--> 
 
 
-<div class="section pp-scrollable" >
+<div class="section pp-scrollable" id="requests_section" >
     <!----- Input -->
   
      <h3>Requests</h3>
@@ -513,7 +531,7 @@
             onkeyup="myFunction()"
             placeholder="Search for names.."
           />
-            <a href="#insert"><button style="float:right;width:10%;border:none;margin:1%;"> Insert </button></a>
+            <a href="#insert"><button style="float:right;width:10%;border:none;margin:1%;text-align:center;padding:5px;"> Insert    </button></a>
           <br>
           <br>
 
@@ -541,69 +559,69 @@
  <br>
 
  <div class="admin_input">
-    
-       <h6 style="color:#333333;padding:30px;">
-                             <u>Note:</u> the short tag should be the shortened name of the item, in lower cases and no spaces: e.g
-                            Item: "Adobe Premier Rush" will have a short tag of "adobepremierrush" and Item: "White board" will have a tag
-                            of whiteboard
-                          </h6>
 
                           <br>
 
                           <form class="form-horizontal" method="post">
                               <fieldset>
+
+                                <div id="main_inputs">
                                   <div class="form-group ">
-                                          <input name="item" type="text" id="item" placeholder="Item" class="form-control feedback-input">
+                                          <input name="item" type="text" id="item" placeholder="Item" class="feedback-input">
                                   </div>
 
-                                  <div class="form-group">
-                                          <input id="short" name="short" type="text" placeholder="Short Tag" class="form-control feedback-input">
-                                  </div>
-
-                                  <div class="form-group custom-file">
-                                        <label  for="inputFileToLoad"  required>Choose item Image...</label>
-                                        <input class="form-control custom-file-input" id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" required>
-                                        
-                                        
-                                        <div class="invalid-feedback">Example invalid custom file feedback</div>
-                                      </div>
-  
-                                      <div class="img-fluid" id="imgTest"></div>
+                                  <!-- <div class="form-group">
+                                          <input id="short" name="short" type="text" placeholder="Short Tag" class="feedback-input">
+                                  </div> -->
                                  
                                   <div class="form-group">
   
                                     <br>
-                                      <select required name="located" class="custom-selected form-control" id="located" >
-                                          <option value="">General Item Location</option>
-                                          <option value="https://cdn.glitch.com/14c8712d-21c8-46c7-bf2d-89daa7a13109%2FIMG_2064.JPG?v=1572386275572">Desktop Computers</option>
+                                      <select required name="located_short" placeholder="General Item Location" class=" custom-selected form-control" id="located_short" >
+                                          <option value=""> - Select The Item's Location - </option>
+                                        <option value="Desktop Computers">Desktop Computers</option>
                                           <option value="Tech Room">Tech Room</option>
                                           <option value="Cubbies">Cubbies</option>
-                                          <option value="https://cdn.glitch.com/14c8712d-21c8-46c7-bf2d-89daa7a13109%2FIMG_1895.JPG?v=1569607993033">Back Closet</option>
-                                          <option value="Cubbies">Book Shelves</option>
-                                          <option value="Cubbies">Above Drawers</option>
-                                          <option value="Cubbies">Paper Drawer</option>
-                                          <option value="Cubbies">Grey Drawers</option>
-                                          <option value="Cubbies">Garage</option>
-                                          <option value="Cubbies">Black Lockers</option>
+                                          <option value="Back Closet">Back Closet</option>
+                                          <option value="Book Shelves">Book Shelves</option>
+                                          <option value="Above Drawers">Above Drawers</option>
+                                          <option value="Paper Drawer">Paper Drawer</option>
+                                          <option value="Grey Drawers">Grey Drawers</option>
+                                          <option value="Garage">Garage</option>
+                                          <option value="Black Lockers">Black Lockers</option>
                                       </select>
                             
                                     </div>
                                       
                                     <div class="form-group">
-                                        <select   required name="group" class="custom-selected form-control" id="group">
-                                            <option value="">Select The Item's Category</option>
+                                        <select   required name="group" class=" custom-selected form-control" id="group">
+                                            <option value="">- Select The Item's Category- </option>
                                             <option value="software">Software</option>
                                             <option value="tech">Tech</option>
                                             <option value="crafts">Crafts</option>
                                         </select>
                                       </div>
+                                    </div>
+
+                                      <div id="image_input">
+                                          <div class="form-group custom-file">
+                                                <label id="file_label" for="inputFileToLoad"  required><i class="fa fa-photo" style="font-size:48px;color:white"></i></label>
+                                                <input class="custom-file-input" id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" required>
+                                                
+                                                
+                                                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                              </div>
           
+                                              <div class="img-fluid" id="imgTest"></div>
+        
+                                            </div>
+                                          </fieldset>
                                   <div class="form-group">
                                       <div class="col-md-12 text-center">
                                           <input type="submit" id="submit" onclick="submitClick()" value="submit"/>
                                       </div>
                                   </div>
-                              </fieldset>
+                              
                           </form>
 
                                    
