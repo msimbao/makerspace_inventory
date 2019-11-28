@@ -28,8 +28,8 @@ $(document).ready(function() {
         direction: 'vertical',
         verticalCentered: true,
         sectionsColor: ['#002C53', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)'],
-        anchors: ['home', 'dashboard', 'request', 'inventory','insert'],
-        menu: '#mainMenu',
+        anchors: ['home', 'dashboard', 'requests_section', 'inventory','insert'],
+        menu: '#sidebar',
         scrollingSpeed: 700,
         easing: 'swing',
         loopBottom: false,
@@ -39,7 +39,7 @@ $(document).ready(function() {
             'textColor': '#000',
             'bulletsColor': '#000',
             'position': 'right',
-            'tooltips': ['section1', 'section2', 'section3', 'section4']
+            'tooltips': ['home', 'dashboard', 'requests_section', 'inventory','insert']
         },
        	normalScrollElements: null,
         normalScrollElementTouchThreshold: 5,
@@ -50,7 +50,12 @@ $(document).ready(function() {
 
 		//events
 		onLeave: function(index, nextIndex, direction){},
-		afterLoad: function(anchorLink, index){},
+		afterLoad: function(anchorLink, index){
+      //using anchorLink
+			if(anchorLink == 'dashboard'){
+				$('#sidebar').fadeIn()
+			}
+    },
 		afterRender: function(){},
 	});
 });
@@ -110,7 +115,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 // ========================================================
   var item = document.getElementById("item");
 var group = document.getElementById("group");
-var short = document.getElementById("short");
+var short = document.getElementById("item");
 var image = document.getElementById("image");
 var located = document.getElementById("located");
 var located_short = document.getElementById("located_short");
@@ -147,8 +152,13 @@ var submitBtn = document.getElementById("submit");
 console.log("started");
 
 function submitClick() {
+
+  short = short.value;
+  short = short.toLowerCase(); // Make item name lower case
+  short = short.replace(/\s/gi,''); // Strip the spaces from it
+
   var item_text = item.value;
-  var short_text = short.value;
+  var short_text = short;
   var group_text = group.value;
   var located_text = located.value;
   var located_short_text = located_short.value;
@@ -201,7 +211,7 @@ function submitClick() {
       $("#array").append(
         '<a href="#">' +
         item +
-        '</a><tr class=" '+group+' table-item "><td>' +item + '</td><td>' + location_short + '</td><td><img style="height:100px;border-radius:5px;"  src="' + image + '"></td><td><div class="close" onclick="removeItem(this)" aria-label="Delete">' +
+        '</a><tr class=" '+group+' table-item" id="'+item+'"><td>' +item + '</td><td>' + location_short + '</td><td><img style="height:100px;border-radius:5px;"  src="' + image + '"></td><td><div class="close" onclick="removeItem(this)" aria-label="Delete">' +
           '  &times' +
           ' </div> </td></tr>' 
       
@@ -221,7 +231,7 @@ function submitClick() {
       var email = snap.child("email").val();
       var comment = snap.child("comment").val();
       $("#requests").append(
-        '<tr class=" table-item "> <td>' +name + '</td><td>' + email + '</td> <td>'+ comment +'</td> <td><div class="close" onclick="removeItem(this)" aria-label="Delete">&times</div></td> </tr>' 
+        '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td>'+ comment +'</td> <td><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
     );
   
     
@@ -262,7 +272,7 @@ console.log('Item Admin Scripts Loaded');
  
  function removeItem(elem)
 {
-var item = elem.parentNode.id;
+var item = elem.parentElement.parentNode.id;
 var ref = firebase.app().database().ref();
 var itemRef = ref.child('Items').child(item);
 alert(elem.parentNode.id + "Removed from Database");
@@ -277,9 +287,9 @@ window.location.reload();
 
 console.log('Requests Scripts Loaded');
  
- function removeItem(elem)
+ function removeRequest(elem)
 {
-var item = elem.parentNode.id;
+var item = elem.parentElement.parentNode.id;
 var ref = firebase.app().database().ref();
 var itemRef = ref.child('requests').child(item);
 alert(elem.parentNode.id + "Removed from Database");
@@ -333,6 +343,112 @@ blobs[0].addEventListener("animationiteration", nextIteration);
 
 colorBlobs();
 
+
+
+// ========================================================
+// Metrics Generation
+// ========================================================
+
+// Most Frequent Time for Searching
+
+usageRef = database.ref("usageTimes");
+var times= [];
+var list =[4, 5, 1, 25, 5, 7, 16, 22, 24, 2, 25, 21, 23, 17, 17, 8, 5, 16, 16, 13, 3, 15, 24, 22, 5, 16, 11, 25, 12, 23, 20, 21, 5, 23, 19, 21, 7, 8, 18, 11, 4, 16, 15, 13, 5, 22, 11, 14, 1, 4, 24, 9, 23, 10, 8, 17, 10, 6, 8, 3, 16, 10, 9, 18, 11, 15, 23, 19, 14, 15, 11, 21, 24, 12, 14, 7, 7, 25, 24, 9, 21, 3, 18, 24, 23, 4, 7, 21, 3, 1, 20, 6, 19, 19, 3, 21, 18, 8, 11, 21, 2, 11, 18, 20, 6, 3, 9, 1, 12, 24, 16, 8, 9, 11, 21, 4, 5, 19, 12, 19, 12, 5, 11, 19, 19, 10, 24, 24, 20, 25, 1, 9, 20, 2, 7, 21, 24, 6, 20, 12, 17, 10, 16, 15, 7, 12, 25, 12, 10, 15, 1, 5, 2, 24, 9, 6, 18, 7, 10, 1, 23, 15, 8, 11, 24, 13, 9, 10, 3, 19, 10, 23, 23, 24, 5, 3, 13, 8, 5, 15, 4, 19, 11, 24, 20, 22, 21, 2, 5, 7, 22, 9, 25, 14, 16, 1, 6, 9, 20, 10];
+usageRef.on('value', function(snap){
+
+   snap.forEach(function(childNodes){
+
+    times.push(childNodes.val());
+   });
+  });
+
+var time
+var counts = {};
+var compare = 0;
+var mostFrequent;
+(function(array){
+   for(var i = 0, len = array.length; i < len; i++){
+       var word = array[i];
+       
+       if(counts[word] === undefined){
+           counts[word] = 1;
+       }else{
+           counts[word] = counts[word] + 1;
+       }
+       if(counts[word] > compare){
+             compare = counts[word];
+             mostFrequent = array[i];
+       }
+    }
+  return mostFrequent;
+})(list);
+
+searchTime = mostFrequent + ":00"
+
+$('#mostFrequent').text(searchTime);
+
+//Items
+    var inventoryRef = firebase.app().database().ref();
+    var itemsRef = inventoryRef.child('Items');
+
+    var totalItems= 0;
+
+    itemsRef.on('value', function(snap){
+
+       snap.forEach(function(childNodes){
+          totalItems += 1
+
+       }); 
+       console.log(totalItems)
+       $('#totalItems').text(totalItems);
+     });
+
+//Count Searches
+        var searchesRef = firebase.app().database().ref();
+    var searchRef = searchesRef.child('search');
+
+    var totalSearches= 0;
+
+    searchRef.on('value', function(snap){
+
+       snap.forEach(function(childNodes){
+          totalSearches += 1
+
+       }); 
+       console.log(totalSearches)
+       $('#totalSearches').text(totalSearches);
+
+        });
+
+//Get Bounce Rate
+var totalBounces= 0;
+
+searchRef.child("bounce").once("value", function(snapshot) {
+  var currentBounce = snapshot.child("value").val();
+ 
+  totalBounces = currentBounce;
+
+  console.log("totalBounces =" + totalBounces);
+   }); 
+
+//Count Requests
+        var requestsRef = firebase.app().database().ref();
+    var requestRef = requestsRef.child('requests');
+
+    var totalRequests= 0;
+
+    requestRef.on('value', function(snap){
+
+       snap.forEach(function(childNodes){
+          totalRequests += 1
+
+       }); 
+       console.log(totalRequests)
+       $('#totalRequests').text(totalRequests);
+     });
+
+
+
 // ========================================================
 // Plot Search Key Words Bar Graph
 // ========================================================
@@ -369,8 +485,9 @@ barplotRef.on('value', function(snap){
      
      
 var layout = {
-title:'Bar Plot of Most Popular Keywords',
+title:'Most Popular Keywords',
   height: 550,
+  autosize: true,
   font: {
     family: 'Arial',
     size: 16,
@@ -422,7 +539,7 @@ title:'Bar Plot of Most Popular Keywords',
 };
      
      
-  Plotly.newPlot('keyword_bar_graph', data,layout,{displayModeBar: false});
+  Plotly.newPlot('keyword_bar_graph', data,layout,{displayModeBar: false,responsive: true});
 
 
       console.log(array);
@@ -436,10 +553,9 @@ title:'Bar Plot of Most Popular Keywords',
 // Plot Search Times Histogram
 // ========================================================
 
-histogramRef = database.ref("usageTimes");
 var times= [];
 var list =[4, 5, 1, 25, 5, 7, 16, 22, 24, 2, 25, 21, 23, 17, 17, 8, 5, 16, 16, 13, 3, 15, 24, 22, 5, 16, 11, 25, 12, 23, 20, 21, 5, 23, 19, 21, 7, 8, 18, 11, 4, 16, 15, 13, 5, 22, 11, 14, 1, 4, 24, 9, 23, 10, 8, 17, 10, 6, 8, 3, 16, 10, 9, 18, 11, 15, 23, 19, 14, 15, 11, 21, 24, 12, 14, 7, 7, 25, 24, 9, 21, 3, 18, 24, 23, 4, 7, 21, 3, 1, 20, 6, 19, 19, 3, 21, 18, 8, 11, 21, 2, 11, 18, 20, 6, 3, 9, 1, 12, 24, 16, 8, 9, 11, 21, 4, 5, 19, 12, 19, 12, 5, 11, 19, 19, 10, 24, 24, 20, 25, 1, 9, 20, 2, 7, 21, 24, 6, 20, 12, 17, 10, 16, 15, 7, 12, 25, 12, 10, 15, 1, 5, 2, 24, 9, 6, 18, 7, 10, 1, 23, 15, 8, 11, 24, 13, 9, 10, 3, 19, 10, 23, 23, 24, 5, 3, 13, 8, 5, 15, 4, 19, 11, 24, 20, 22, 21, 2, 5, 7, 22, 9, 25, 14, 16, 1, 6, 9, 20, 10];
-histogramRef.on('value', function(snap){
+usageRef.on('value', function(snap){
 
    snap.forEach(function(childNodes){
 
@@ -459,6 +575,7 @@ histogramRef.on('value', function(snap){
 var layout = {
 title:'Histogram of Search History',
   height: 550,
+  autosize: true,
   font: {
     family: 'Arial',
     size: 16,
@@ -513,63 +630,113 @@ title:'Histogram of Search History',
 };
      
      
-  Plotly.newPlot('searchtimes_histogram', hist_data,layout,{displayModeBar: false});
+  Plotly.newPlot('searchtimes_histogram', hist_data,layout,{displayModeBar: false,responsive: true});
 
   });
   });
 
 
-
 // ========================================================
-// Count Total Inventory, Searches and Requests So Far
+// Pie Chart
 // ========================================================
 
-//Items
-    var inventoryRef = firebase.app().database().ref();
-    var itemsRef = inventoryRef.child('Items');
 
-    var totalItems= 0;
+var searchesRef = firebase.app().database().ref();
+var searchRef = searchesRef.child('search');
 
-    itemsRef.on('value', function(snap){
+var totalSearches= 0;
+var totalBounces= 0;
 
-       snap.forEach(function(childNodes){
-          totalItems += 1
+searchRef.on('value', function(snap){
 
-       }); 
-       console.log(totalItems)
-       $('#totalItems').text(totalItems);
-     });
+   snap.forEach(function(childNodes){
+      totalSearches += 1
 
-//Count Searches
-        var searchesRef = firebase.app().database().ref();
-    var searchRef = searchesRef.child('search');
+      searchRef.child("bounce").once("value", function(snapshot) {
+        var currentBounce = snapshot.child("value").val();
+        totalBounces = currentBounce;
 
-    var totalSearches= 0;
 
-    searchRef.on('value', function(snap){
 
-       snap.forEach(function(childNodes){
-          totalSearches += 1
+successfulSearches = totalSearches - totalBounces;
+var bounces_rate = [successfulSearches,totalBounces];
+    var data = [{
+    values: bounces_rate,
+    labels: [ 'Items Succesfully Found','Items Not Found'],
+    type: 'pie',
+    hoverinfo: 'label+percent',
+    hole: .7,
+    textinfo: 'none',
+    marker: {
+    colors: ['#FF3501', '#00AEE0']
+    },
+  }];
+     
+     
+var layout = {
+title:'Percentage of Successful Searches',
+  height: 550,
+  showlegend: false,
+  autosize: true,
+  font: {
+    family: 'Arial',
+    size: 16,
+    color: '#D3D3D3'
+  },
+  paper_bgcolor:'#002C53',
+  plot_bgcolor: '#002C53',
+  margin: {
+    pad: 10
+  },
+  xaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: 'Keywords',
+      font: {
+        family: 'Arial, monospace',
+        size: 18,
+        color: '#D3D3D3'
+      }
+    },
+  },
+  yaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: '',
+      font: {
+        family: 'Arial, monospace',
+        size: 0,
+        color: 'rgb(8, 30, 49)'
+      }
+    }
+  }
+};
+     
+  Plotly.newPlot('bounce_rate_chart', data,layout,{displayModeBar: false,responsive: true, showlegend: false});
 
-       }); 
-       console.log(totalSearches)
-       $('#totalSearches').text(totalSearches);
 
-        });
 
-//Count Requests
-        var requestsRef = firebase.app().database().ref();
-    var requestRef = requestsRef.child('usageTimes');
+   }); 
 
-    var totalRequests= 0;
+   console.log(totalSearches)
+    });
 
-    requestRef.on('value', function(snap){
+//Get Bounce Rate
 
-       snap.forEach(function(childNodes){
-          totalRequests += 1
-
-       }); 
-       console.log(totalRequests)
-       $('#totalRequests').text(totalRequests);
-     });
-
+}); 
