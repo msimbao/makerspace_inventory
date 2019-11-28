@@ -98,6 +98,19 @@ function searchFunction() {
     }
   }
   if (counter == 0){
+    //Add Update Bounce Counts
+    searchRef.child("bounce").once("value", function(snapshot) {
+        var currentBounce = snapshot.child("value").val();
+        console.log("currentBounce =" + currentBounce);
+        // alert("currentValue:" + currentValue);
+        var newBounce = currentBounce + 1;
+        console.log( "newBounce =" + newBounce);
+        // alert("NewValue:" + newValue);
+        searchRef.child("bounce").child("value").set(newBounce);
+
+    });
+
+    //Show To Staff Button
     // alert(counter)
     $("#toStaff").fadeIn(1000);
   }
@@ -293,7 +306,7 @@ $(document).ready(function() {
     );
 
     $("#modals").append(
-      '<div class="modal fade" id="' +
+      '<div class="modal" id="' +
         short +
         '" >' +
         '<div class="modal-dialog">' +
@@ -418,10 +431,15 @@ function closeNav() {
 
 function openContact() {
   document.getElementById("contactNav").style.width = "50%";
+  document.getElementById("contactNav").style.opacity = "1";
+  document.getElementById("close_request").style.opacity = "1";
+  
 }
 
 function closeContact() {
+  document.getElementById("contactNav").style.opacity = "0";
   document.getElementById("contactNav").style.width = "0%";
+  document.getElementById("close_request").style.opacity = "0";
 }
 
 // ========================================================
