@@ -514,10 +514,19 @@
  }
  
  .tech {
-   background: rgb(43, 94, 105);
-   color: white;
+   background: white;
+   color: black;
  }
- 
+
+
+ .tech ul li:hover{
+  border: 3px dashed black
+ }
+
+  .tech .modal_words a button{
+  border: 3px dashed white;
+ }
+
  .software {
    background: #00AEE0;
  }
@@ -741,8 +750,8 @@
    padding-top: 2%;
    padding-left: 2%;
    padding-right: 2%;
-   width:70%;
-   height:70%;
+   padding-bottom:2%;
+   width:80%;
    margin:auto;
    border-radius:  0px;
  }
