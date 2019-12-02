@@ -312,7 +312,7 @@ $(document).ready(function() {
         '<div class="modal-dialog">' +
         '<div class="modal-content">' +
         //The Extra cards behind the main one
-        '<div class="random_cards">' +
+        '<div class="random_cards '+group+'_cards ">' +
         '<div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div>' +
         '</div>' +
 
@@ -335,8 +335,8 @@ $(document).ready(function() {
         '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
         "</div>" +
         '<div class="col-lg-6 item-images">' +
-        ' <img src=" ' +image +' " class="image" alt="" />' +
-        ' <img src=" ' +image +' " class="shadow" alt="" />' +
+        '<img src=" ' +image +' " class="image" alt="" />' +
+        '<img src=" ' +image +' " class="shadow" alt="" />' +
         "</div>" +
         "</div>"+
         '</div>'+
