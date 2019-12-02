@@ -180,7 +180,16 @@
    color: #FE3808;
    color: #002C53;
  }
- 
+
+  /*--------------------------------------------------------------
+ # Map Font
+ --------------------------------------------------------------*/
+
+ .lb-caption {
+  font-size: 30px !important;
+  color: #FE3808 !important;
+  }
+  
  /*--------------------------------------------------------------
  # Blob Control
  --------------------------------------------------------------*/
@@ -637,6 +646,54 @@
 }
 
 
+
+.tech_cards div:nth-child(1) {
+  background: #FCB900;
+    right:-10%;
+    transform: rotate(50deg)
+}
+
+ .tech_cards div:nth-child(2) {
+  background: #FCB900;
+    right:10%;
+    transform: rotate(80deg)
+}
+
+ .tech_cards div:nth-child(3) {
+  background: #FCB900;
+    right:-5%;
+    transform: rotate(140deg)
+}
+
+ .tech_cards div:nth-child(4) {
+  background: #FCB900;
+    right:5%;
+    transform: rotate(70deg)
+}
+
+.crafts_cards div:nth-child(1) {
+  background: #00AEE0;
+    right:-13%;
+    transform: rotate(40deg)
+}
+
+ .crafts_cards div:nth-child(2) {
+  background: #00AEE0;
+    right:15%;
+    transform: rotate(120deg)
+}
+
+ .crafts_cards div:nth-child(3) {
+  background: #00AEE0;
+    right:-9%;
+    transform: rotate(200deg)
+}
+
+ .crafts_cards div:nth-child(4) {
+  background: #00AEE0;
+    right:7%;
+    transform: rotate(20deg)
+}
  
  .texts {
    padding: 10%;
@@ -665,7 +722,8 @@
   position:absolute;
   left:-20%;
   top:5%;
-  width: 300px;
+  width: 600px;
+  height:300px;
   border-radius: 15px;
   margin: 0 auto;
 }
@@ -674,8 +732,18 @@
   display: block;
   position: relative;
   box-shadow: 0 22px 46px 0 rgba(0, 0, 0, 0.5);
-  width: 300px;
+  height: 300px;
+  width:305px;
+  text-align:center;
+  overflow:hidden;
   border-radius: 15px;
+  /* background:white; */
+}
+
+.image_inner {
+  display: block;
+  position: relative;
+  height: 300px;
 }
 
 .shadow {
@@ -803,7 +871,6 @@
   text-align:center;
   border-radius: 5px;
   padding:5px;
-  background:
 }
  
  #imgTest img {
@@ -998,6 +1065,9 @@
    padding: 10%;
    margin-top: 10px;
  }
+
+
+ 
  
  .overlay a {
    padding: 8px;
@@ -1019,7 +1089,7 @@
    top: 20px;
    right: 45px;
    font-size: 60px;
- }
+ } 
  
  @media screen and (max-height: 450px) {
    .overlay a {
