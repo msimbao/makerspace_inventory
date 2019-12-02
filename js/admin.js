@@ -138,30 +138,24 @@ function encodeImageFileAsURL() {
       alert(
         "Image Upload Complete" 
       );
-      console.log(
-        "Converted Base64 version is " +
-          document.getElementById("imgTest").innerHTML
-      );
+      // console.log(
+      //   "Converted Base64 version is " +
+      //     document.getElementById("imgTest").innerHTML
+      // );
     };
     fileReader.readAsDataURL(fileToLoad);
   }
 }
 
-var submitBtn = document.getElementById("submit");
-// prints "started" in the browser's dev tools console to help me know that the first part has gone through
-console.log("started");
 
 function submitClick() {
 
-  short = short.value;
-  short = short.toLowerCase(); // Make item name lower case
-  short = short.replace(/\s/gi,''); // Strip the spaces from it
 
-  var item_text = item.value;
-  var short_text = short;
-  var group_text = group.value;
-  var located_text = located.value;
-  var located_short_text = located_short.value;
+
+// prints "started" in the browser's dev tools console to help me know that the first part has gone through
+console.log("started");
+
+
   var filesSelected = document.getElementById("inputFileToLoad").files;
 
   if (filesSelected.length > 0) {
@@ -170,12 +164,27 @@ function submitClick() {
     var fileReader = new FileReader();
 
     fileReader.onload = function(fileLoadedEvent) {
+
+      var item = document.getElementById("item");
+      var group = document.getElementById("group");
+      var short;
+      var located_short = document.getElementById("located_short");
+
+      var short = item.value;
+      short = short.toLowerCase(); // Make item name lower case
+      short = short.replace(/\s/gi,''); // Strip the spaces from it
+    
+      var item_text = item.value;
+      var short_text = short;
+      alert(short_text + ' added to database');
+      var group_text = group.value;
+      // var located_text = located.value;
+      var located_short_text = located_short.value;
+      
       var srcData = fileLoadedEvent.target.result; // <--- data: base64
 
-      var newImage = document.createElement("img");
-
       var image_text = srcData;
-      // prints "working" in the browser's dev tools console to help me know that the second part has gone through
+      console.log("'"+image_text+"'");
 
       var ref = firebase.app().database().ref();
       var firebaseRef = ref.child('Items').child(item_text);
@@ -185,14 +194,16 @@ function submitClick() {
       firebaseRef.child("item_text").set(item_text);
       firebaseRef.child("group").set(group_text);
       firebaseRef.child("short_text").set(short_text);
-      firebaseRef.child("image_text").set(image_text);
-      firebaseRef.child("located_text").set(located_text);
       firebaseRef.child("located_short_text").set(located_short_text);
+      firebaseRef.child("image_text").set(image_text);
+      // firebaseRef.child("located_text").set(located_text);
+      
       // firebaseRef.push().set(messageText);
     };
     fileReader.readAsDataURL(fileToLoad);
   }
 }
+
 
 // ========================================================
 // Read Items From Database
