@@ -6,577 +6,753 @@
 
 //=======================================================
 
-// Author's Note: There are several commented out alert notes. These are for testing the Javascript to let the page tell me whether certain functions have been carried out and what their outputs. 
-// If the output of a function is what is intuitively expected, e.g for a function to increase database search count entries by 1, then that function has passed the test. Else, it has failed
 
-
-// ========================================================
-// Filter Search
-// ========================================================
-
-function searchFunction() {
-  // Declare General Variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName("li");
-
-
-  // Handle Enter Key Press
-  var input = document.getElementById("myInput");
-  input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("searchButton").click();
+   // ========================================================
+   // Sidebar Navigation
+   // ========================================================
+   function openNav() {
+    document.getElementById("myNav").style.width = "100%";
   }
-});
-
-
-
-  // Keyword Related Variables
-
-  var searchterm = document.getElementById("myInput");
-  var searchterm = searchterm.value;
-  // alert(searchterm);
-  searchRef = database.ref("search");
-
-  // Time Related Variables
-
-  timeRef = database.ref("usageTimes");
-  var date = new Date();
-  var hours = date.getHours();
-
-  // Record Time of Search
-
-  timeRef.push(hours);
-
-  // Collect Search Keyword Data
-
-  searchRef.child(searchterm).once("value", function(snapshot) {
-    if (snapshot.exists()) {
-      // alert("exists");
-      var currentValue = snapshot.child("count").val();
-      // alert("currentValue:" + currentValue);
-      var newValue = currentValue + 1;
-      // alert("NewValue:" + newValue);
-      searchRef
-        .child(searchterm)
-        .child("count")
-        .set(newValue);
-      // searchRef.child(searchterm).set(newValue);
-    } else {
-      // alert("absent");
-      var newValue = 1;
-      searchRef
-        .child(searchterm)
-        .child("name")
-        .set(searchterm);
-      searchRef
-        .child(searchterm)
-        .child("count")
-        .set(newValue);
-    }
-  });
-
-  var counter = 0 
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.opacity = "1";
-      item = li[i] 
-      $(item).fadeIn(1000);
-      counter += 1;
-      // alert(counter)
-    } else {
-      item = li[i] 
-      $(item).fadeOut(500); 
-      counter += 0;
-      // alert(counter)
-    }
+  
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
   }
-  if (counter == 0){
-    //Add Update Bounce Counts
-    searchRef.child("bounce").once("value", function(snapshot) {
-        var currentBounce = snapshot.child("value").val();
-        console.log("currentBounce =" + currentBounce);
-        // alert("currentValue:" + currentValue);
-        var newBounce = currentBounce + 1;
-        console.log( "newBounce =" + newBounce);
-        // alert("NewValue:" + newValue);
-        searchRef.child("bounce").child("value").set(newBounce);
 
-    });
-
-    //Show To Staff Button
-    // alert(counter)
-    $("#toStaff").fadeIn(1000);
-  }
-}
-
-
-
-
-
- // Clear Search to call back all items
-function recall() {
-
-  $("#toStaff").fadeOut(500);
-
-  // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName("li");
-
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    li[i].style.display = "";
-  }
-}
 
 // ========================================================
 // pagepiling animated scrolling
 // ========================================================
 $(document).ready(function() {
-  $("#pagepiling").pagepiling({
-    menu: null,
-    direction: "vertical",
-    verticalCentered: true,
-    sectionsColor: ["#FE3808", "#002C53", "#FE3808", "#002C53", "#002C53"],
-    anchors: ["search", "map", "about", "staff", "contact"],
-    menu: "#mainMenu",
-    scrollingSpeed: 700,
-    easing: "swing",
-    loopBottom: false,
-    loopTop: false,
-    css3: true,
-    navigation: {
-      textColor: "#000",
-      bulletsColor: "#000",
-      position: "right",
-      tooltips: ["section1", "section2", "section3", "section4"]
-    },
-    normalScrollElements: null,
-    normalScrollElementTouchThreshold: 5,
-    touchSensitivity: 5,
-    keyboardScrolling: true,
-    sectionSelector: ".section",
-    animateAnchor: false,
+	$('#pagepiling').pagepiling({
+	    menu: null,
+        direction: 'vertical',
+        verticalCentered: true,
+        sectionsColor: ['#002C53', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)', 'rgb(8, 30, 49)'],
+        anchors: ['home', 'dashboard', 'requests_section', 'inventory','insert'],
+        menu: '#sidebar',
+        scrollingSpeed: 700,
+        easing: 'swing',
+        loopBottom: false,
+        loopTop: false,
+        css3: true,
+        navigation: {
+            'textColor': '#000',
+            'bulletsColor': '#000',
+            'position': 'right',
+            'tooltips': ['home', 'dashboard', 'requests_section', 'inventory','insert']
+        },
+       	normalScrollElements: null,
+        normalScrollElementTouchThreshold: 5,
+        touchSensitivity: 5,
+        keyboardScrolling: true,
+        sectionSelector: '.section',
+        animateAnchor: false,
 
-    //events
-    onLeave: function(index, nextIndex, direction) {},
-    afterLoad: function(anchorLink, index) {},
-    afterRender: function() {}
-  });
+		//events
+		onLeave: function(index, nextIndex, direction){},
+		afterLoad: function(anchorLink, index){
+      //using anchorLink
+			if(anchorLink == 'dashboard'){
+				$('#sidebar').fadeIn()
+			}
+    },
+		afterRender: function(){},
+	});
 });
 
+
 // ========================================================
-// Splash Screen Controls
+// User Authentication
 // ========================================================
 
-const colors = ["#FE3808", "#002C53", "#00AEE0"];
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+  
+      document.getElementById("user_div").style.display = "block";
+      document.getElementById("login_div").style.display = "none";
+  
+      var user = firebase.auth().currentUser;
+  
+      if(user != null){
+  
+        var email_id = user.email;
+     
+      }
+  
+    } else {
+      // No user is signed in.
+  
+      document.getElementById("user_div").style.display = "none";
+      document.getElementById("login_div").style.display = "block";
+  
+    }
+  });
+  
+  function login(){
+  
+    var userEmail = document.getElementById("email_field").value;
+    var userPass = document.getElementById("password_field").value;
+  
+    firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+  
+      window.alert("Incorrect email or password. Please try again.");
+  
+      // ...
+    });
+  
+  }
+  
+  function logout(){
+    firebase.auth().signOut();
+  }
+// ========================================================  
+// Write To Database 
+// ========================================================
+  var item = document.getElementById("item");
+var group = document.getElementById("group");
+var short = document.getElementById("item");
+var image = document.getElementById("image");
+var located = document.getElementById("located");
+var located_short = document.getElementById("located_short");
+var srcData;
+
+function encodeImageFileAsURL() {
+  var filesSelected = document.getElementById("inputFileToLoad").files;
+  if (filesSelected.length > 0) {
+    var fileToLoad = filesSelected[0];
+
+    var fileReader = new FileReader();
+
+    fileReader.onload = function(fileLoadedEvent) {
+      var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+      var newImage = document.createElement("img");
+      newImage.src = srcData;
+
+      document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+      alert(
+        "Image Upload Complete" 
+      );
+      // console.log(
+      //   "Converted Base64 version is " +
+      //     document.getElementById("imgTest").innerHTML
+      // );
+    };
+    fileReader.readAsDataURL(fileToLoad);
+  }
+}
+
+
+function submitClick() {
+
+
+
+// prints "started" in the browser's dev tools console to help me know that the first part has gone through
+console.log("started");
+
+
+  var filesSelected = document.getElementById("inputFileToLoad").files;
+
+  if (filesSelected.length > 0) {
+    var fileToLoad = filesSelected[0];
+
+    var fileReader = new FileReader();
+
+    fileReader.onload = function(fileLoadedEvent) {
+
+      var item = document.getElementById("item");
+      var group = document.getElementById("group");
+      var short;
+      var located_short = document.getElementById("located_short");
+
+      var short = item.value;
+      short = short.toLowerCase(); // Make item name lower case
+      short = short.replace(/\s/gi,''); // Strip the spaces from it
+    
+      var item_text = item.value;
+      var short_text = short;
+      alert(short_text + ' added to database');
+      var group_text = group.value;
+      // var located_text = located.value;
+      var located_short_text = located_short.value;
+      
+      var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+      var image_text = srcData;
+      console.log("'"+image_text+"'");
+
+      var ref = firebase.app().database().ref();
+      var firebaseRef = ref.child('Items').child(item_text);
+
+      window.alert("Item Inserted!");
+
+      firebaseRef.child("item_text").set(item_text);
+      firebaseRef.child("group").set(group_text);
+      firebaseRef.child("short_text").set(short_text);
+      firebaseRef.child("located_short_text").set(located_short_text);
+      firebaseRef.child("image_text").set(image_text);
+      // firebaseRef.child("located_text").set(located_text);
+      
+      // firebaseRef.push().set(messageText);
+    };
+    fileReader.readAsDataURL(fileToLoad);
+  }
+}
+
+
+// ========================================================
+// Read Items From Database
+// ========================================================
+  $(document).ready(function() {
+    var ref = firebase.app().database().ref();
+    var itemsRef = ref.child('Items');
+  
+    itemsRef.on("child_added", snap => {
+      var item = snap.child("item_text").val();
+      var group = snap.child("group").val();
+      var short = snap.child("short_text").val();
+      var image = snap.child("image_text").val();
+      var location = snap.child("located_text").val(); // Not used here
+      var location_short = snap.child("located_short_text").val();
+      $("#array").append(
+        '<a href="#">' +
+        item +
+        '</a><tr class=" '+group+' table-item" id="'+item+'"><td>' +item + '</td><td>' + location_short + '</td><td><img style="height:100px;border-radius:5px;"  src="' + image + '"></td><td><div class="close" onclick="removeItem(this)" aria-label="Delete">' +
+          '  &times' +
+          ' </div> </td></tr>' 
+      
+    );
+  });
+
+// ========================================================
+// Read Requests From Database
+// ========================================================
+
+
+    var ref = firebase.app().database().ref();
+    var requestReference = ref.child('requests');
+  
+    requestReference.on("child_added", snap => {
+      var name = snap.child("name").val();
+      var email = snap.child("email").val();
+      var comment = snap.child("comment").val();
+      $("#requests").append(
+        '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td>'+ comment +'</td> <td><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
+    );
+  
+    
+
+    });
+  });
+
+
+
+// ========================================================
+// Input Filter
+// ========================================================
+function myFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("array");
+  li = ul.getElementsByTagName("tr");
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+// ========================================================
+// Remove Item Firebase Script
+// ========================================================
+
+console.log('Item Admin Scripts Loaded');
+ 
+ function removeItem(elem)
+{
+var itemRow = elem.parentElement.parentNode;
+var item = elem.parentElement.parentNode.id;
+var ref = firebase.app().database().ref();
+var itemRef = ref.child('Items').child(item);
+alert(elem.parentNode.id + "Removed from Database");
+itemRef.remove();  
+itemRow.style.display = "none";
+}
+
+
+// ========================================================
+// Remove Request Script
+// ========================================================
+
+console.log('Requests Scripts Loaded');
+ 
+ function removeRequest(elem)
+{
+var reqRow = elem.parentElement.parentNode;
+var req = elem.parentElement.parentNode.id;
+var ref = firebase.app().database().ref();
+var reqRef = ref.child('requests').child(req);
+alert(elem.parentNode.id + "Removed from Database");
+reqRef.remove();  
+reqRow.style.display = "none";
+}
+
+
+
+// ========================================================
+// Blob Colors and Control
+// ========================================================
+const colors = ['#FE3808','#002C53','#00AEE0'];
 const numLines = 3;
 var currCount = numLines;
 const texts = document.querySelectorAll("#textClip text");
 const blobs = document.querySelectorAll("#background path");
 
 function colorBlobs() {
-  blobs.forEach(blob => {
-    blob.style.fill = colors[Math.floor(Math.random() * colors.length)];
-  });
+    blobs.forEach(blob => {
+        blob.style.fill = colors[Math.floor(Math.random() * colors.length)];
+    });
 }
 
 function nextIteration() {
-  // Change the color of all the blobs
-  colorBlobs();
+    // Change the color of all the blobs
+    colorBlobs();
 
-  // Hide the old set of lines
-  let startVal = currCount - numLines;
-  if (startVal < 0) {
-    startVal = texts.length - numLines;
-  }
-  for (let i = startVal; i < startVal + numLines; i++) {
-    texts[i].style.display = "none";
-  }
-  // Show new set of lines
-  for (let j = currCount; j < currCount + numLines; j++) {
-    texts[j].style.display = "inline";
-  }
-  currCount += numLines;
-  if (currCount >= texts.length) {
-    currCount = 0;
-  }
+    // Hide the old set of lines
+    let startVal = currCount - numLines;
+    if(startVal < 0) {
+        startVal = texts.length - numLines;
+    }
+    for(let i = startVal; i < startVal + numLines; i++) {
+        texts[i].style.display = "none";
+    }
+    // Show new set of lines
+    for(let j = currCount; j < currCount + numLines; j++) {
+        texts[j].style.display = "inline";
+    }
+    currCount += numLines;
+    if(currCount >= texts.length) {
+        currCount = 0;
+    }
 }
 
 // Since all of our blobs are using the same animation, we only
 // need to listen to one of them
+
 blobs[0].addEventListener("animationiteration", nextIteration);
 
 colorBlobs();
 
+
+
 // ========================================================
-// // Speech Controls
+// Metrics Generation
 // ========================================================
 
-// var speech  = function(){
-// var x = "lol";
+// Most Frequent Time for Searching
 
-// var recognition = new webkitSpeechRecognition();
-//  recognition.continuous = true;
-//  recognition.interimResults = true;
+usageRef = database.ref("usageTimes");
+var times= [];
+var list =[4, 5, 1, 25, 5, 7, 16, 22, 24, 2, 25, 21, 23, 17, 17, 8, 5, 16, 16, 13, 3, 15, 24, 22, 5, 16, 11, 25, 12, 23, 20, 21, 5, 23, 19, 21, 7, 8, 18, 11, 4, 16, 15, 13, 5, 22, 11, 14, 1, 4, 24, 9, 23, 10, 8, 17, 10, 6, 8, 3, 16, 10, 9, 18, 11, 15, 23, 19, 14, 15, 11, 21, 24, 12, 14, 7, 7, 25, 24, 9, 21, 3, 18, 24, 23, 4, 7, 21, 3, 1, 20, 6, 19, 19, 3, 21, 18, 8, 11, 21, 2, 11, 18, 20, 6, 3, 9, 1, 12, 24, 16, 8, 9, 11, 21, 4, 5, 19, 12, 19, 12, 5, 11, 19, 19, 10, 24, 24, 20, 25, 1, 9, 20, 2, 7, 21, 24, 6, 20, 12, 17, 10, 16, 15, 7, 12, 25, 12, 10, 15, 1, 5, 2, 24, 9, 6, 18, 7, 10, 1, 23, 15, 8, 11, 24, 13, 9, 10, 3, 19, 10, 23, 23, 24, 5, 3, 13, 8, 5, 15, 4, 19, 11, 24, 20, 22, 21, 2, 5, 7, 22, 9, 25, 14, 16, 1, 6, 9, 20, 10];
+usageRef.on('value', function(snap){
 
-// recognition.onresult = function(event) {
-//  var colour = event.results[event.results.length - 1][0].transcript;
-//  // make it lowercase
-//  colour = colour.toLowerCase();
-//  // strip the spaces out of it
-//  colour = colour.replace(/\s/gi,'');
-//  $('.section').css('background',colour);
-//  $('.lock').text(colour);
-//  if (colour == 'pencils') {
-// 	 $('#pagepiling').animate({opacity:0},500, function() {
-// 		  $('#whiteboard').animate({opacity:1},300, function() {
-// 				$('#whiteboard').delay(3000).animate({opacity:0},1000, function() {
-// 					$('#pagepiling').animate({opacity:1},500)
-// 					 $('h3').text("I am listening");
-// 				})
-// 			})
-// 	 })
+   snap.forEach(function(childNodes){
 
-//  }
-// }
-
-// recognition.start();
-
-// }
-
-// if (!('webkitSpeechRecognition' in window)) {
-// alert("Sorry you require a browser that supports speech recognition");
-// }
-// else {
-// speech();
-// }
-
-
-
-
-
-
-$(document).ready(function() {
-  var inventoryRef = firebase
-    .app()
-    .database()
-    .ref();
-  var itemsRef = inventoryRef.child("Items");
-
-  itemsRef.on("child_added", snap => {
-    var item = snap.child("item_text").val();
-    var group = snap.child("group").val();
-    var short = snap.child("short_text").val();
-    var image = snap.child("image_text").val();
-    // var location = snap.child("located_text").val();
-    var location_short = snap.child("located_short_text").val();
-
-    $("#array").append(
-      '<li>' +
-        '<div class="col-md-4">' +
-        '<a href="#">' +
-        item +
-        '</a><div class="dbitem mb-4 box-shadow"  data-toggle="modal" data-target="#' +
-        short +
-        '"  >' +
-        '<div class="card-img-top" style="width:970px;">' +
-        '</div><div class="card-body ' +
-        group +
-        '">' +
-        ' <p class="card-text"><h6>' +
-        item +
-        "</h6></p>" +
-        ' <div class="d-flex justify-content-between align-items-center">' +
-        "</div>" +
-        "</div>" +
-        "</div>" +
-        "</li>"
-    );
-
-    $("#modals").append(
-      '<div class="modal" id="' +
-        short +
-        '" >' +
-        '<div class="modal-dialog">' +
-        '<div class="modal-content">' +
-        //The Extra cards behind the main one
-        '<div class="random_cards '+group+'_cards ">' +
-        '<div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div>' +
-        '</div>' +
-
-        '<div class=" test  '+group+' ">' +
-        '<ul class="modal_controls">' +
-        ' <li data-dismiss="modal" aria-label="Close">&times;</li>' +
-        ' <li class="btn-next controller" onclick="next(this)" aria-label="Next"><i class="fa fa-hand-o-right" "></i></li>' +
-        ' <li class="btn-prev controller" onclick="prev(this)" aria-label="Prev"><i class="fa fa-hand-o-left" "></i></li>' +
-        '</ul>' +
-        '<div class="modal-words">' +
-        "<h5 style='font-size:30px;color:#333333'><b>" +
-        item +
-        "</b></h5>" +
-        "<h5> <u>Group:  </u>" +
-        group +
-        "</h5>" +
-        "<h5> <u> Location:  </u>" +
-        location_short +
-        "</h5><br>" +
-        '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
-        "</div>" +
-        '<div class="col-lg-6 item-images">' +
-        '<div class="image"><img src=" ' +image +' " class="image_inner" alt="" /><div>' +
-        '<img src=" ' +image +' " class="shadow" alt="" />' +
-        "</div>" +
-        "</div>"+
-        '</div>'+
-        '</div>'+
-        "</div>"
-    );
+    times.push(childNodes.val());
+   });
   });
-});
 
-$('#toMap').on('click' , function() { 
-  $('.modal').modal('hide')
-});
+var time
+var counts = {};
+var compare = 0;
+var mostFrequent;
+(function(array){
+   for(var i = 0, len = array.length; i < len; i++){
+       var word = array[i];
+       
+       if(counts[word] === undefined){
+           counts[word] = 1;
+       }else{
+           counts[word] = counts[word] + 1;
+       }
+       if(counts[word] > compare){
+             compare = counts[word];
+             mostFrequent = array[i];
+       }
+    }
+  return mostFrequent;
+})(list);
 
+searchTime = mostFrequent + ":00"
 
-// ========================================================
-// Modal Carousel
-// ========================================================
+$('#mostFrequent').text(searchTime);
 
+//Items
+    var inventoryRef = firebase.app().database().ref();
+    var itemsRef = inventoryRef.child('Items');
 
-// Experimental Really Bad Code ._. need help to patch this up
+    var totalItems= 0;
+
+    itemsRef.on('value', function(snap){
+
+       snap.forEach(function(childNodes){
+          totalItems += 1
+
+       }); 
+       console.log(totalItems)
+       $('#totalItems').text(totalItems);
+     });
+
+//Count Searches
+        var searchesRef = firebase.app().database().ref();
+    var searchRef = searchesRef.child('search');
+
+    var totalSearches= 0;
+
+    searchRef.on('value', function(snap){
+
+       snap.forEach(function(childNodes){
+          totalSearches += 1
+
+       }); 
+       console.log(totalSearches)
+       $('#totalSearches').text(totalSearches);
+
+        });
+
+//Get Bounce Rate
+var totalBounces= 0;
+
+searchRef.child("bounce").once("value", function(snapshot) {
+  var currentBounce = snapshot.child("value").val();
  
-  //click next
-  function next(e){
-    console.log('Showing Next Modal');
-    var currentModal = $(e).parent().parent().parent().parent().parent();
-    var nextModal = currentModal.next();
+  totalBounces = currentBounce;
 
-    if (nextModal != null){
-      currentModal.modal('toggle').delay(1000);
-      nextModal.modal('toggle'); 
-    } else {
-      currentModal.modal('toggle');
-      console.log('No Next Modal');
-    }
+  console.log("totalBounces =" + totalBounces);
+   }); 
 
-  };
+//Count Requests
+        var requestsRef = firebase.app().database().ref();
+    var requestRef = requestsRef.child('requests');
 
+    var totalRequests= 0;
 
-    //click next
-  function prev(e){
-    console.log('Showing Previous Modal');
-    var currentModal = $(e).parent().parent().parent().parent().parent();
-    var prevModal = currentModal.prev();
+    requestRef.on('value', function(snap){
 
-    if (prevModal != null){
-      currentModal.modal('toggle').delay(1000);
-      prevModal.modal('toggle'); 
-    } else {
-      currentModal.modal('toggle');
-      console.log('No Previous Modal');
-    }
+       snap.forEach(function(childNodes){
+          totalRequests += 1
 
-  };
-
-
-// ========================================================
-// Modal Random Colors
-// ========================================================
-
-// var myArray = ['red', 'green', 'blue'];    
-// var rand = myArray[Math.floor(Math.random() * myArray.length)];
-// // document.getElementsByClassName("tech").style.background = rand;
-
-// var randAngle = Math.random()
-// // document.getElementsByClassName("test").style.transform = "rotate(7deg)";
-// $(".tech").css({"background": "red"});
-
-
-
-$(document).ready(function() {
-  var colors = ['red', 'blue', 'green', 'yellow', 'cyan', 'orange'];
-  var new_color = colors[Math.floor(Math.random() * colors.length)];
-  $('.color-div').css('background-color', new_color);
-});
+       }); 
+       console.log(totalRequests)
+       $('#totalRequests').text(totalRequests);
+     });
 
 
 
 // ========================================================
-// NavBar
-// ========================================================
-function openNav() {
-  document.getElementById("myNav").style.width = "100%";
-}
-
-function closeNav() {
-  document.getElementById("myNav").style.width = "0%";
-}
-
-// ========================================================
-// Contact Bar
+// Plot Search Key Words Bar Graph
 // ========================================================
 
-function openContact() {
-  document.getElementById("contactNav").style.width = "50%";
-  document.getElementById("contactNav").style.opacity = "1";
-  document.getElementById("close_request").style.opacity = "1";
-  
-}
+barplotRef = database.ref("search").orderByChild('count').limitToLast(6);
+var array= [];
+var array2 = [];
+barplotRef.on('value', function(snap){
 
-function closeContact() {
-  document.getElementById("contactNav").style.opacity = "0";
-  document.getElementById("contactNav").style.width = "0%";
-  document.getElementById("close_request").style.opacity = "0";
-}
+   snap.forEach(function(childNodes){
 
-// ========================================================
-// Write Reuqests To Database
-// ========================================================
-var first_name = document.getElementById("first_name");
-var email_address = document.getElementById("email_address");
-var comments = document.getElementById("comments");
-var srcData;
+    array.push(childNodes.val().name);
+    array2.push(childNodes.val().count);
 
-var submitBtn = document.getElementById("submit");
-// prints "started" in the browser's dev tools console to help me know that the first part has gone through
-console.log("started request submission");
+    var data = [{
+    type: 'bar',
+    marker: {
+    color: '#FF3501',
 
-function contactSubmit() {
-  var name = first_name.value;
-  var email = email_address.value;
-  var comment = comments.value;
-
-  var ref = firebase
-    .app()
-    .database()
-    .ref();
-  var requestRef = ref.child("requests").push();
-
-  window.alert(
-    "Thank you for sending your request! we will get back to you soon!"
-  );
-
-  requestRef.child("name").set(name);
-  requestRef.child("email").set(email);
-  requestRef.child("comment").set(comment);
-  // firebaseRef.push().set(messageText);
-}
-
-// ========================================================
-// Google Script for Request Data via email
-// ========================================================
-
-(function() {
-  // get all data in form and return object
-  function getFormData(form) {
-    var elements = form.elements;
-    var honeypot;
-    var fields = Object.keys(elements)
-      .filter(function(k) {
-        if (elements[k].name === "honeypot") {
-          honeypot = elements[k].value;
-          return false;
-        }
-        return true;
-      })
-      .map(function(k) {
-        if (elements[k].name !== undefined) {
-          return elements[k].name;
-          // special case for Edge's html collection
-        } else if (elements[k].length > 0) {
-          return elements[k].item(0).name;
-        }
-      })
-      .filter(function(item, pos, self) {
-        return self.indexOf(item) == pos && item;
-      });
-    var formData = {};
-    fields.forEach(function(name) {
-      var element = elements[name];
-
-      // singular form elements just have one value
-      formData[name] = element.value;
-      // when our element has multiple items, get their values
-      if (element.length) {
-        var data = [];
-        for (var i = 0; i < element.length; i++) {
-          var item = element.item(i);
-          if (item.checked || item.selected) {
-            data.push(item.value);
-          }
-        }
-        formData[name] = data.join(", ");
+    },
+    x: array,
+    y: array2,
+        transforms: [{
+    type: 'sort',
+    target: 'y',
+    order: 'ascending'
+  }, {
+    type: 'filter',
+    target: 'y',
+    operation: '>=',
+    value: 1
+  }]
+  }];
+     
+     
+var layout = {
+title:'Most Popular Keywords',
+  width: 550,
+  height: 550,
+  autosize: true,
+  font: {
+    family: 'Arial',
+    size: 16,
+    color: '#D3D3D3'
+  },
+  paper_bgcolor:'#002C53',
+  plot_bgcolor: '#002C53',
+  margin: {
+    pad: 10
+  },
+  xaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: 'Keywords',
+      font: {
+        family: 'Arial, monospace',
+        size: 18,
+        color: '#D3D3D3'
       }
+    },
+  },
+  yaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: '',
+      font: {
+        family: 'Arial, monospace',
+        size: 0,
+        color: 'rgb(8, 30, 49)'
+      }
+    }
+  }
+};
+     
+     
+  Plotly.newPlot('keyword_bar_graph', data,layout,{displayModeBar: false,responsive: true});
+
+
+      console.log(array);
+      console.log(array2);
+
+  });
+  });
+
+
+// ========================================================
+// Plot Search Times Histogram
+// ========================================================
+
+var times= [];
+var list =[4, 5, 1, 25, 5, 7, 16, 22, 24, 2, 25, 21, 23, 17, 17, 8, 5, 16, 16, 13, 3, 15, 24, 22, 5, 16, 11, 25, 12, 23, 20, 21, 5, 23, 19, 21, 7, 8, 18, 11, 4, 16, 15, 13, 5, 22, 11, 14, 1, 4, 24, 9, 23, 10, 8, 17, 10, 6, 8, 3, 16, 10, 9, 18, 11, 15, 23, 19, 14, 15, 11, 21, 24, 12, 14, 7, 7, 25, 24, 9, 21, 3, 18, 24, 23, 4, 7, 21, 3, 1, 20, 6, 19, 19, 3, 21, 18, 8, 11, 21, 2, 11, 18, 20, 6, 3, 9, 1, 12, 24, 16, 8, 9, 11, 21, 4, 5, 19, 12, 19, 12, 5, 11, 19, 19, 10, 24, 24, 20, 25, 1, 9, 20, 2, 7, 21, 24, 6, 20, 12, 17, 10, 16, 15, 7, 12, 25, 12, 10, 15, 1, 5, 2, 24, 9, 6, 18, 7, 10, 1, 23, 15, 8, 11, 24, 13, 9, 10, 3, 19, 10, 23, 23, 24, 5, 3, 13, 8, 5, 15, 4, 19, 11, 24, 20, 22, 21, 2, 5, 7, 22, 9, 25, 14, 16, 1, 6, 9, 20, 10];
+usageRef.on('value', function(snap){
+
+   snap.forEach(function(childNodes){
+
+    times.push(childNodes.val());
+
+    var hist_data = [{
+    type: 'bar',
+    marker: {
+    color: '#00AEE0',
+
+    },
+    x: list,
+    orientation: 'v',
+  }];
+     
+     
+var layout = {
+title:'Histogram of Search History',
+  autosize: true,
+  width: 550,
+  height: 550,
+  font: {
+    family: 'Arial',
+    size: 16,
+    color: '#D3D3D3'
+  },
+  paper_bgcolor:'#002C53',
+  plot_bgcolor: '#002C53',
+  margin: {
+    pad: 10
+  },
+  xaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    tickmode: 'array',
+    tickvals: [ 1, 8 , 16, 23],
+    /* Set the text displayed at the ticks position via tickvals */
+    ticktext: [ '1:00' , '8:00' , '16:00' , '23:00' ],
+    showticklabels: true,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: 'Time Stamp',
+      font: {
+        family: 'Arial, monospace',
+        size: 18,
+        color: '#D3D3D3'
+      }
+    },
+  },
+  yaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: '',
+      font: {
+        family: 'Arial, monospace',
+        size: 18,
+        color: 'rgb(8, 30, 49)'
+      }
+    }
+  }
+};
+     
+     
+  Plotly.newPlot('searchtimes_histogram', hist_data,layout,{displayModeBar: false,responsive: true});
+
+  });
+  });
+
+
+// ========================================================
+// Pie Chart
+// ========================================================
+
+
+var searchesRef = firebase.app().database().ref();
+var searchRef = searchesRef.child('search');
+
+var totalSearches= 0;
+var totalBounces= 0;
+
+searchRef.on('value', function(snap){
+
+   snap.forEach(function(childNodes){
+      totalSearches += 1
+
+      searchRef.child("bounce").once("value", function(snapshot) {
+        var currentBounce = snapshot.child("value").val();
+        totalBounces = currentBounce;
+
+
+
+successfulSearches = totalSearches - totalBounces;
+var bounces_rate = [successfulSearches,totalBounces];
+    var data = [{
+    values: bounces_rate,
+    labels: [ 'Items Succesfully Found','Items Not Found'],
+    type: 'pie',
+    hoverinfo: 'label+percent',
+    hole: .7,
+    textinfo: 'none',
+    marker: {
+    colors: ['#00AEE0', '#FF3501']
+    },
+  }];
+     
+     
+var layout = {
+title:'Percentage of Successful Searches',
+width: 550,
+height: 550,
+  showlegend: false,
+  autosize: true,
+  font: {
+    family: 'Arial',
+    size: 16,
+    color: '#D3D3D3'
+  },
+  paper_bgcolor:'#002C53',
+  plot_bgcolor: '#002C53',
+  margin: {
+    pad: 10
+  },
+  xaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: 'Keywords',
+      font: {
+        family: 'Arial, monospace',
+        size: 18,
+        color: '#D3D3D3'
+      }
+    },
+  },
+  yaxis: {
+    autorange: true,
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    autotick: true,
+    ticks: '',
+    showticklabels: false,
+    backgroundcolor: "rgb(255,0,0)",
+   showbackground: true,
+    title: {
+      text: '',
+      font: {
+        family: 'Arial, monospace',
+        size: 0,
+        color: 'rgb(8, 30, 49)'
+      }
+    }
+  }
+};
+     
+  Plotly.newPlot('bounce_rate_chart', data,layout,{displayModeBar: false,responsive: true, showlegend: false});
+
+
+
+   }); 
+
+   console.log(totalSearches)
     });
-    // add form-specific values into the data
-    formData.formDataNameOrder = JSON.stringify(fields);
-    formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
-    formData.formGoogleSend = form.dataset.email || ""; // no email by default
-    return { data: formData, honeypot: honeypot };
-  }
-  function handleFormSubmit(event) {
-    // handles form submit without any jquery
-    event.preventDefault(); // we are submitting via xhr below
-    var form = event.target;
-    var formData = getFormData(form);
-    var data = formData.data;
-    // If a honeypot field is filled, assume it was done so by a spam bot.
-    if (formData.honeypot) {
-      return false;
-    }
-    disableAllButtons(form);
-    var url = form.action;
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
-    // xhr.withCredentials = true;
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        form.reset();
-        var formElements = form.querySelector(".form-elements");
-        if (formElements) {
-          formElements.style.display = "none"; // hide form
-        }
-        var thankYouMessage = form.querySelector(".thankyou_message");
-        if (thankYouMessage) {
-          thankYouMessage.style.display = "block";
-        }
-      }
-    };
-    // url encode form data for sending as post data
-    var encoded = Object.keys(data)
-      .map(function(k) {
-        return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-      })
-      .join("&");
-    xhr.send(encoded);
-  }
 
-  function loaded() {
-    // bind to the submit event of our form
-    var forms = document.querySelectorAll("form.gform");
-    for (var i = 0; i < forms.length; i++) {
-      forms[i].addEventListener("submit", handleFormSubmit, false);
-    }
-  }
-  document.addEventListener("DOMContentLoaded", loaded, false);
-  function disableAllButtons(form) {
-    var buttons = form.querySelectorAll("button");
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].disabled = true;
-    }
-  }
-})();
+//Get Bounce Rate
+
+}); 
