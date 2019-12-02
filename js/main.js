@@ -335,7 +335,7 @@ $(document).ready(function() {
         '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
         "</div>" +
         '<div class="col-lg-6 item-images">' +
-        '<img src=" ' +image +' " class="image" alt="" />' +
+        '<div class="image"><img src=" ' +image +' " class="image_inner" alt="" /><div>' +
         '<img src=" ' +image +' " class="shadow" alt="" />' +
         "</div>" +
         "</div>"+
