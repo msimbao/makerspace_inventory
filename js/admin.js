@@ -284,7 +284,7 @@ console.log('Item Admin Scripts Loaded');
  function removeItem(elem)
 {
 var itemRow = elem.parentElement.parentNode;
-var item = itemRow.id;
+var item = elem.parentElement.parentNode.id;
 var ref = firebase.app().database().ref();
 var itemRef = ref.child('Items').child(item);
 alert(elem.parentNode.id + "Removed from Database");
@@ -301,13 +301,13 @@ console.log('Requests Scripts Loaded');
  
  function removeRequest(elem)
 {
-var itemRow = elem.parentElement.parentNode;
-var item = itemRow.id;
-var ref = firebase.app().database().ref();
-var itemRef = ref.child('requests').child(item);
+var reqRow = elem.parentElement.parentNode;
+var req = elem.parentElement.parentNode.id;
+var reqRef = firebase.app().database().ref();
+var reqRef = ref.child('requests').child(req);
 alert(elem.parentNode.id + "Removed from Database");
-itemRef.remove();  
-itemRow.style.display = "none";
+reqRef.remove();  
+reqRow.style.display = "none";
 }
 
 
