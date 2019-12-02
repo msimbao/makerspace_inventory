@@ -283,12 +283,13 @@ console.log('Item Admin Scripts Loaded');
  
  function removeItem(elem)
 {
-var item = elem.parentElement.parentNode.id;
+var itemRow = elem.parentElement.parentNode;
+var item = itemRow.id;
 var ref = firebase.app().database().ref();
 var itemRef = ref.child('Items').child(item);
 alert(elem.parentNode.id + "Removed from Database");
 itemRef.remove();  
-window.location.reload();
+itemRow.style.display = "none";
 }
 
 
@@ -300,12 +301,13 @@ console.log('Requests Scripts Loaded');
  
  function removeRequest(elem)
 {
-var item = elem.parentElement.parentNode.id;
+var itemRow = elem.parentElement.parentNode;
+var item = itemRow.id;
 var ref = firebase.app().database().ref();
 var itemRef = ref.child('requests').child(item);
 alert(elem.parentNode.id + "Removed from Database");
 itemRef.remove();  
-window.location.reload();
+itemRow.style.display = "none";
 }
 
 
