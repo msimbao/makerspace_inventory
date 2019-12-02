@@ -306,6 +306,9 @@ $(document).ready(function() {
     );
 
     $("#modals").append(
+      '<li><a href="#">' +
+      item +
+      '</a>' +
       '<div class="modal" id="' +
         short +
         '" >' +
@@ -341,7 +344,8 @@ $(document).ready(function() {
         "</div>"+
         '</div>'+
         '</div>'+
-        "</div>"
+        "</div>" +
+        '</li>'
     );
   });
 });
