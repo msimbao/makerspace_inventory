@@ -306,9 +306,6 @@ $(document).ready(function() {
     );
 
     $("#modals").append(
-      '<li><a href="#">' +
-      item +
-      '</a>' +
       '<div class="modal" id="' +
         short +
         '" >' +
@@ -344,8 +341,7 @@ $(document).ready(function() {
         "</div>"+
         '</div>'+
         '</div>'+
-        "</div>" +
-        '</li>'
+        "</div>"
     );
   });
 });
@@ -467,7 +463,7 @@ function contactSubmit() {
     .app()
     .database()
     .ref();
-  var requestRef = ref.child("requests").child(name);
+  var requestRef = ref.child("requests").child(email);
 
   window.alert(
     "Thank you for sending your request! we will get back to you soon!"
