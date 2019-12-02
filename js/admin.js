@@ -153,7 +153,7 @@ function submitClick() {
 
 
 // prints "started" in the browser's dev tools console to help me know that the first part has gone through
-console.log("started");
+// console.log("started");
 
 
   var filesSelected = document.getElementById("inputFileToLoad").files;
@@ -184,7 +184,7 @@ console.log("started");
       var srcData = fileLoadedEvent.target.result; // <--- data: base64
 
       var image_text = srcData;
-      console.log("'"+image_text+"'");
+      // console.log("'"+image_text+"'");
 
       var ref = firebase.app().database().ref();
       var firebaseRef = ref.child('Items').child(item_text);
@@ -238,6 +238,7 @@ console.log("started");
     var requestReference = ref.child('requests');
   
     requestReference.on("child_added", snap => {
+      // var id = snap.val();
       var name = snap.child("name").val();
       var email = snap.child("email").val();
       var comment = snap.child("comment").val();
@@ -279,7 +280,7 @@ function myFunction() {
 // Remove Item Firebase Script
 // ========================================================
 
-console.log('Item Admin Scripts Loaded');
+// console.log('Item Admin Scripts Loaded');
  
  function removeItem(elem)
 {
@@ -297,13 +298,13 @@ itemRow.style.display = "none";
 // Remove Request Script
 // ========================================================
 
-console.log('Requests Scripts Loaded');
+// console.log('Requests Scripts Loaded');
  
  function removeRequest(elem)
 {
 var reqRow = elem.parentElement.parentNode;
 var req = elem.parentElement.parentNode.id;
-var reqRef = firebase.app().database().ref();
+var ref = firebase.app().database().ref();
 var reqRef = ref.child('requests').child(req);
 alert(elem.parentNode.id + "Removed from Database");
 reqRef.remove();  
@@ -412,7 +413,7 @@ $('#mostFrequent').text(searchTime);
           totalItems += 1
 
        }); 
-       console.log(totalItems)
+      //  console.log(totalItems)
        $('#totalItems').text(totalItems);
      });
 
@@ -428,7 +429,7 @@ $('#mostFrequent').text(searchTime);
           totalSearches += 1
 
        }); 
-       console.log(totalSearches)
+      //  console.log(totalSearches)
        $('#totalSearches').text(totalSearches);
 
         });
@@ -441,7 +442,7 @@ searchRef.child("bounce").once("value", function(snapshot) {
  
   totalBounces = currentBounce;
 
-  console.log("totalBounces =" + totalBounces);
+  // console.log("totalBounces =" + totalBounces);
    }); 
 
 //Count Requests
@@ -456,7 +457,7 @@ searchRef.child("bounce").once("value", function(snapshot) {
           totalRequests += 1
 
        }); 
-       console.log(totalRequests)
+      //  console.log(totalRequests)
        $('#totalRequests').text(totalRequests);
      });
 
@@ -499,6 +500,7 @@ barplotRef.on('value', function(snap){
      
 var layout = {
 title:'Most Popular Keywords',
+  width: 550,
   height: 550,
   autosize: true,
   font: {
@@ -555,8 +557,8 @@ title:'Most Popular Keywords',
   Plotly.newPlot('keyword_bar_graph', data,layout,{displayModeBar: false,responsive: true});
 
 
-      console.log(array);
-      console.log(array2);
+      // console.log(array);
+      // console.log(array2);
 
   });
   });
@@ -587,8 +589,9 @@ usageRef.on('value', function(snap){
      
 var layout = {
 title:'Histogram of Search History',
-  height: 550,
   autosize: true,
+  width: 550,
+  height: 550,
   font: {
     family: 'Arial',
     size: 16,
@@ -681,14 +684,15 @@ var bounces_rate = [successfulSearches,totalBounces];
     hole: .7,
     textinfo: 'none',
     marker: {
-    colors: ['#FF3501', '#00AEE0']
+    colors: ['#00AEE0', '#FF3501']
     },
   }];
      
      
 var layout = {
 title:'Percentage of Successful Searches',
-  height: 550,
+width: 550,
+height: 550,
   showlegend: false,
   autosize: true,
   font: {
@@ -747,7 +751,7 @@ title:'Percentage of Successful Searches',
 
    }); 
 
-   console.log(totalSearches)
+  //  console.log(totalSearches)
     });
 
 //Get Bounce Rate
