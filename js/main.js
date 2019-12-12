@@ -309,34 +309,42 @@ $(document).ready(function() {
       '<div class="modal" id="' +
         short +
         '" >' +
-        '<div class="modal-dialog">' +
+        '<div class="modal-dialog modal-lg" >' +
         '<div class="modal-content">' +
         //The Extra cards behind the main one
-        '<div class="random_cards '+group+'_cards ">' +
-        '<div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div>' +
-        '</div>' +
+        // '<div class="random_cards '+group+'_cards ">' +
+        // '<div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div>' +
+        // '</div>' +
 
-        '<div class=" test  '+group+' ">' +
-        '<ul class="modal_controls">' +
-        ' <li data-dismiss="modal" aria-label="Close">&times;</li>' +
-        ' <li class="btn-next controller" onclick="next(this)" aria-label="Next"><i class="fa fa-hand-o-right" "></i></li>' +
-        ' <li class="btn-prev controller" onclick="prev(this)" aria-label="Prev"><i class="fa fa-hand-o-left" "></i></li>' +
-        '</ul>' +
+        '<div class="modal_body   '+group+' ">' +
+        '<div class="modal-controls">' +
+
+        ' <div class="btn-next controller" onclick="next(this)" aria-label="Next"><i class="fa fa-arrow-right" ></i></div>' +
+        ' <div class="btn-prev controller" onclick="prev(this)" aria-label="Prev"><i class="fa fa-arrow-left" ></i></div>' +
+        ' <div data-dismiss="modal" aria-label="Close"><i class="fa fa-close" ></i></div>' +
+
+        '</div>' +
         '<div class="modal-words">' +
-        "<h5 style='font-size:30px;color:#333333'><b>" +
+        "<h4 ><b>" +
         item +
-        "</b></h5>" +
-        "<h5> <u>Group:  </u>" +
+        "</b></h4>" +
+        "<h5> Group:  " +
         group +
         "</h5>" +
-        "<h5> <u> Location:  </u>" +
+        "<h5> Access:  " +
+        group +
+        "</h5>" +
+        "<h5> Location: " +
         location_short +
-        "</h5><br>" +
+        "</h5>"+
+        "<h5> Availability:  " +
+        group +
+        "</h5>" +
+        "<br>" +
         '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
         "</div>" +
         '<div class="col-lg-6 item-images">' +
         '<div class="image"><img src=" ' +image +' " class="image_inner" alt="" /><div>' +
-        '<img src=" ' +image +' " class="shadow" alt="" />' +
         "</div>" +
         "</div>"+
         '</div>'+
@@ -443,7 +451,7 @@ function closeContact() {
 }
 
 // ========================================================
-// Write Reuqests To Database
+// Write Request To Database
 // ========================================================
 var first_name = document.getElementById("first_name");
 var email_address = document.getElementById("email_address");
@@ -463,7 +471,7 @@ function contactSubmit() {
     .app()
     .database()
     .ref();
-  var requestRef = ref.child("requests").child(email);
+  var requestRef = ref.child("requests").child(name);
 
   window.alert(
     "Thank you for sending your request! we will get back to you soon!"
