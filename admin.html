@@ -75,11 +75,11 @@
           <svg viewbox="0 0 700 225" class="img-fluid">
             <clipPath id="textClip" class="filled-heading">
               <text y="70"> </text>
-              <text y="140">loading... </text>
+              <text y="140">loading</text>
               <text y="210"></text>
   
               <text y="70"></text>
-              <text y="140">loading...</text>
+              <text y="140">loading</text>
               <text y="210"></text>
   
               <text y="70"></text>
@@ -399,7 +399,6 @@
                                   </h4>
                                   <p>This is the admin page for the website's content. Feel free to edit the different parts of the website that are currently open to change</p>
                                   <p>You can view latest data collected by this app on different inventory items in this makerspace</p>
-                                  <p>You can also remove items in a section by clicking the 'X' next to the item</p>
                                   <p><b><u>Scroll Down to get started!</b></u></p>
                                   <br>
                                   <button onclick="logout()">Logout</button>
@@ -573,7 +572,7 @@
 
                                 <div id="main_inputs">
                                   <div class="form-group ">
-                                          <input name="item" type="text" id="item" placeholder="Item" class="feedback-input">
+                                          <input name="item" type="text" id="item" placeholder="Item Name" class="feedback-input">
                                   </div>
 
                                   <!-- <div class="form-group">
@@ -607,7 +606,28 @@
                                             <option value="crafts">Crafts</option>
                                         </select>
                                       </div>
+
+                                      <div class="form-group">
+                                        <select   required name="access" class=" custom-selected form-control" id="access">
+                                            <option value="">- Select The Item's Access- </option>
+                                            <option value="software">Public</option>
+                                            <option value="tech">Need Permission</option>
+                                        </select>
+                                      </div>
+  
+  
+                                    <div class="form-group">
+                                      <select   required name="Availability" class=" custom-selected form-control" id="Availability">
+                                          <option value="">- Select The Item's Availability- </option>
+                                          <option value="software">Always Available</option>
+                                          <option value="tech">Seasonal (Ask Staff member)</option>
+                                      </select>
                                     </div>
+
+
+                                    </div>
+
+            
 
                                       <div id="image_input">
                                           <div class="form-group custom-file">
@@ -621,6 +641,7 @@
                                               <div class="img-fluid" id="imgTest"></div>
         
                                             </div>
+
                                           </fieldset>
                                   <div class="form-group">
                                       <div class="col-md-12 text-center">
