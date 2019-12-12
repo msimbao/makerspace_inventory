@@ -72,7 +72,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   
       document.getElementById("user_div").style.display = "block";
       document.getElementById("login_div").style.display = "none";
-  
+      Plotly.Plots.resize('searchtimes_histogram');
       var user = firebase.auth().currentUser;
   
       if(user != null){
@@ -243,7 +243,10 @@ function submitClick() {
       var email = snap.child("email").val();
       var comment = snap.child("comment").val();
       $("#requests").append(
-        '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td>'+ comment +'</td> <td><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
+        '<a href="#">' +
+        name +
+        '</a>'+
+        '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td><p style="padding:5%;">'+ comment +'</p></td> <td><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
     );
   
     
@@ -481,7 +484,7 @@ barplotRef.on('value', function(snap){
     type: 'bar',
     marker: {
     color: '#FF3501',
-
+    hoverinfo: 'label',
     },
     x: array,
     y: array2,
@@ -500,8 +503,7 @@ barplotRef.on('value', function(snap){
      
 var layout = {
 title:'Most Popular Keywords',
-  width: 550,
-  height: 550,
+
   autosize: true,
   font: {
     family: 'Arial',
@@ -580,7 +582,7 @@ usageRef.on('value', function(snap){
     type: 'bar',
     marker: {
     color: '#00AEE0',
-
+    hoverinfo: 'label',
     },
     x: list,
     orientation: 'v',
@@ -590,8 +592,8 @@ usageRef.on('value', function(snap){
 var layout = {
 title:'Histogram of Search History',
   autosize: true,
-  width: 550,
-  height: 550,
+  
+
   font: {
     family: 'Arial',
     size: 16,
@@ -603,6 +605,7 @@ title:'Histogram of Search History',
     pad: 10
   },
   xaxis: {
+    hoverinfo: "skip",
     autorange: true,
     showgrid: true,
     zeroline: true,
@@ -648,6 +651,10 @@ title:'Histogram of Search History',
      
   Plotly.newPlot('searchtimes_histogram', hist_data,layout,{displayModeBar: false,responsive: true});
 
+  window.onresize = function() {
+    Plotly.Plots.resize('searchtimes_histogram');
+};
+
   });
   });
 
@@ -690,9 +697,8 @@ var bounces_rate = [successfulSearches,totalBounces];
      
      
 var layout = {
-title:'Percentage of Successful Searches',
-width: 550,
-height: 550,
+title:'Successful Searches',
+
   showlegend: false,
   autosize: true,
   font: {
