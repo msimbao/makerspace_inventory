@@ -7,6 +7,29 @@
 //=======================================================
 
 
+// ========================================================
+// Item Filter
+// ========================================================
+
+function item_search() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("array");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
    // ========================================================
    // Sidebar Navigation
    // ========================================================
@@ -72,7 +95,22 @@ firebase.auth().onAuthStateChanged(function(user) {
   
       document.getElementById("user_div").style.display = "block";
       document.getElementById("login_div").style.display = "none";
+
+      var update = {
+        height: 550,  // " "
+        width:400,
+      };
+      
+      Plotly.relayout('searchtimes_histogram', update);
+      Plotly.relayout('bounce_rate_chart', update);
+      Plotly.relayout('keyword_bar_graph', update);
+
       Plotly.Plots.resize('searchtimes_histogram');
+      Plotly.Plots.resize('bounce_rate_chart');
+      Plotly.Plots.resize('keyword_bar_graph');
+      
+
+
       var user = firebase.auth().currentUser;
   
       if(user != null){
@@ -94,7 +132,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   
     var userEmail = document.getElementById("email_field").value;
     var userPass = document.getElementById("password_field").value;
-  
+    
     firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -104,7 +142,21 @@ firebase.auth().onAuthStateChanged(function(user) {
   
       // ...
     });
-  
+
+    var update = {
+      height: 550,  // " "
+      width:400,
+    };
+    
+    Plotly.relayout('searchtimes_histogram', update);
+    Plotly.relayout('bounce_rate_chart', update);
+    Plotly.relayout('keyword_bar_graph', update);
+
+    Plotly.Plots.resize('searchtimes_histogram');
+    Plotly.Plots.resize('bounce_rate_chart');
+    Plotly.Plots.resize('keyword_bar_graph');
+    
+
   }
   
   function logout(){
@@ -118,6 +170,10 @@ var group = document.getElementById("group");
 var short = document.getElementById("item");
 var image = document.getElementById("image");
 var located = document.getElementById("located");
+
+var availability = document.getElementById("availability");
+var access = document.getElementById("access");
+
 var located_short = document.getElementById("located_short");
 var srcData;
 
@@ -178,6 +234,10 @@ function submitClick() {
       var short_text = short;
       alert(short_text + ' added to database');
       var group_text = group.value;
+
+      var access_text = access.value;
+      var availability_text = availability.value;
+
       // var located_text = located.value;
       var located_short_text = located_short.value;
       
@@ -193,6 +253,10 @@ function submitClick() {
 
       firebaseRef.child("item_text").set(item_text);
       firebaseRef.child("group").set(group_text);
+      
+      firebaseRef.child("access").set(access_text);
+      firebaseRef.child("availability").set(availability_text);
+
       firebaseRef.child("short_text").set(short_text);
       firebaseRef.child("located_short_text").set(located_short_text);
       firebaseRef.child("image_text").set(image_text);
@@ -203,6 +267,7 @@ function submitClick() {
     fileReader.readAsDataURL(fileToLoad);
   }
 }
+
 
 
 // ========================================================
@@ -217,14 +282,15 @@ function submitClick() {
       var group = snap.child("group").val();
       var short = snap.child("short_text").val();
       var image = snap.child("image_text").val();
-      var location = snap.child("located_text").val(); // Not used here
+      // var location = snap.child("located_text").val(); // Not used here
       var location_short = snap.child("located_short_text").val();
       $("#array").append(
-        '<a href="#">' +
-        item +
-        '</a><tr class=" '+group+' table-item" id="'+item+'"><td>' +item + '</td><td>' + location_short + '</td><td><img style="height:100px;border-radius:5px;"  src="' + image + '"></td><td><div class="close" onclick="removeItem(this)" aria-label="Delete">' +
+        '<tr class=" table-item" id="'+item+'"><a href="#">' +
+        short +
+        '</a>' +
+        '<td>' +item + '</td><td>' + location_short + '</td><td><img style="height:100px;border-radius:5px;"  src="' + image + '"></td><td><div class="close" onclick="removeItem(this)" aria-label="Delete">' +
           '  &times' +
-          ' </div> </td></tr>' 
+          ' </div> </td></tr>'
       
     );
   });
@@ -233,8 +299,6 @@ function submitClick() {
 // Read Requests From Database
 // ========================================================
 
-
-    var ref = firebase.app().database().ref();
     var requestReference = ref.child('requests');
   
     requestReference.on("child_added", snap => {
@@ -243,10 +307,7 @@ function submitClick() {
       var email = snap.child("email").val();
       var comment = snap.child("comment").val();
       $("#requests").append(
-        '<a href="#">' +
-        name +
-        '</a>'+
-        '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td><p style="padding:5%;">'+ comment +'</p></td> <td><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
+        '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td><p style="padding:5%;">'+ comment +'</p></td> <td style="padding-right:5%;"><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
     );
   
     
@@ -256,28 +317,9 @@ function submitClick() {
 
 
 
-// ========================================================
-// Input Filter
-// ========================================================
-function myFunction() {
-  // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("array");
-  li = ul.getElementsByTagName("tr");
 
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
+
+
 
 // ========================================================
 // Remove Item Firebase Script
