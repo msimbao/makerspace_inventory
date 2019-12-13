@@ -280,6 +280,8 @@ $(document).ready(function() {
     var group = snap.child("group").val();
     var short = snap.child("short_text").val();
     var image = snap.child("image_text").val();
+    var access = snap.child("access_text").val();
+    var availability = snap.child("availability_text").val();
     // var location = snap.child("located_text").val();
     var location_short = snap.child("located_short_text").val();
 
@@ -332,13 +334,13 @@ $(document).ready(function() {
         group +
         "</h5>" +
         "<h5> Access:  " +
-        group +
+        access +
         "</h5>" +
         "<h5> Location: " +
         location_short +
         "</h5>"+
         "<h5> Availability:  " +
-        group +
+        availability +
         "</h5>" +
         "<br>" +
         '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
