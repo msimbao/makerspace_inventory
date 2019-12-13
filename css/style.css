@@ -192,7 +192,7 @@
 
  .lb-caption {
   font-size: 30px !important;
-  color: #FE3808 !important;
+  color: #00AEE0 !important;
   }
   
  /*--------------------------------------------------------------
@@ -744,10 +744,32 @@
   /* background:white; */
 }
 
+
+
 .image_inner {
   display: block;
   position: relataive;
   height: 100%;
+}
+
+
+@media only screen and (min-width: 2000px) {
+
+  .modal-words h4{
+    font-size:55px;
+  }
+  .modal-words h5{
+    font-size:75px;
+  }
+  .image {
+    width:800px;
+  }
+
+  .modal_body {
+    height:70%;
+    width:130%;
+  }
+
 }
 
 .toMap{
@@ -767,6 +789,7 @@
   bottom:0;
   width:60%;
   font:30px;
+
 }
 
 .modal-words h5{
