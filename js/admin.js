@@ -96,10 +96,10 @@ firebase.auth().onAuthStateChanged(function(user) {
       document.getElementById("user_div").style.display = "block";
       document.getElementById("login_div").style.display = "none";
 
-      var update = {
-        height: 550,  // " "
-        width:400,
-      };
+      // var update = {
+      //   height: 550,  // " "
+      //   width:400,
+      // };
       
       Plotly.relayout('searchtimes_histogram', update);
       Plotly.relayout('bounce_rate_chart', update);
