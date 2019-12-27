@@ -101,9 +101,6 @@ firebase.auth().onAuthStateChanged(function(user) {
       //   width:400,
       // };
       
-      Plotly.relayout('searchtimes_histogram', update);
-      Plotly.relayout('bounce_rate_chart', update);
-      Plotly.relayout('keyword_bar_graph', update);
 
       Plotly.Plots.resize('searchtimes_histogram');
       Plotly.Plots.resize('bounce_rate_chart');
@@ -165,17 +162,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 // ========================================================  
 // Write To Database 
 // ========================================================
-  var item = document.getElementById("item");
-var group = document.getElementById("group");
-var short = document.getElementById("item");
-var image = document.getElementById("image");
-var located = document.getElementById("located");
-
-var availability = document.getElementById("availability");
-var access = document.getElementById("access");
-
-var located_short = document.getElementById("located_short");
-var srcData;
 
 function encodeImageFileAsURL() {
   var filesSelected = document.getElementById("inputFileToLoad").files;
@@ -205,13 +191,6 @@ function encodeImageFileAsURL() {
 
 
 function submitClick() {
-
-
-
-// prints "started" in the browser's dev tools console to help me know that the first part has gone through
-// console.log("started");
-
-
   var filesSelected = document.getElementById("inputFileToLoad").files;
 
   if (filesSelected.length > 0) {
@@ -220,46 +199,40 @@ function submitClick() {
     var fileReader = new FileReader();
 
     fileReader.onload = function(fileLoadedEvent) {
-
+      
+      var short;
       var item = document.getElementById("item");
       var group = document.getElementById("group");
-      var short;
       var located_short = document.getElementById("located_short");
 
       var short = item.value;
       short = short.toLowerCase(); // Make item name lower case
       short = short.replace(/\s/gi,''); // Strip the spaces from it
-    
-      var item_text = item.value;
+      
       var short_text = short;
-      alert(short_text + ' added to database');
+      var item_text = item.value;
       var group_text = group.value;
 
-      var access_text = access.value;
-      var availability_text = availability.value;
-
-      // var located_text = located.value;
       var located_short_text = located_short.value;
+      // var located_text = located.value;
+      
       
       var srcData = fileLoadedEvent.target.result; // <--- data: base64
-
       var image_text = srcData;
-      // console.log("'"+image_text+"'");
+      console.log("'"+image_text+"'");
 
       var ref = firebase.app().database().ref();
       var firebaseRef = ref.child('Items').child(item_text);
 
-      window.alert("Item Inserted!");
-
       firebaseRef.child("item_text").set(item_text);
       firebaseRef.child("group").set(group_text);
-      
-      firebaseRef.child("access").set(access_text);
-      firebaseRef.child("availability").set(availability_text);
-
       firebaseRef.child("short_text").set(short_text);
-      firebaseRef.child("located_short_text").set(located_short_text);
+      firebaseRef.child("located_short_text").set(located_short_text);  
       firebaseRef.child("image_text").set(image_text);
+
+   
+      
+      
       // firebaseRef.child("located_text").set(located_text);
       
       // firebaseRef.push().set(messageText);
@@ -273,10 +246,16 @@ function submitClick() {
 // ========================================================
 // Read Items From Database
 // ========================================================
+
+// Read Items From Database
+
   $(document).ready(function() {
     var ref = firebase.app().database().ref();
+    
+    // Read Items From Database
+
     var itemsRef = ref.child('Items');
-  
+
     itemsRef.on("child_added", snap => {
       var item = snap.child("item_text").val();
       var group = snap.child("group").val();
@@ -295,24 +274,23 @@ function submitClick() {
     );
   });
 
-// ========================================================
-// Read Requests From Database
-// ========================================================
+        // Read Requests From Database
 
-    var requestReference = ref.child('requests');
+        var requestReference = ref.child('requests');
   
-    requestReference.on("child_added", snap => {
-      // var id = snap.val();
-      var name = snap.child("name").val();
-      var email = snap.child("email").val();
-      var comment = snap.child("comment").val();
-      $("#requests").append(
-        '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td><p style="padding:5%;">'+ comment +'</p></td> <td style="padding-right:5%;"><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
-    );
-  
+        requestReference.on("child_added", snap => {
+          // var id = snap.val();
+          var name = snap.child("name").val();
+          var email = snap.child("email").val();
+          var comment = snap.chixwld("comment").val();
+          $("#requests").append(
+            '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td><p style="width:70%;margin:5%;">'+ comment +'</p></td> <td style="padding-right:5%;"><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
+        );
+      
+        
     
+        });
 
-    });
   });
 
 
