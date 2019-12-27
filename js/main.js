@@ -14,6 +14,7 @@
 // Filter Search
 // ========================================================
 
+
 function searchFunction() {
   // Declare General Variables
   var input, filter, ul, li, a, i, txtValue;
@@ -21,16 +22,6 @@ function searchFunction() {
   filter = input.value.toUpperCase();
   ul = document.getElementById("myUL");
   li = ul.getElementsByTagName("li");
-
-
-  // Handle Enter Key Press
-  var input = document.getElementById("myInput");
-  input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("searchButton").click();
-  }
-});
 
 
 
@@ -280,8 +271,8 @@ $(document).ready(function() {
     var group = snap.child("group").val();
     var short = snap.child("short_text").val();
     var image = snap.child("image_text").val();
-    var access = snap.child("access_text").val();
-    var availability = snap.child("availability_text").val();
+    var access = snap.child("access").val();
+    var availability = snap.child("availability").val();
     // var location = snap.child("located_text").val();
     var location_short = snap.child("located_short_text").val();
 
@@ -333,15 +324,9 @@ $(document).ready(function() {
         "<h5> Group:  " +
         group +
         "</h5>" +
-        "<h5> Access:  " +
-        access +
-        "</h5>" +
         "<h5> Location: " +
         location_short +
         "</h5>"+
-        "<h5> Availability:  " +
-        availability +
-        "</h5>" +
         "<br>" +
         '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
         "</div>" +
