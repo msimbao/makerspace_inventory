@@ -388,25 +388,15 @@ $('#toMap').on('click' , function() {
 
 
 // ========================================================
-// Modal Random Colors
+// Map Light Box Options
 // ========================================================
 
-// var myArray = ['red', 'green', 'blue'];    
-// var rand = myArray[Math.floor(Math.random() * myArray.length)];
-// // document.getElementsByClassName("tech").style.background = rand;
 
-// var randAngle = Math.random()
-// // document.getElementsByClassName("test").style.transform = "rotate(7deg)";
-// $(".tech").css({"background": "red"});
-
-
-
-$(document).ready(function() {
-  var colors = ['red', 'blue', 'green', 'yellow', 'cyan', 'orange'];
-  var new_color = colors[Math.floor(Math.random() * colors.length)];
-  $('.color-div').css('background-color', new_color);
-});
-
+lightbox.option({
+  'resizeDuration': 200,
+  'wrapAround': true,
+  'showImageNumberLabel': false,
+})
 
 
 // ========================================================
