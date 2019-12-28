@@ -282,9 +282,9 @@ function submitClick() {
           // var id = snap.val();
           var name = snap.child("name").val();
           var email = snap.child("email").val();
-          var comment = snap.chixwld("comment").val();
+          var comment = snap.child("comment").val();
           $("#requests").append(
-            '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td><p style="width:70%;margin:5%;">'+ comment +'</p></td> <td style="padding-right:5%;"><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
+            '<tr class=" table-item " id="'+name+'"> <td>' +name + '</td><td>' + email + '</td> <td><p style="padding:5%">'+ comment +'</p></td> <td style="padding-right:5%;"><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>' 
         );
       
         
