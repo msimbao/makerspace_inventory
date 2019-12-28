@@ -2,13 +2,13 @@
 
 A Simple App for Inventory and client management for Macalester Idea Lab built firebase jquery.
 
-![Home Screen](https://github.com/msimbao/soundscapes/blob/master/screen1.png)
+![Home Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen0.png)
 
 We made this app to help clients in the Idea lab find whatever items they were looking for in the space.
 
 It saves time as well as helps the space managers know more about what clients want and when clients are most likely looking for items.
 
-![Screenshot](https://github.com/msimbao/soundscapes/blob/master/screen5.png)
+![Search Page](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen5.png)
 
 ## Things I Learnt
 
@@ -22,10 +22,10 @@ The project is free to view at this [link](msimbao.github.io/makerspace_inventor
 
 Below are a pictures showing the GUI for the administrators page. This page is closed to public viewers to prevent them from editing important inputs.
 
-![Welcome Screen](https://github.com/msimbao/soundscapes/blob/master/screen4.png)
-![Dashboard](https://github.com/msimbao/soundscapes/blob/master/screen3.png)
-![Requests](https://github.com/msimbao/soundscapes/blob/master/screen2.png)
-![Inventory](https://github.com/msimbao/soundscapes/blob/master/screen2.png)
+![Welcome Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen1.png)
+![Dashboard](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen2.png)
+![Requests](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen3.png)
+![Inventory](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen4.png)
 
 ## Deployment
 
