@@ -33,10 +33,10 @@ The system was deployed using firebase and is currently successfully running as 
 
 ## Built With
 
-* [firebase](https://github.com/kootenpv/whereami) - Machine Learning Indoor Localization
-* [jquery](https://pypi.org/project/soundcloud-lib/) - handling certain libraries
-* [icon8](https://kivy.org/) - Free Icons and Images for Web Design
-* [pagepiling](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Scrolling animation
+* firebase - Machine Learning Indoor Localization
+* jquery - handling certain libraries
+* icon8 - Free Icons and Images for Web Design
+* pagepiling - Scrolling animation
 
 
 
