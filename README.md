@@ -16,7 +16,7 @@ More about Full stack programming building the front end with javascript and jqu
 
 ## Testing the Project 
 
-The project is free to view at this [link](msimbao.github.io/makerspace_inventory)
+The project is free to view at this [link](https://msimbao.github.io/makerspace_inventory/#search)
 
 ### Pictures
 
