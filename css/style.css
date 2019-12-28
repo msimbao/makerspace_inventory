@@ -773,12 +773,12 @@
 }
 
 .toMap{
-  border:2px solid #00000000;
+  border:3px dashed #ffffff;
   box-shadow:none;
 }
 
 .toMap:hover{
-  border:2px white dashed;
+  border:3px white dashed;
 }
 
 .modal-words {
