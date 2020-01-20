@@ -22,10 +22,10 @@ The project is free to view at this [link](https://msimbao.github.io/makerspace_
 
 Below are a pictures showing the GUI for the administrators page. This page is closed to public viewers to prevent them from editing important inputs.
 
-![Welcome Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen1.png)
-![Dashboard](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen2.png)
-![Requests](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen3.png)
-![Inventory](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen4.png)
+![Welcome Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen1.PNG)
+![Dashboard](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen2.PNG)
+![Requests](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen3.PNG)
+![Inventory](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen4.PNG)
 
 ## Deployment
 
