@@ -1,5 +1,5 @@
 /* =======================================================
-  Name: Labby
+  Name: MakerSpace Inventory
   Author: Author: Tulsi Patel, Thien An Pham, Mphatso Simbao
  ======================================================= */
 
@@ -75,7 +75,7 @@
  --------------------------------------------------------------*/
  
  #load {
-   background: #002C53;
+   background: #333333;
    position: absolute;
    bottom: 0;
    width: 100%;
@@ -89,6 +89,7 @@
    padding: 10%;
    z-index:50;
    opacity:1;
+   -webkit-opacity: 1;
    display:block;
    
  }
@@ -110,14 +111,14 @@
      display:block;
    }
    99.999% {
-     -webkit-opacity: 1;
+     -webkit-opacity: 0;
      height: 100%;
      bottom: -100%;
      z-index: 50;
-     display:block;
+     display:none;
    }
    100% {
-     -webkit-opacity: 1;
+     -webkit-opacity: 0;
      height: 100%;
      bottom: -100%;
      z-index: -10;
@@ -141,14 +142,14 @@
      display:block;
    }
    99.999% {
-     opacity: 1;
+     opacity: 0;
      height: 100%;
      bottom: -100%;
      z-index: 50;
      display:block;
    }
    100% {
-     opacity: 1;
+     opacity: 0;
      height: 100%;
      bottom: -100%;
      z-index: -10;
@@ -163,9 +164,6 @@
    font-family: "Poppins", sans-serif;
  }
 
- text {
-  text-decoration: underline ;
- }
  /*--------------------------------------------------------------
  # Sections
  --------------------------------------------------------------*/
@@ -1174,7 +1172,7 @@
  }
 
  .graph {
-    width: 30.9%;
+    width: 47%;
     float: left;
     margin:1%;
     overflow:hidden;
@@ -1342,3 +1340,21 @@
     }
 }
  
+ 
+ /*--------------------------------------------------------------
+ # admin divs
+ --------------------------------------------------------------*/
+
+ #login_div, #user_div{
+   position:absolute;
+   width:100%;
+   height:100%;
+ }
+
+ #login_div{
+   background:#FE3808;
+  }
+
+  #user_div{
+    background:rgb(8, 30, 49);
+  }
