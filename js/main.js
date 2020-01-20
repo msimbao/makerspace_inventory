@@ -1,8 +1,8 @@
 //=======================================================
 
-//Name: Audio Inventory
+//Name: Makerspace Inventory
 
-//Author: Tulsi Patel, Thien An Pham, Mphatso Simbao
+//Authors: Tulsi Patel, Thien An Pham, Mphatso Simbao
 
 //=======================================================
 
@@ -139,8 +139,8 @@ $(document).ready(function() {
     menu: null,
     direction: "vertical",
     verticalCentered: true,
-    sectionsColor: ["#FE3808", "#002C53", "#FE3808", "#002C53", "#002C53"],
-    anchors: ["search", "map", "about", "staff", "contact"],
+    sectionsColor: ["#FE3808", "#FE3808", "#002C53", "#002C53", "#002C53"],
+    anchors: ["about","search", "map", "staff", "contact"],
     menu: "#mainMenu",
     scrollingSpeed: 700,
     easing: "swing",
