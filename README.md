@@ -50,11 +50,6 @@ The system was deployed using firebase and is currently successfully running as 
 
 This project is licensed under the GNU GENERAL PUBLIC LICENSE
 
-## Acknowledgments
-
-* Peter Hall
-* Elice Brunette
-* Jody Emmings - My Boss and a huge inspiration for our work :)
 
 ## Road Map - Features and Issues to be Solved
 
@@ -79,3 +74,10 @@ This project is licensed under the GNU GENERAL PUBLIC LICENSE
 * Replace hamburger with overhead banner menu
 * Request section to have input popup on redirection click
 * Add time of request sent 
+
+
+## Acknowledgments
+
+* Peter Hall
+* Elice Brunette
+* Jody Emmings - My Boss and a huge inspiration for our work :)
