@@ -54,4 +54,28 @@ This project is licensed under the GNU GENERAL PUBLIC LICENSE
 
 * Peter Hall
 * Elice Brunette
-* Jody Emmings - My Boss and a huge inspiration for my work :)
+* Jody Emmings - My Boss and a huge inspiration for our work :)
+
+## Road Map - Features and Issues to be Solved
+
+### Issues
+
+* Confirmation about deleting item
+* Reduce Requests and Admin Password
+* Inventory Admin
+* Alphabetical Sorting
+* Inserting Items - 405 Error
+* Search Function & Other Buttons should activate on enter press
+
+### Features
+
+* Map should have more general directions for navigating the idea lab e.g stairway, exits, entrance, bathrooms
+* Make map interactive and clickable
+* Make each item on the map able to be clicked and give more information on the area it corresponds to
+* Make the site more forwards and backwards explorative
+* Things you can make in the Idea Lab with each item should be listed
+* RSS feeds of things you can make in idea lab in general
+* cohesive colors, follow Jody's color palette
+* Replace hamburger with overhead banner menu
+* Request section to have input popup on redirection click
+* Add time of request sent 
