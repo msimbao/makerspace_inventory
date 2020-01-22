@@ -11,6 +11,49 @@
 
 
 // ========================================================
+// Enter Event Handlers
+// ========================================================
+
+// Login Enter Press Handler
+
+var password_input = document.getElementById("myInput");
+password_input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("searchButton").click();
+  }
+});
+
+// Request Submission Enter Press Handlers
+
+var password_input = document.getElementById("comments");
+password_input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("send_request").click();
+  }
+});
+
+var password_input = document.getElementById("email_address");
+password_input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("send_request").click();
+  }
+});
+
+var password_input = document.getElementById("first_name");
+password_input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("send_request").click();
+  }
+});
+
+
+
+
+// ========================================================
 // Filter Search
 // ========================================================
 
