@@ -51,7 +51,7 @@ The system was deployed using firebase and is currently successfully running as 
 This project is licensed under the GNU GENERAL PUBLIC LICENSE
 
 
-## Road Map - Features and Issues to be Solved
+## Road Map - Features and Issues to be Solved (Feel Free to add anything)
 
 ### Issues
 
