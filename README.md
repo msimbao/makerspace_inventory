@@ -75,6 +75,7 @@ This project is licensed under the GNU GENERAL PUBLIC LICENSE
 * Replace hamburger with overhead banner menu
 * Request section to have input popup on redirection click
 * Add time of request sent 
+* Checking and Unchecking availability of items
 
 
 ## Acknowledgments
