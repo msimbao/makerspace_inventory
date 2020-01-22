@@ -82,8 +82,8 @@
    height: 100%;
    text-align: center;
    margin: auto;
-   -webkit-animation: disappear 10s forwards;
-   animation: disappear 10s forwards;
+   -webkit-animation: disappear 4.8s forwards;
+   animation: disappear 4.8s forwards;
    vertical-align: middle;
    text-align: center;
    padding: 10%;
@@ -111,7 +111,7 @@
      display:block;
    }
    99.999% {
-     -webkit-opacity: 0;
+     -webkit-opacity: 1;
      height: 100%;
      bottom: -100%;
      z-index: 50;
@@ -142,7 +142,7 @@
      display:block;
    }
    99.999% {
-     opacity: 0;
+     opacity: 1;
      height: 100%;
      bottom: -100%;
      z-index: 50;
@@ -367,7 +367,6 @@
  # Inventory
  --------------------------------------------------------------*/
  #myUL {
-   background: #FF3501;
    z-index: 0;
  }
  
@@ -772,7 +771,6 @@
 
 .toMap{
   border:3px dashed #ffffff;
-  box-shadow:none;
 }
 
 .toMap:hover{
@@ -1045,7 +1043,7 @@
  }
  
  td {
-   padding: 5%;
+   padding: 30px;
  }
  
  /*--------------------------------------------------------------
