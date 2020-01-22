@@ -55,15 +55,16 @@ This project is licensed under the GNU GENERAL PUBLIC LICENSE
 
 ### Issues
 
-* Confirmation about deleting item
-* Reduce Requests and Admin Password
-* Inventory Admin
-* Alphabetical Sorting
-* Inserting Items - 405 Error
-* Search Function & Other Buttons should activate on enter press
+* ~~Confirmation about deleting item~~
+* ~~Reduce Requests and Admin Password
+* ~~Alphabetical Sorting
+* ~~Inserting Items - 405 Error
+* ~~Search Function & Other Buttons should activate on enter press
 
 ### Features
 
+* LED Beacon Controllers
+* Vue Editing
 * Map should have more general directions for navigating the idea lab e.g stairway, exits, entrance, bathrooms
 * Make map interactive and clickable
 * Make each item on the map able to be clicked and give more information on the area it corresponds to
