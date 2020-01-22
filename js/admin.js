@@ -20,6 +20,30 @@ var requestRef = ref.child("requests");
 var usageRef = database.ref("usageTimes");
 
 // ========================================================
+// Enter Event Handlers
+// ========================================================
+
+// Login Enter Press Handler
+
+var password_input = document.getElementById("password_field");
+password_input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("login_button").click();
+  }
+});
+
+// Item Submission Enter Press Handler
+
+var password_input = document.getElementById("item");
+password_input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("submit").click();
+  }
+});
+
+// ========================================================
 // Item Filter
 // ========================================================
 
@@ -226,6 +250,7 @@ function submitClick() {
     };
     fileReader.readAsDataURL(fileToLoad);
   }
+  alert("Item Inserted. Please refresh the page to see changes as there is a bug not allowing it to be immediately displayed")
 }
 
 // ========================================================
@@ -278,7 +303,7 @@ $(document).ready(function() {
         email +
         '</td> <td><p style="padding:5%">' +
         comment +
-        '</p></td> <td style="padding-right:5%;"><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>'
+        '</p></td> <td ><div class="close" onclick="removeRequest(this)" aria-label="Delete">&times</div></td> </tr>'
     );
   });
 });
@@ -293,9 +318,12 @@ function removeItem(elem) {
   var itemRow = elem.parentElement.parentNode;
   var item = elem.parentElement.parentNode.id;
   var itemRef = ref.child("Items").child(item);
-  alert(elem.parentNode.id + "Removed from Database");
-  itemRef.remove();
-  itemRow.style.display = "none";
+  var i = confirm("Are you sure you want to remove " + elem.parentNode.id);
+  if (i == true) {
+    alert(elem.parentNode.id + "Removed from Database");
+    itemRef.remove();
+    itemRow.style.display = "none";
+  } 
 }
 
 // ========================================================
@@ -308,9 +336,12 @@ function removeRequest(elem) {
   var reqRow = elem.parentElement.parentNode;
   var req = elem.parentElement.parentNode.id;
   var reqRef = ref.child("requests").child(req);
-  alert(elem.parentNode.id + "Removed from Database");
-  reqRef.remove();
-  reqRow.style.display = "none";
+  var r = confirm("Are you sure you want to remove " + elem.parentNode.id);
+  if (r == true) {
+    alert(elem.parentNode.id + "Removed from Database");
+    reqRef.remove();
+    reqRow.style.display = "none";
+  } 
 }
 
 // ========================================================
