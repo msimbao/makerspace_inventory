@@ -320,11 +320,11 @@ $(document).ready(function() {
     var location_short = snap.child("located_short_text").val();
 
     $("#array").append(
-      '<li>' +
+      '<li id='+ item +'>' +
         '<div class="col-md-4">' +
         '<a href="#">' +
         item +
-        '</a><div class="dbitem mb-4 box-shadow"  data-toggle="modal" data-target="#' +
+        '</a><div class="dbitem mb-4 box-shadow" onclick="changeLED(this)" data-toggle="modal" data-target="#' +
         short +
         '"  >' +
         '<div class="card-img-top" style="width:970px;">' +
@@ -388,6 +388,18 @@ $('#toMap').on('click' , function() {
   $('.modal').modal('hide')
 });
 
+function changeLED(elem) {
+  var ref = firebase
+  .app()
+  .database()
+  .ref();
+  var item = elem.parentElement.parentNode.id;
+  console.log(item)
+  var itemRef = ref.child("Items").child(item);
+  var itemLED = itemRef.child("led");
+  itemLED.set("on");
+  setTimeout(function(){ itemLED.set("off"); }, 10000);
+}
 
 // ========================================================
 // Modal Carousel
