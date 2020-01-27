@@ -1,6 +1,6 @@
 # MakerSpace Inventory
 
-A Simple App for Inventory and client management for Macalester Idea Lab built with firebase, vue and jquery.
+An ongoing simple App for Inventory and client management for Macalester Idea Lab built with firebase, vue and jquery.
 
 ![Home Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen0.png)
 
