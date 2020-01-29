@@ -38,14 +38,6 @@ The system was deployed using firebase and is currently successfully running as 
 * icon8 - Free Icons and Images for Web Design
 * pagepiling - Scrolling animation
 
-
-
-## Authors
-
-* **Tulsi Patel** - *Initial Conception* 
-* **Thien An Phan** - *Images and Data* 
-* **Mphatso Simbao** - *Front end and Back end system production* 
-
 ## License
 
 This project is licensed under the GNU GENERAL PUBLIC LICENSE
@@ -77,9 +69,14 @@ This project is licensed under the GNU GENERAL PUBLIC LICENSE
 * Add time of request sent 
 * Checking and Unchecking availability of items
 
+### Steps Beyond 
+
+* Content writing for different activities that can be done in the idea lab 
+* Maker spotlights highliting different projects in the idea lab and what inventory items were used or can be used
+* Extended map to highlight items in each area more specifically.
 
 ## Acknowledgments
 
-* Peter Hall
-* Elice Brunette
-* Jody Emmings - My Boss and a huge inspiration for our work :)
+* Peter Hall - Put in so much timem effort and planning to make this possible and thanks for being an awesome Supervisor!
+* Elice Brunette - So much encouragement and inspiration during our shifts
+* Jody Emmings - Our Boss and a huge inspiration for our work :)
