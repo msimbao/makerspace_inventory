@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <style>
+        .disabledButton{backgroundColor:black;}
+        </style> -->
+
+        <!-- Latest compiled and minified CSS -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<link href="style.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div id="app">
+
+    <div class="product">
+
+      <template v-for="item in items">
+        <modal v-if="item.show">I am a dummy Modal for {{item.name}}</modal>
+        <btn @trigger="item.show = !item.show">Button for {{item.id}}</btn>
+      </template>
+
+         <div class="album py-5">
+            <div class="container-fluid">
+            <div class="row">
+              
+              <ul id="myUL">
+            <!-- <li  >{{ item.item_text }}</li> -->
+
+            <li v-for="item in todos">
+                <div class="col-md-4">
+                <a href="#">
+                  {{ item.item_text }}
+                </a>
+                  <div class="dbitem mb-4 box-shadow">
+                    <div class="card-body" v-bind:class="item.group ">
+                   <p class="card-text"><h6>
+                  {{ item.item_text }}
+                </h6></p>
+                <div class="d-flex justify-content-between align-items-center">
+                </div>
+                </div>
+                </div>
+              </div>
+
+              </li>
+
+          </ul>
+          </div>
+         </div>
+
+        <div class="product-image">
+            <a :href="link"><img width="200px" :src="image"></a>
+        </div>
+
+        <div v-for="variant in variants" :key="variant.variantId" 
+        class="color-box"
+        :style="{backgroundColor: variant.variantColor}">
+                <p @mouseover="updateProduct(variant.variantImage)">{{variant.variantColor}}</p>
+            </div>
+    </div>
+
+
+
+<button v-on:click="addToCart" :disabled="!inStock"
+:class="{disabledButton:!inStock}">Add to cart</button>
+<p>{{cart}}</p>
+
+<div class="product-info">
+<h1>Product Goes Here</h1>
+<h2>{{ product }}</h2>
+<p v-if="inStock > 10">In Stock</p>
+<p v-else-if="inStock <= 10 && inStock > 0">Almost out of  Stock</p>
+<p v-else>Out of Stock</p>
+
+<span v-if="onSale">On Sale!</span>
+<ul>
+    <li v-for="detail in details">{{detail}}</li>
+</ul>
+
+
+
+<ol>
+<li v-for="size in sizes">
+    {{size}}
+</li>
+</ol>
+
+</div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/2.2.1/vuefire.min.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCfwUVwmMb1IcwkWwHuaFZdsFe7_0uxoAA",
+        authDomain: "labby-30803.firebaseapp.com",
+        databaseURL: "https://labby-30803.firebaseio.com",
+        projectId: "labby-30803",
+        storageBucket: "labby-30803.appspot.com",
+        messagingSenderId: "783504716785",
+        appId: "1:783504716785:web:602161dcb1013e49ae0a50"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+
+    </script>
+
+<script src="main.js"></script>
+</body>
+</html>
