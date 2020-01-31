@@ -75,8 +75,4 @@ This project is licensed under the GNU GENERAL PUBLIC LICENSE
 * Maker spotlights highliting different projects in the idea lab and what inventory items were used or can be used
 * Extended map to highlight items in each area more specifically.
 
-## Acknowledgments
 
-* Peter Hall - Put in so much timem effort and planning to make this possible and thanks for being an awesome Supervisor!
-* Elice Brunette - So much encouragement and inspiration during our shifts
-* Jody Emmings - Our Boss and a huge inspiration for our work :)
