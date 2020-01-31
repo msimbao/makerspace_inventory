@@ -388,18 +388,18 @@ $('#toMap').on('click' , function() {
   $('.modal').modal('hide')
 });
 
-function changeLED(elem) {
-  var ref = firebase
-  .app()
-  .database()
-  .ref();
-  var item = elem.parentElement.parentNode.id;
-  console.log(item)
-  var itemRef = ref.child("Items").child(item);
-  var itemLED = itemRef.child("led");
-  itemLED.set("on");
-  setTimeout(function(){ itemLED.set("off"); }, 10000);
-}
+// function changeLED(elem) {
+//   var ref = firebase
+//   .app()
+//   .database()
+//   .ref();
+//   var item = elem.parentElement.parentNode.id;
+//   console.log(item)
+//   var itemRef = ref.child("Items").child(item);
+//   var itemLED = itemRef.child("led");
+//   itemLED.set("on");
+//   setTimeout(function(){ itemLED.set("off"); }, 10000);
+// }
 
 // ========================================================
 // Modal Carousel
