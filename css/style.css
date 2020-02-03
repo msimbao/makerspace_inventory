@@ -338,7 +338,7 @@
    top: 0;
    left:0;
    z-index:10;
-   width: 10%;
+   width: 100%;
    transition: .2s;
  }
  
@@ -347,21 +347,7 @@
   transition: .2s;
   color:white;
  }
- 
- .navbar a {
-   float: left;
-   display: block;
-   mix-blend-mode: difference; 
-   text-align: center;
-   padding: 14px 16px;
-   text-decoration: none;
-   font-size: 17px;
- }
- 
- .navbar a h4:hover {
-   color: #FCB900;
-   text-decoration: underline;
- }
+
  
  /*--------------------------------------------------------------
  # Inventory
@@ -1050,47 +1036,38 @@
  # Full Screen Navigation
  --------------------------------------------------------------*/
  
- .overlay {
-   height: 100%;
-   width: 0;
+ #mainMenu {
    position: fixed;
    top: 0;
-   left: 0;
+   right: 0;
    z-index:10;
-   background-color: rgba(0, 175, 224, 0.589);
-   overflow-x: hidden;
    transition: 0.5s;
  }
- 
- .overlay-content {
-   position: relative;
-   top: 5%;
-   width: 100%;
-   text-align: left;
-   padding: 10%;
-   margin-top: 10px;
- }
 
+ #mainMenu li {
+  float: left;
+  mix-blend-mode: exclusion;
+}
 
  
- 
- .overlay a {
-   padding: 8px;
+ #mainMenu a {
+   padding: 20px;
    text-decoration: none;
-   font-size: 60px;
+   font-size: 16px;
    color: white;
    display: block;
    transition: 0.3s;
+   mix-blend-mode: exclusion;
  }
  
- .overlay a:hover,
- .overlay a:focus {
+ #mainMenu a:hover,
+ #mainMenu a:focus {
    color: #FF3501;
    border: none;
-   text-decoration: underline;
+   background: #002C53;
  }
  
- .overlay .closebtn {
+ #mainMenu .closebtn {
    position: absolute;
    top: 20px;
    right: 45px;
@@ -1098,10 +1075,10 @@
  } 
  
  @media screen and (max-height: 450px) {
-   .overlay a {
+   #mainMenu a {
      font-size: 20px;
    }
-   .overlay .closebtn {
+   #mainMenu .closebtn {
      font-size: 40px;
      top: 15px;
      right: 35px;
@@ -1277,7 +1254,7 @@
  }
  
  #contactNav a:hover,
- .overlay a:focus {
+ #mainMenu a:focus {
    color: #FF3501;
    border: none;
  }
@@ -1291,10 +1268,10 @@
  }
  
  @media screen and (max-height: 450px) {
-   .overlay a {
+   #mainMenu a {
      font-size: 20px;
    }
-   .overlay .closebtn {
+   #mainMenu .closebtn {
      font-size: 40px;
      top: 15px;
      right: 35px;
