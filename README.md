@@ -65,7 +65,6 @@ This project is licensed under the GNU GENERAL PUBLIC LICENSE
 * RSS feeds of things you can make in idea lab in general
 * cohesive colors, follow Jody's color palette
 * Request section to have input popup on redirection click
-* Add time of request sent 
 * Checking and Unchecking availability of items
 
 ### Steps Beyond 
