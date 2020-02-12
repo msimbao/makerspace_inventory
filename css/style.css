@@ -330,23 +330,6 @@
  # Header
  --------------------------------------------------------------*/
  
- .navbar {
-   cursor: pointer;
-   overflow: hidden;
-   background: rgba(0, 0, 0, 0);
-   position: fixed;
-   top: 0;
-   left:0;
-   z-index:10;
-   width: 100%;
-   transition: .2s;
- }
- 
- .navbar a h4 {
-  mix-blend-mode: difference;
-  transition: .2s;
-  color:white;
- }
 
  
  /*--------------------------------------------------------------
@@ -500,7 +483,7 @@
    border: none;
    color: #00333F;
    border-radius: 20px;
-   padding: 10%;
+   padding: 7%;
    vertical-align: center;
    text-align: center;
  }
@@ -1033,13 +1016,14 @@
  }
  
  /*--------------------------------------------------------------
- # Full Screen Navigation
+ # Navigation
  --------------------------------------------------------------*/
- 
+
+
  #mainMenu {
    position: fixed;
-   top: 0;
-   right: 0;
+   top: 20px;
+   right: 70px;
    z-index:10;
    transition: 0.5s;
  }
@@ -1053,7 +1037,7 @@
  #mainMenu a {
    padding: 20px;
    text-decoration: none;
-   font-size: 16px;
+   font-size: 20px;
    color: white;
    display: block;
    transition: 0.3s;
@@ -1064,27 +1048,9 @@
  #mainMenu a:focus {
    color: #FF3501;
    border: none;
-   background: #002C53;
  }
- 
- #mainMenu .closebtn {
-   position: absolute;
-   top: 20px;
-   right: 45px;
-   font-size: 60px;
- } 
- 
- @media screen and (max-height: 450px) {
-   #mainMenu a {
-     font-size: 20px;
-   }
-   #mainMenu .closebtn {
-     font-size: 40px;
-     top: 15px;
-     right: 35px;
-   }
- }
- 
+
+
  /*--------------------------------------------------------------
  # Admin Side Bar
  --------------------------------------------------------------*/
