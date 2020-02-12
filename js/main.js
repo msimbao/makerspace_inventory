@@ -182,7 +182,7 @@ $(document).ready(function() {
     menu: null,
     direction: "vertical",
     verticalCentered: true,
-    sectionsColor: ["#FE3808", "#FE3808", "#002C53", "#002C53", "#002C53"],
+    sectionsColor: ["#002C53", "#333333", "#002C53", "#002C53", "#002C53"],
     anchors: ["about","search", "map", "staff", "contact"],
     menu: "#mainMenu",
     scrollingSpeed: 700,
@@ -324,7 +324,7 @@ $(document).ready(function() {
         '<div class="col-md-4">' +
         '<a href="#">' +
         item +
-        '</a><div class="dbitem mb-4 box-shadow" onclick="changeLED(this)" data-toggle="modal" data-target="#' +
+        '</a><div class="dbitem mb-4 box-shadow" data-toggle="modal" data-target="#' +
         short +
         '"  >' +
         '<div class="card-img-top" style="width:970px;">' +
@@ -388,18 +388,6 @@ $('#toMap').on('click' , function() {
   $('.modal').modal('hide')
 });
 
-// function changeLED(elem) {
-//   var ref = firebase
-//   .app()
-//   .database()
-//   .ref();
-//   var item = elem.parentElement.parentNode.id;
-//   console.log(item)
-//   var itemRef = ref.child("Items").child(item);
-//   var itemLED = itemRef.child("led");
-//   itemLED.set("on");
-//   setTimeout(function(){ itemLED.set("off"); }, 10000);
-// }
 
 // ========================================================
 // Modal Carousel
@@ -499,6 +487,9 @@ function contactSubmit() {
   var email = email_address.value;
   var comment = comments.value;
 
+  var date = new Date();
+  var time = date.toDateString();
+
   var ref = firebase
     .app()
     .database()
@@ -512,6 +503,7 @@ function contactSubmit() {
   requestRef.child("name").set(name);
   requestRef.child("email").set(email);
   requestRef.child("comment").set(comment);
+  requestRef.child("time").set(time);
   // firebaseRef.push().set(messageText);
 }
 
