@@ -458,16 +458,14 @@ lightbox.option({
 // ========================================================
 
 function openContact() {
-  document.getElementById("contactNav").style.width = "50%";
-  document.getElementById("contactNav").style.opacity = "1";
+  document.getElementById("contactNav").style.left = "0%";
   document.getElementById("close_request").style.opacity = "1";
   
 }
 
 function closeContact() {
-  document.getElementById("contactNav").style.opacity = "0";
-  document.getElementById("contactNav").style.width = "0%";
   document.getElementById("close_request").style.opacity = "0";
+  document.getElementById("contactNav").style.left = "-50%";
 }
 
 // ========================================================
