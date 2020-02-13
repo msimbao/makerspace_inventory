@@ -302,92 +302,6 @@ colorBlobs();
 
 
 
-$(document).ready(function() {
-  var inventoryRef = firebase
-    .app()
-    .database()
-    .ref();
-  var itemsRef = inventoryRef.child("Items");
-
-  itemsRef.on("child_added", snap => {
-    var item = snap.child("item_text").val();
-    var group = snap.child("group").val();
-    var short = snap.child("short_text").val();
-    var image = snap.child("image_text").val();
-    var access = snap.child("access").val();
-    var availability = snap.child("availability").val();
-    // var location = snap.child("located_text").val();
-    var location_short = snap.child("located_short_text").val();
-
-    $("#array").append(
-      '<li id='+ item +'>' +
-        '<div class="col-md-4">' +
-        '<a href="#">' +
-        item +
-        '</a><div class="dbitem mb-4 box-shadow" data-toggle="modal" data-target="#' +
-        short +
-        '"  >' +
-        '<div class="card-img-top" style="width:970px;">' +
-        '</div><div class="card-body ' +
-        group +
-        '">' +
-        ' <p class="card-text"><h6>' +
-        item +
-        "</h6></p>" +
-        ' <div class="d-flex justify-content-between align-items-center">' +
-        "</div>" +
-        "</div>" +
-        "</div>" +
-        "</li>"
-    );
-
-    $("#modals").append(
-      '<div class="modal" id="' +
-        short +
-        '" >' +
-        '<div class="modal-dialog modal-lg" >' +
-        '<div class="modal-content">' +
-        //The Extra cards behind the main one
-        // '<div class="random_cards '+group+'_cards ">' +
-        // '<div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div>' +
-        // '</div>' +
-
-        '<div class="modal_body   '+group+' ">' +
-        '<div class="modal-controls">' +
-
-        ' <div class="btn-next controller" onclick="next(this)" aria-label="Next"><i class="fa fa-arrow-right" ></i></div>' +
-        ' <div class="btn-prev controller" onclick="prev(this)" aria-label="Prev"><i class="fa fa-arrow-left" ></i></div>' +
-        ' <div data-dismiss="modal" aria-label="Close"><i class="fa fa-close" ></i></div>' +
-
-        '</div>' +
-        '<div class="modal-words">' +
-        "<h4 ><b>" +
-        item +
-        "</b></h4>" +
-        "<h5> Group:  " +
-        group +
-        "</h5>" +
-        "<h5> Location: " +
-        location_short +
-        "</h5>"+
-        "<br>" +
-        '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
-        "</div>" +
-        '<div class="col-lg-6 item-images">' +
-        '<div class="image"><img src=" ' +image +' " class="image_inner" alt="" /><div>' +
-        "</div>" +
-        "</div>"+
-        '</div>'+
-        '</div>'+
-        "</div>"
-    );
-  });
-});
-
-$('#toMap').on('click' , function() { 
-  $('.modal').modal('hide')
-});
-
 
 // ========================================================
 // Modal Carousel
@@ -610,3 +524,48 @@ function contactSubmit() {
     }
   }
 })();
+
+// ========================================================
+// Vue Script and Components
+// ========================================================
+
+
+
+var answer = []
+
+function snapshotToArray(snapshot) {
+    var returnArr = [];
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+    });
+
+    return returnArr;
+};
+
+firebase.database().ref('/Items').on('value', function(snapshot) {
+    answer = snapshotToArray(snapshot)
+    console.log(answer);
+
+
+    var app = new Vue ({
+        el: '#app',
+    
+        data: {
+            todos: answer,
+              showModal: false
+            },
+        methods: {
+            onShowModal(){
+                this.showModal = true;
+              }
+        },
+    
+
+    })
+
+    
+});
+
