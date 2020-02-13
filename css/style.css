@@ -689,8 +689,10 @@
    padding:5%;
    transition: 0.4s;
    background:#221f1fd5;
+   display:block;
  }
 
+  
  .modal-content{
    width:100%;
    height:100%;
