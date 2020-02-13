@@ -1216,13 +1216,13 @@
 
  #contactNav {
    height: 100%;
-   width: 0;
+   width: 50%;
    position: fixed;
    top: 0;
-   left: 0;
+   left:-50%;
    background-color: rgb(2, 30, 36);
    overflow-x: hidden;
-   transition: 0.5s;
+   transition: 0.4s;
    text-align: center;
    padding-top: 7%;
  }
