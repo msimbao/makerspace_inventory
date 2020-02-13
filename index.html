@@ -77,7 +77,7 @@
 
 <div id="modals">
 
-  <template v-for="item in todos">
+  <template v-for="item in items">
     
 
     <div v-if="item.show">
@@ -418,7 +418,7 @@
       <p>
         Find whatever items you need for your amazing projects, products, brilliant ideas
          and fun activities
-        in our makerspace using our simple search engine
+        in our makerspace using our simple search app.
       </p>
       <a href="#search"><button>Search</button></a>
     </div>
@@ -466,7 +466,7 @@
             <div class="row">
               <ul id="myUL">
                 
-                <template v-for="item in todos">
+                <template v-for="item in items">
           
                   <li class="col-md-4" v-on:click="item.show = !item.show">
                     <a href="#">
@@ -582,7 +582,7 @@
             <br />
 
             <img src="img/start_location.gif" alt="" />
-            
+
           </div>
         </div>
       </div>
@@ -612,7 +612,7 @@
               You can also Request an item and we will try to acquire it soon.
             </p>
             <button onclick="openContact()">Request</button>
-             <div id="close_request" onclick="closeContact()"><i class="fa fa-times" ></i></div>
+             <div id="close_request" onclick="closeContact()"><i class="fa fa-times"></i></div>
 
             <div id="contactNav">
               <div class="contact-content">
@@ -720,15 +720,10 @@
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/jquery/jquery-migrate.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/2.2.1/vuefire.min.js"></script>
     
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/mobile-nav/mobile-nav.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     <script src="js/piling.js"></script>
     <!-- Contact Form JavaScript File -->
@@ -750,7 +745,6 @@
     </script>
 
     <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/vue_main.js"></script>
+    <script src="js/components.js"></script>
   </body>
 </html>
