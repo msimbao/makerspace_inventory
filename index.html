@@ -56,69 +56,37 @@
     <!---Popper JS. Would rather insert this at the head to avoid problems-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-        <!---Aframe -->
-        <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
-            <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.14/dist/aframe-orbit-controls-component.min.js"></script>
-      
-    
+
+     <!---Aframe for Rendering 3D map-->
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
 
   </head>
 
 
   <body>
 
-   
-    <div id="app">
-           
+    
 <!-- ================================================================================================================ 
 # Modals
 ================================================================================================================-->
 
 <div id="modals">
-
-  <template v-for="item in items">
-    
-
-    <div v-if="item.show">
-      <div class="modal">
-      <div class="modal-dialog modal-lg" >
-      <div class="modal-content">
-    
-      <div class="modal_body"  v-bind:class="item.group">
-
-      <div class="modal-controls">
-    
-      <!-- <div class="btn-next controller" onclick="next(this)" aria-label="Next"><i class="fa fa-arrow-right" ></i></div>
-      <div class="btn-prev controller" onclick="prev(this)" aria-label="Prev"><i class="fa fa-arrow-left" ></i></div> -->
-      <div v-on:click="item.show = false" ><i class="fa fa-close" ></i></div>
-    
-      </div>
-      <div class="modal-words">
-      <h4 ><b>
-      {{ item.item_text }}
-      </b></h4>
-      <h5> Group:  
-      {{ item.group }}
-      </h5>
-      <h5> Location: 
-      {{ item.located_short_text }}
-      </h5>
-      <br>
-      <a href="#map"><div  style="text-align:center"><button class="toMap" v-on:click="item.show = false"  style="padding:3px;">Map</button></div></a>
-      </div>
-      <div class="col-lg-6 item-images">
-      <div class="image"><img v-bind:src="item.image_text" class="image_inner" alt="" />
-      </div>
-      </div>
-      </div>
-      </div>
+    <!-- 
+  <div class="row about-extra" id="pencils">
+    <div class="col-lg-3 test">
+      <h4>
+        Pencils
+      </h4>
+      <p>can be found in the drawers at the the end of the space.3</p>
     </div>
-    </div> 
+    <div class="col-lg-6 wow fadeInUp test">
+      <img
+        src="img/drawers.png"
+        class="img-fluid"
+        alt=""
+      />
     </div>
-
-    </template>
-
+  </div> -->
   </div>
 
 <!-- ================================================================================================================ 
@@ -418,7 +386,7 @@
       <p>
         Find whatever items you need for your amazing projects, products, brilliant ideas
          and fun activities
-        in our makerspace using our simple search app.
+        in our makerspace using our simple search engine
       </p>
       <a href="#search"><button>Search</button></a>
     </div>
@@ -465,39 +433,13 @@
           <div class="container-fluid">
             <div class="row">
               <ul id="myUL">
-                
-                <template v-for="item in items">
-          
-                  <li class="col-md-4" v-on:click="item.show = !item.show">
-                    <a href="#">
-                      {{ item.item_text }}
-                    </a>
-                      <div class="dbitem mb-4 box-shadow">
-                        <div class="card-body" v-bind:class="item.group ">
-                       <p class="card-text"><h6>
-                      {{ item.item_text }}
-                    </h6></p>
-                    <div class="d-flex justify-content-between align-items-center">
-                    </div>
-                    </div>
-                    </div>
-                  </li>
-          
-                  <!-- <btn @trigger="item.show = !item.show">Button for {{item.item_text}}</btn> -->
-
-       
-                  
-                </template>
-
+                <div id="array"></div>
               </ul>
             </div>
           </div>
         </div>
 
-        
-
-
-        <div onclick="openContact()" id="toStaff">
+        <div id="toStaff">
           <a href="#staff"><button style="border:none;">Can't find something? Fill in our Request Form</button></a>
         </div>
       </div>
@@ -506,12 +448,17 @@
 # Map
 ================================================================================================================-->
 
-      <div class="section" id="map">
+      <div class="section pp-scrollable" id="map">
         <br />
 
         <div class="row about-extra">
           <div class="col-lg-6 wow fadeInUp texts">
             <h3>Makerspace Locations</h3>
+
+            <p>
+              The Idea Lab is a community-oriented workspace designed to
+              encourage collaboration.
+            </p>
 
             <p>
               Our Makerspace is fairly small but still growing as we add to it
@@ -582,7 +529,6 @@
             <br />
 
             <img src="img/start_location.gif" alt="" />
-
           </div>
         </div>
       </div>
@@ -607,12 +553,15 @@
               If you need a helping hand feel free to ask our student staff
               about whatever you can't find on this app.
             </p>
- 
+            <p>
+              They will also give you access to some areas
+              that are off limits to patrons.
+            </p>
             <p>
               You can also Request an item and we will try to acquire it soon.
             </p>
             <button onclick="openContact()">Request</button>
-             <div id="close_request" onclick="closeContact()"><i class="fa fa-times"></i></div>
+             <div id="close_request" onclick="closeContact()"><i class="fa fa-times" "></i></div>
 
             <div id="contactNav">
               <div class="contact-content">
@@ -708,10 +657,6 @@
       </div>
     </div>
 
-
-
-  </div>
-
 <!-- ================================================================================================================ 
 # Libraries and File imports That need to be placed at the end
 ================================================================================================================-->
@@ -720,10 +665,14 @@
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/jquery/jquery-migrate.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/2.2.1/vuefire.min.js"></script>
     
-
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/mobile-nav/mobile-nav.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     <script src="js/piling.js"></script>
     <!-- Contact Form JavaScript File -->
@@ -745,6 +694,7 @@
     </script>
 
     <script src="js/main.js"></script>
-    <script src="js/components.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/vue_main.js"></script>
   </body>
 </html>
