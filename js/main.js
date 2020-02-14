@@ -371,7 +371,7 @@ $(document).ready(function() {
         location_short +
         "</h5>"+
         "<br>" +
-        '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
+        // '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
         "</div>" +
         '<div class="col-lg-6 item-images">' +
         '<div class="image"><img src=" ' +image +' " class="image_inner" alt="" /><div>' +
