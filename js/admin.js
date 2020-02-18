@@ -220,6 +220,8 @@ function submitClick() {
       var short;
       var item = document.getElementById("item");
       var group = document.getElementById("group");
+      var access = document.getElementById("access");
+      var avail = document.getElementById("avail");
       var located_short = document.getElementById("located_short");
 
       var short = item.value;
@@ -229,6 +231,8 @@ function submitClick() {
       var short_text = short;
       var item_text = item.value;
       var group_text = group.value;
+      var access_text = access.value;
+      var avail_text = avail.value;
 
       var located_short_text = located_short.value;
       // var located_text = located.value;
@@ -241,8 +245,12 @@ function submitClick() {
       firebaseRef.child("item_text").set(item_text);
       firebaseRef.child("group").set(group_text);
       firebaseRef.child("short_text").set(short_text);
+      firebaseRef.child("access").set(access_text);
+      firebaseRef.child("avail_text").set(avail_text);
       firebaseRef.child("located_short_text").set(located_short_text);
+      firebaseRef.child("show").set(false);
       firebaseRef.child("image_text").set(image_text);
+
 
       // firebaseRef.child("located_text").set(located_text);
 
@@ -252,6 +260,7 @@ function submitClick() {
   }
   alert("Item Inserted. Please refresh the page to see changes as there is a bug not allowing it to be immediately displayed")
 }
+
 
 // ========================================================
 // Read Items From Database
