@@ -315,7 +315,7 @@ $(document).ready(function() {
     var short = snap.child("short_text").val();
     var image = snap.child("image_text").val();
     var access = snap.child("access").val();
-    var availability = snap.child("availability").val();
+    var avail = snap.child("avail_text").val();
     // var location = snap.child("located_text").val();
     var location_short = snap.child("located_short_text").val();
 
@@ -369,6 +369,12 @@ $(document).ready(function() {
         "</h5>" +
         "<h5> Location: " +
         location_short +
+        "</h5>"+
+        "<h5> Access: " +
+        access +
+        "</h5>"+
+        "<h5> Availability: " +
+        avail +
         "</h5>"+
         "<br>" +
         // '<a href="#map"><div  style="text-align:center"><button class="toMap" style="padding:3px;">Map</button></div></a>'+
@@ -491,7 +497,7 @@ function contactSubmit() {
     .app()
     .database()
     .ref();
-  var requestRef = ref.child("requests").child(name);
+  var requestRef = ref.child("requests").push();
 
   window.alert(
     "Thank you for sending your request! we will get back to you soon!"
