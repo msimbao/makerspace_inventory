@@ -488,27 +488,45 @@
    text-align: center;
  }
  
- .crafts {
+ .Crafts {
    background: #FCB900;
  }
  
- .tech {
+ .Tech {
    background: #00333F;
    color: white;
  }
 
 
- .tech ul li:hover{
+ .Tech ul li:hover{
   border: 3px dashed black
  }
 
-  .tech .modal_words a button{
+  .Tech .modal_words a button{
   border: 3px dashed white;
  }
 
- .software {
+ .Software {
    background: #00AEE0;
  }
+
+ .Fabrics {
+  background: white;
+  color: black;
+
+}
+
+.Tools {
+  background: #00333F;
+  ;
+}
+
+.Books {
+  background: #ffffff;
+  color: black;
+  border: 3px dashed black;
+
+}
  
  .card-text {
    font-size: 70px;
@@ -608,31 +626,31 @@
   color:#333333;
 }
 
-.tech .modal-words a div button {
+.Tech .modal-words a div button {
   background: #FCB900;
 }
 
-.tech .modal-words h4 {
+.Tech .modal-words h4 {
   color:#FCB900;
 }
 
 
 
-.crafts .modal-words a div button {
+.Crafts .modal-words a div button {
   background: #00AEE0;
 }
 
 
 
-.tech .modal-controls div i {
+.Tech .modal-controls div i {
   color:#FCB900;
 }
 
-.crafts .modal-controls div  i{
+.Crafts .modal-controls div  i{
   color:#00AEE0;
 }
 
-.software .modal-controls div i {
+.Software .modal-controls div i {
   color:#00333F;
 }
 
