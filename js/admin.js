@@ -299,12 +299,13 @@ $(document).ready(function() {
 
   requestRef.on("child_added", snap => {
     // var id = snap.val();
+    var id = snap.key;
     var name = snap.child("name").val();
     var email = snap.child("email").val();
     var comment = snap.child("comment").val();
     $("#requests").append(
       '<tr class=" table-item " id="' +
-        name +
+        id +
         '"> <td>' +
         name +
         "</td><td>" +
