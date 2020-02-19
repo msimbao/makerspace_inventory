@@ -300,6 +300,7 @@ $(document).ready(function() {
   requestRef.on("child_added", snap => {
     // var id = snap.val();
     var id = snap.key;
+    var reqTime = snap.child("name").val();
     var name = snap.child("name").val();
     var email = snap.child("email").val();
     var comment = snap.child("comment").val();
@@ -308,6 +309,8 @@ $(document).ready(function() {
         id +
         '"> <td>' +
         name +
+        "</td><td>" +
+        reqTime +
         "</td><td>" +
         email +
         '</td> <td><p style="padding:5%">' +
