@@ -248,7 +248,6 @@ function submitClick() {
       firebaseRef.child("access").set(access_text);
       firebaseRef.child("avail_text").set(avail_text);
       firebaseRef.child("located_short_text").set(located_short_text);
-      firebaseRef.child("show").set(false);
       firebaseRef.child("image_text").set(image_text);
 
 
