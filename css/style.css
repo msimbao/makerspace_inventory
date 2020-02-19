@@ -326,10 +326,6 @@
    margin-top: 20px;
  }
  
- /*--------------------------------------------------------------
- # Header
- --------------------------------------------------------------*/
- 
 
  
  /*--------------------------------------------------------------
@@ -522,10 +518,8 @@
 }
 
 .Books {
-  background: #ffffff;
-  color: black;
-  border: 3px dashed black;
-
+  background: #333333;
+  color: white;
 }
  
  .card-text {
@@ -654,9 +648,18 @@
   color:#00333F;
 }
 
+.Books .modal-controls div i {
+  color:#ffffff;
+}
+
+.Books .modal-words h4 {
+  color:#FCB900;
+}
 
 
-
+.Fabrics .modal-words h4 {
+  color:#FCB900;
+}
 
 
 
@@ -802,6 +805,14 @@
 
 .modal-controls div i:hover {
   color:white;
+}
+
+.Books .modal-controls div i:hover {
+  color:#FCB900;
+}
+
+.Fabrics .modal-controls div i:hover {
+  color:#FCB900;
 }
  /*--------------------------------------------------------------
  # Admin
