@@ -59,7 +59,7 @@
 
      <!---Aframe for Rendering 3D map-->
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
-
+    <script src="map.js"></script>
   </head>
 
 
@@ -88,6 +88,45 @@
     </div>
   </div> -->
   </div>
+
+          <!-- Map -->
+<div class="modal fade" id="mapmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body">
+        <div>
+        <img class="map" src="img/idealab.png" alt="idealab_map" height="680px" usemap="#ourmap"/>
+        <h1 id="mapText">Idealab Map</h1>
+
+  
+        <div class="item" id="cubbies" onmouseover="changeMapText('Cubbies')" onmouseout="resetMapText()"></div>
+          <div class="item" id="computers" onmouseover="changeMapText('Computers')" onmouseout="resetMapText()"></div>
+          <div class="item" id="backcloset" onmouseover="changeMapText('Back Closet')" onmouseout="resetMapText()"></div>
+          <div class="item" id="bathroom" onmouseover="changeMapText('Bathrooms')" onmouseout="resetMapText()"></div>
+          <div class="item" id="techroom" onmouseover="changeMapText('Techroom')" onmouseout="resetMapText()"></div>
+          <div class="item" id="fireexit" onmouseover="changeMapText('Fire Exit')" onmouseout="resetMapText()"></div>
+          <div class="item" id="sewing" onmouseover="changeMapText('Sewing')" onmouseout="resetMapText()"></div>
+          <div class="item" id="entrance" onmouseover="changeMapText('Entrance')" onmouseout="resetMapText()"></div>
+          <div class="item" id="books" onmouseover="changeMapText('Books')" onmouseout="resetMapText()"></div>
+
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--- Cubbies-->
+  
+
+
 
 <!-- ================================================================================================================ 
 # Splash Screen and mobile block
@@ -455,6 +494,7 @@
           <div class="col-lg-6 wow fadeInUp texts">
             <h3>Makerspace Locations</h3>
 
+
   
 
             <p>
@@ -470,51 +510,11 @@
             <br />
             <br />
 
-            <a
-              href="img/desktop.png"
-              data-lightbox="map"
-              data-title="Desktop Computers"
-              class="link-preview"
-              title="Map1"
-            >
-            <button>Open Map</button>
-            </a>
 
-            <a
-              href="img/drawers.png"
-              data-lightbox="map"
-              data-title="Drawers"
-              class="link-preview"
-              title="Map"
-            ></a>
-            <a
-              href="img/techroom.png"
-              data-lightbox="map"
-              data-title="Techroom (Ask For Permission)"
-              class="link-preview"
-              title="Map"
-            ></a>
-            <a
-              href="img/backcloset.png"
-              data-lightbox="map"
-              data-title="Back Closet (Ask For Permission)"
-              class="link-preview"
-              title="Map"
-            ></a>
-            <a
-            href="img/sowingtables.png"
-            data-lightbox="map"
-            data-title="Fabrics Area"
-            class="link-preview"
-            title="Map"
-          ></a>
-          <a
-          href="img/greybluecabinets.png"
-          data-lightbox="map"
-          data-title="Grey Blue Cabinet"
-          class="link-preview"
-          title="Map"
-        ></a>
+            <!-- Button trigger modal -->
+<button type="button" data-toggle="modal" data-target="#mapmodal">
+  Open Map
+</button>
           </div>
 
           <div class="col-lg-6 wow fadeInUp">
@@ -528,6 +528,9 @@
             <img src="img/start_location.gif" alt="" />
           </div>
         </div>
+
+
+
       </div>
 
 
