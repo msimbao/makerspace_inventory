@@ -325,7 +325,7 @@ $(document).ready(function() {
     var location_short = snap.child("located_short_text").val();
 
     $("#array").append(
-      '<li id='+ item +'>' +
+      '<li class="element-item  '+group+' " id='+ item +'>' +
         '<div class="col-md-4">' +
         '<a href="#">' +
         item +
@@ -352,10 +352,7 @@ $(document).ready(function() {
         '" >' +
         '<div class="modal-dialog modal-lg" >' +
         '<div class="modal-content">' +
-        //The Extra cards behind the main one
-        // '<div class="random_cards '+group+'_cards ">' +
-        // '<div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div> <div class="color-div"></div>' +
-        // '</div>' +
+
 
         '<div class="modal_body   '+group+' ">' +
         '<div class="modal-controls">' +
@@ -442,15 +439,16 @@ $('#toMap').on('click' , function() {
 
 
 // ========================================================
-// Map Light Box Options
+// Map 
 // ========================================================
 
+function changeMapText(input) {
+  document.getElementById("mapText").innerHTML = input;
+}
 
-lightbox.option({
-  'resizeDuration': 200,
-  'wrapAround': true,
-  'showImageNumberLabel': false,
-})
+function resetMapText() {
+  document.getElementById("mapText").innerHTML = "Idealab Map";
+}
 
 
 // ========================================================
@@ -619,3 +617,7 @@ function contactSubmit() {
     }
   }
 })();
+
+
+
+
