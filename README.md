@@ -58,16 +58,12 @@ This project is licensed under the GNU GENERAL PUBLIC LICENSE
 
 ### Features
 
-* LED Beacon Controllers
 * Vue Editing
-* Map should have more general directions for navigating the idea lab e.g stairway, exits, entrance, bathrooms
-* Make map interactive and clickable
 * Make each item on the map able to be clicked and give more information on the area it corresponds to
 * Make the site more forwards and backwards explorative
 * Things you can make in the Idea Lab with each item should be listed
 * RSS feeds of things you can make in idea lab in general
 * cohesive colors, follow Jody's color palette
-* Request section to have input popup on redirection click
 * Checking and Unchecking availability of items
 
 ### Steps Beyond 
