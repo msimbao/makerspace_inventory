@@ -2,13 +2,16 @@
 
 An ongoing simple App for Inventory and client management for Macalester Idea Lab built with firebase, vue and jquery.
 
-![Home Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen0.png)
+![Home Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen6.png)
 
 We made this app to help clients in the Idea lab find whatever items they were looking for in the space.
 
 It saves time as well as helps the space managers know more about what clients want and when clients are most likely looking for items.
 
-![Search Page](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen5.png)
+![Search Page](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen9.png)
+![Map Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen7.png)
+![Request Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen8.png)
+
 
 ## Things I Learnt
 
