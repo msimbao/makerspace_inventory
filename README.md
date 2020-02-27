@@ -27,7 +27,7 @@ Below are a pictures showing the GUI for the administrators page. This page is c
 
 ![Welcome Screen](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen1.PNG)
 ![Dashboard](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen2.PNG)
-![Requests](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen3.PNG)
+![Requests](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen10.png)
 ![Inventory](https://github.com/msimbao/makerspace_inventory/blob/master/screenshots/screen4.PNG)
 
 ## Deployment
